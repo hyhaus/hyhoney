@@ -28,6 +28,10 @@
 
 ---
 
+## 2026-09-04 · sessão 1 · rodada 8 — preparado para o ar
+
+**Criado.** `site/` (index.html com OG/manifest/ícone 65, `sw.js` offline, `CNAME`), workflow do GitHub Pages, guia 41. **Pendências do Odin.** gh auth login → 15 --criar → ligar Pages → CNAME no DNS. **Como voltar atrás.** apagar `site/` e o workflow.
+
 ## 2026-09-04 · sessão 1 · rodada 7 — app v1.0, ícones reais, prompt para o Code, GitHub
 
 **Criado.** 38 prompt · mockup v1.0 · `icones/` reais (logo 65 + 6 alternativos + OG) · servidor entrega o manifest do ícone escolhido · 39 prompt [code] · 40 guia do GitHub. **Decisões.** D14–D17. **Pendências.** push para o GitHub (caminho A ou B), servidor no login, curadoria, P5/P12. **Como voltar atrás.** restaurar v0.6 do histórico; `icones/` antigos estão no commit 22bb030.

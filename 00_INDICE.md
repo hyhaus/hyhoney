@@ -56,6 +56,8 @@ atualizado: 2026-09-04
 | 38 | [[38_PROMPT_app-v1-temas-e-logos]] | PROMPT_app-v1 | ✅ executado — mockup v1.0 |
 | 39 | [[39_PROMPT_code-v1]] | PROMPT_code-v1 | ⏳ [code] construir o app real |
 | 40 | [[40_GUIA_github-passo-a-passo]] | GUIA_github | os 2 caminhos para o push |
+| 41 | [[41_GUIA_colocar-no-ar]] | GUIA_no-ar | GitHub Pages + CNAME hyhoney.bitbeagle.com |
+| — | `site/` + `.github/workflows/pages.yml` | — | versão publicável (index, sw.js, ícones, CNAME) e publicação automática |
 | — | `icones/` | — | logo 65 em 512/192/180/64, alternativos 3·5·9·66·71·72, manifests, OG 1200×630 |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
 | — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v1.0 |
