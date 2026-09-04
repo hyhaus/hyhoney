@@ -24,9 +24,18 @@
 | v0.4 | 2026-09-04 | + Clima do Dia, busca geral ⌘K, merge de seções novas | `2026-09-04_v0.4_clima-busca.html` | a6b79a7 |
 | v0.5 | 2026-09-04 | + ponte com o Tour (23); correção da Saga no iPhone | `2026-09-04_v0.5_ponte-tour.html` | 3eb4c70 |
 | v0.6 | 2026-09-04 | + selo Cupom na seção Protocolos | `2026-09-04_v0.6_cupom-protocolos.html` | 22bb030 |
-| **v1.0** | 2026-09-04 | temas finais + Passaporte em Viagens, logo 65 oficial, 71 na Capa, ícones PWA alternativos, logos por seção, Sobre Nós / Química / Cafeína, ＋ Adicionar funcional, notas, importar/exportar | `2026-09-04_v1.0_temas-logos-adicionar.html` | — |
+| v1.0 | 2026-09-04 | temas finais + Passaporte em Viagens, logo 65 oficial, 71 na Capa, ícones PWA alternativos, logos por seção, Sobre Nós / Química / Cafeína, ＋ Adicionar funcional, notas, importar/exportar | `2026-09-04_v1.0_temas-logos-adicionar.html` | — |
+| **v1.1** | 2026-09-04 | logo oficial = Favo refinado (anel 4.2, coração hexagonal) em `icones/` e `site/icones/`; ícone padrão 3; 65 vira alternativo; sw v2 | `2026-09-04_v1.1_logo-oficial-favo.html` | — |
 
 ---
+
+## 2026-09-04 · sessão 2 · rodada 10 — 🏷️ marca oficial: Favo refinado
+
+**Decisão D18.** A marca oficial do HyHoney é o Favo escolhido na Oficina (49): 1 favo · anel 4.2 · cantos 0 · rotação 0° · coração hexagonal 1.5 alt 3 · fundo #2B2118 · anel #E8A33D · coração #E8A33D (`{"layout":"1","t":4.2,"r":0,"rot":0,"shape":"hexa","hs":1.5,"hy":3,"drip":0,"hole":0,"bg":"#2B2118","a":"#E8A33D","h":"#E8A33D"}`). **Feito.** kit em `50_MARCA_oficial/` · `icones/` e `site/icones/`: icon-192/512, apple-touch-icon, favicon-64, og-1200x630 e alt-3 = marca nova; o antigo oficial (65 oi com Abelha) virou alt-65 com manifest-65 · mockup v1.1 e `site/index.html`: desenho da logo 03 atualizado (LOGOS_C) e ícone padrão 3 em vez de 65 · servidor local idem · `sw.js` cache v2 (força o PWA a pegar o ícone novo). **Para ir ao ar.** commit + push (o `.git/HEAD.lock` da sessão 1 ainda trava o commit daqui). Quem já instalou o PWA precisa remover e instalar de novo para o ícone da tela de início mudar. **Como voltar atrás.** restaurar v1.0 do histórico; copiar alt-65-* de volta para icon-*; ícone padrão 65.
+
+## 2026-09-04 · sessão 2 · rodadas 8–9 — análise das 73, catálogo, simulações dos 7 ícones, família favo + coração, Oficina do Favo
+
+**Criado.** 42 análise das 73 (MD + PDF celular; ranking refeito, 8 novas na disputa, teste em preto, lista curta de 5) · 43 catálogo das 73 (uma por página) · 44 tela de início com os 7 ícones PWA (contador 97) · 45 link no WhatsApp com os 7 · 46 dez variações livres de favo + coração · 47 a 03 original e 9 irmãs · 48 as 40 juntas (20 novas: tamanho/forma do coração, nº de favos) com favoritas · 49 Oficina do Favo, painel interativo publicado como artefato (favos, anel, cantos, rotação, coração, cores, guardar, copiar SVG e receita). **Descoberta.** listras como cor morrem em preto; a família da 03 sobrevive porque anel e coração são a mesma cor. **Decisões.** nenhuma — o Odin escolhe (entre as 5 da análise ou na Oficina) e cola a receita. **Como voltar atrás.** apagar 42–49.
 
 ## 2026-09-04 · sessão 1 · rodada 9 — 🚀 NO AR · commit `7ea9a49`
 

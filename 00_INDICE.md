@@ -61,6 +61,13 @@ atualizado: 2026-09-04
 | 43 | [[43_CATALOGO_73-logos-celular.pdf]] | CATALOGO_73-logos | as 73 logos, uma por página, formato de celular (sumário visual por família) |
 | 44 | [[44_SIMULACAO_iphone-7-icones.png]] | SIMULACAO_iphone | os 7 ícones PWA escolhidos na tela de início; contador em 97 |
 | 45 | [[45_SIMULACAO_whatsapp-7-icones.png]] | SIMULACAO_whatsapp | os mesmos 7 na prévia do link enviado no WhatsApp |
+| 46 | [[46_MARCA_favo-coracao.html]] · PNG | MARCA_favo-coracao | 10 variações da logo 03 (favo + coração), com prova em preto puro e 40px |
+| 47 | [[47_MARCA_favo-original-e-9-irmas.html]] · PNG | MARCA_favo-irmas | a logo 03 original + 9 variações fiéis (uma mudança por vez) |
+| 48 | [[48_MARCA_favo-40-variacoes.html]] · PNG | MARCA_favo-40 | as 3 rodadas juntas: 20 novas (tamanho/forma do coração, nº de favos) + 10 irmãs + 10 livres; favoritas e copiar escolha |
+| 49 | [[49_MARCA_favo-oficina.html]] | MARCA_favo-oficina | painel interativo: favos, anel, cantos, rotação, coração, cores; prova em 40px/preto/iPhone/WhatsApp; guardar e copiar receita (artefato "Oficina do Favo") |
+| 50 | `50_MARCA_oficial/` | MARCA_oficial | a marca oficial (favo, anel 4.2, coração hexagonal): SVG com/sem fundo, preto, claro; ícones 512/192/180/64; og 1200×630 |
+| 51 | [[51_SIMULACAO_novo-vs-pote-de-mel.png]] | SIMULACAO_novo-vs-pote | 4 telas de início: marca oficial e Pote de Mel lado a lado |
+| 52 | [[52_PROMPT_aplicar-icone-oficial]] | PROMPT_icone-oficial | 🟡 rodando — para a outra sessão: conferir, commit, push, confirmar no ar |
 | — | `site/` + `.github/workflows/pages.yml` | — | versão publicável (index, sw.js, ícones, CNAME) e publicação automática |
 | — | `icones/` | — | logo 65 em 512/192/180/64, alternativos 3·5·9·66·71·72, manifests, OG 1200×630 |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |

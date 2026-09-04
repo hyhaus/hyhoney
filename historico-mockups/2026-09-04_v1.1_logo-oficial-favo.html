@@ -1,11 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#E8A33D">
-<link rel="manifest" href="/icones/manifest.webmanifest"><link rel="apple-touch-icon" href="/icones/apple-touch-icon.png"><link rel="icon" href="/icones/favicon-64.png">
-<meta property="og:title" content="HyHoney"><meta property="og:description" content="O app do casal: memórias, cupons raros e um cartório carinhoso."><meta property="og:image" content="https://hyhoney.bitbeagle.com/icones/og-1200x630.png"><meta property="og:url" content="https://hyhoney.bitbeagle.com"><meta name="twitter:card" content="summary_large_image">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head><body><title>HyHoney</title>
+<title>HyHoney</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,800,100&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
 :root{
@@ -332,7 +325,7 @@ const LOGOS_C=[
 // ---- rodada 1 (8) ----
 {id:'abelhas-coracao',n:'Abelhas de Coração',f:'abelha',t:'romântico',who:'Duas abelhas que juntas desenham um coração. Entende-se em 1 segundo.',pal:[MEL,INK,ROSA,CREME],font:"'Fraunces',serif",bg:CREME,ink:INK,og:['HyHoney','O app de um casal só. Memórias, cupons raros e um cartório carinhoso.'],sym:bg=>svg(heart(ROSA,0,4,2.6)+bee(MEL,INK,-14,-6,.7,-25)+bee(MEL,INK,14,-6,.7,25),bg)},
 {id:'gota',n:'Gota de Mel',f:'mel',t:'inteligente',who:'Gota de mel com coração dentro. Minimalista, funciona em 20px.',pal:[MEL,OURO,'#FFFFFF',INK],font:"'Poppins',sans-serif",bg:MEL,ink:INK,og:['HyHoney · nós dois','Um lugar só nosso: o que vivemos, o que combinamos, o que ainda vamos inventar.'],sym:bg=>svg(drop('#FFFDF7',0,2,1.5)+heart(MEL,0,10,1.4),bg)},
-{id:'favo',n:'Favo',f:'favo',t:'inteligente',who:'A marca oficial: anel de favo com coração hexagonal. Geométrico, sério por fora.',pal:[INK,MEL,CREME,ROSA],font:"'Poppins',sans-serif",bg:INK,ink:'#F2E9DA',og:['HyHoney','Sistema oficial de gestão de um relacionamento. Com cupons.'],sym:bg=>svg(hex(MEL,0,0,1.6)+hex(INK,0,0,1.353)+'<path transform="translate(0 3) scale(1.5)" d="M0 10 L-11 -1 L-11 -8 L-5 -12 L0 -8 L5 -12 L11 -8 L11 -1 Z" fill="'+MEL+'"/>',bg)},
+{id:'favo',n:'Favo',f:'favo',t:'inteligente',who:'Hexágono de favo com coração no centro. Geométrico, sério por fora.',pal:[INK,MEL,CREME,ROSA],font:"'Poppins',sans-serif",bg:INK,ink:'#F2E9DA',og:['HyHoney','Sistema oficial de gestão de um relacionamento. Com cupons.'],sym:bg=>svg(hex(MEL,0,0,1.6)+hex(INK,0,0,1.2)+heart(MEL,0,6,1.5),bg)},
 {id:'asas',n:'Abelha de Asas de Coração',f:'abelha',t:'fofo',who:'Uma abelha gordinha com asas em coração. Mascote do onboarding.',pal:['#F0B24F',INK,'#F5C5CD','#FFFDF7'],font:"'Nunito',sans-serif",bg:'#FFFDF7',ink:INK,og:['HyHoney 🐝','Ela marcou "modo silencioso". Você recebeu um cupom. A vida a dois, organizada.'],sym:bg=>svg(heart('#F5C5CD',-9,-16,1.6)+heart('#F5C5CD',9,-16,1.6)+bee('#F0B24F',INK,0,4,1.2,0),bg)},
 {id:'pote',n:'Pote de Mel',f:'mel',t:'romântico',who:'Pote com etiqueta escrita à mão. Caseiro, combina com o Museu.',pal:[MEL,'#8B5A2B',CREME,ROSA],font:"'Caveat',cursive",bg:CREME,ink:INK,og:['HyHoney — nosso pote','Guardamos aqui tudo que é doce (e algumas coisas grudentas).'],sym:bg=>svg(`<rect x="-20" y="-14" width="40" height="40" rx="10" fill="${MEL}"/><rect x="-16" y="-26" width="32" height="12" rx="4" fill="#8B5A2B"/><rect x="-14" y="0" width="28" height="14" rx="3" fill="${CREME}"/>`+heart(ROSA,0,9,.9),bg)},
 {id:'monograma',n:'Monograma HH',f:'tipografia',t:'elegante',who:'Dois H entrelaçados, mel e rosa. Editorial, adulto.',pal:['#1F2A44',MEL,ROSA,'#F4F1EA'],font:"'Playfair Display',serif",bg:'#F4F1EA',ink:'#1F2A44',og:['HyHoney','Hoffmann & Honey. Um contrato assinado em duas vias, sem direito a devolução.'],sym:bg=>svg(txt('H',-12,16,52,MEL,'Playfair Display,serif',900)+txt('H',8,16,52,ROSA,'Playfair Display,serif',900,'opacity=".9"')+heart('#1F2A44',-2,-14,.7),bg)},
@@ -473,7 +466,7 @@ let state=load()||{sections:JSON.parse(JSON.stringify(DEFAULT_SECTIONS)),shortcu
 let editing=false;
 // seções novas do padrão entram mesmo em quem já tinha personalização salva
 DEFAULT_SECTIONS.forEach((d,i)=>{if(!state.sections.find(s=>s.id===d.id)){const after=DEFAULT_SECTIONS[i-1];const j=after?state.sections.findIndex(s=>s.id===after.id):-1;state.sections.splice(j+1,0,JSON.parse(JSON.stringify(d)))}});
-state.roleta=state.roleta||{};state.icone=state.icone||3;if(['arcade','passaporte'].includes(state.skin))state.skin='mel';state.itens=state.itens||{};state.notas=state.notas||{};
+state.roleta=state.roleta||{};state.icone=state.icone||65;if(['arcade','passaporte'].includes(state.skin))state.skin='mel';state.itens=state.itens||{};state.notas=state.notas||{};
 state.clima=state.clima||{a:{e:3,h:'😐 neutro',m:'cafe',n:''},b:{e:2,h:'🥱 manhosa',m:'colo',n:'dia longo, quero sofá e mão na cabeça'}};
 const MODOS={festa:['🎉','festa','pode chamar a Matilha, tô elétrico'],silencio:['🤫','modo silencioso','pode sentar do lado; só não pergunta nada'],exausto:['🪫','exausto do trabalho','preciso de 40 min sem ninguém precisar de mim'],carinho:['🤗','quero carinho','abraço de 20 segundos resolve 80%'],espaco:['🌵','quero espaço','não é com você; volto sozinho'],comida:['🍕','quero comida','decide você, eu como qualquer coisa'],colo:['🧸','colo, mas sem falar','deita aqui e coloca uma série'],cafe:['☕','recuperando, volto já','me dá 1 episódio e um café']};
 const CORMODO={festa:'var(--accent-soft)',silencio:'var(--surface2)',exausto:'var(--sky-soft)',carinho:'var(--rose-soft)',espaco:'var(--sage-soft)',comida:'var(--accent-soft)',colo:'var(--rose-soft)',cafe:'var(--surface2)'};
@@ -584,7 +577,7 @@ function newSection(){const id='c'+Date.now();const m=MOLDES[Math.floor(Math.ran
 function exportCfg(){const cfg=JSON.stringify({shortcuts:state.shortcuts,skin:state.skin,icone:state.icone,itens:state.itens,notas:state.notas,clima:state.clima,sections:state.sections.map(s=>({id:s.id,name:s.name,ico:s.ico,folder:s.folder,hidden:!!s.hidden}))},null,1);
   navigator.clipboard?.writeText(cfg).then(()=>toast('Configuração copiada — cole no chat com o Claude'),()=>toast('Não consegui copiar; veja o console'));console.log(cfg)}
 function applySkin(){const s=sec(state.current);const skin=(s&&s.skin)||state.skin||'mel';$('#app').dataset.skin=skin;document.body.classList.toggle('polaroid',skin==='polaroid');
-  const n=state.icone||3;const bl=$('#brandLogo');if(bl)bl.innerHTML=logo(n,34);document.querySelectorAll('[data-brandlogo]').forEach(e=>e.innerHTML=logo(n,26))}
+  const n=state.icone||65;const bl=$('#brandLogo');if(bl)bl.innerHTML=logo(n,34);document.querySelectorAll('[data-brandlogo]').forEach(e=>e.innerHTML=logo(n,26))}
 
 /* ==================== MAIN ==================== */
 function open(id){state.current=id;save();$('#app').classList.remove('drawer','sheet');applySkin();renderSidebar();renderMain();$('#main').scrollTop=0;window.scrollTo(0,0)}
@@ -798,5 +791,3 @@ window.addEventListener('message',e=>{const d=e.data||{};if(d.open){open(d.open)
 $('#btnEdit').onclick=toggleEdit;$('#btnNew').onclick=newSection;$('#sidebar [data-busca]').onclick=e=>buscaPop(e);$('#scrim').onclick=()=>$('#app').classList.remove('drawer');
 applySkin();renderSidebar();renderMain();
 </script>
-<script>try{var st=JSON.parse(localStorage.getItem('hyhoney')||'{}');if(st.icone&&st.icone!==3){var l=document.querySelector('link[rel=manifest]');if(l)l.href='/icones/manifest-'+st.icone+'.webmanifest';var a=document.querySelector('link[rel=apple-touch-icon]');if(a)a.href='/icones/alt-'+st.icone+'-192.png'}}catch(e){}
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}</script></body></html>

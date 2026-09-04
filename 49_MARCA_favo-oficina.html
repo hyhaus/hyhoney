@@ -1,0 +1,264 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oficina do Favo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;700;800;900&family=Poppins:wght@600;800&display=swap">
+<style>
+:root{--bg:#FBF6EC;--surface:#FFFDF7;--surface2:#F3EBDA;--line:#E6DAC2;--ink:#2B2118;--ink2:#6E5E4B;--muted:#9A8A73;--accent:#E8A33D;--accent-soft:#FBE7C2;--rose:#E36A7C;--focus:#B3372F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596}}
+:root[data-theme="dark"]{--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:13.5px;padding:18px 16px 60px}
+h1{font-family:Fraunces,Georgia,serif;font-size:24px;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 14px;max-width:760px;line-height:1.5}
+.wrap{display:grid;grid-template-columns:330px 1fr;gap:16px;align-items:start}
+@media (max-width:820px){.wrap{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.panel h2{font-family:Fraunces,Georgia,serif;font-size:14px;margin:6px 0 0;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.panel h2:first-child{margin-top:0}
+.k{font-size:9.5px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font:inherit;font-size:11.5px;font-weight:800;padding:5px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.seg button.on{background:var(--accent);color:#2B2118;border-color:transparent}
+.seg button:focus-visible,.act button:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.sl{display:grid;grid-template-columns:86px 1fr 34px;align-items:center;gap:8px;font-size:12px}
+.sl input[type=range]{width:100%;accent-color:var(--accent)}
+.sl output{font-variant-numeric:tabular-nums;font-size:11px;color:var(--muted);text-align:right}
+.chips{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.chips i{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);cursor:pointer;display:inline-block}
+.chips i.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--ink)}
+.chips input[type=color]{width:26px;height:26px;border:1px solid var(--line);border-radius:6px;padding:0;background:none;cursor:pointer}
+.crow{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:6px;font-size:12px}
+.tog{display:flex;gap:6px;align-items:center;font-size:12px;cursor:pointer}
+.stage{display:flex;flex-direction:column;gap:14px}
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:minmax(200px,280px) 1fr;gap:16px;align-items:center}
+@media (max-width:560px){.hero{grid-template-columns:1fr}}
+.hero .big svg{width:100%;height:auto;border-radius:22%;display:block}
+.brand{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid var(--line)}
+.brand svg{width:56px;height:56px;flex:none;border-radius:14px}
+.brand .wm{font-family:Poppins,sans-serif;font-size:28px;font-weight:800;line-height:1}
+.brand .tg{font-size:11px;opacity:.7}
+.proofs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.pf{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:flex-start}
+.pf .lb{font-size:9.5px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.5px}
+.pf svg{border-radius:22%}
+.home{background:linear-gradient(160deg,#6B8CC9,#B77FB0);border-radius:12px;padding:10px 8px 8px;color:#fff;text-align:center;font-size:9px;text-shadow:0 1px 2px rgba(0,0,0,.4);width:100%}
+.home .ic{margin:0 auto 4px;width:56px;height:56px;border-radius:14px;box-shadow:0 5px 12px rgba(0,0,0,.3);overflow:hidden}
+.home .ic svg{width:56px;height:56px;border-radius:0;display:block}
+.home .row{display:flex;justify-content:space-around;margin-top:8px}.home .row i{display:block;width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#eee,#ccc)}
+.wa{background:#0B141A;border-radius:12px;padding:8px;color:#E9EDEF;width:100%;text-align:left}
+.wa .card{background:#025144;border-radius:6px;overflow:hidden}
+.wa .og{height:44px;display:flex;align-items:center;gap:6px;padding:0 8px;font-weight:800;font-size:11px;font-family:Poppins,sans-serif}.wa .og svg{width:30px;height:30px;border-radius:7px}
+.wa .tx{padding:6px 8px}.wa .tx b{display:block;font-size:10.5px}.wa .tx p{margin:1px 0 0;font-size:9.5px;color:#B7C2C6;line-height:1.3}.wa .tx small{display:block;color:#8696A0;font-size:8.5px;margin-top:2px}
+.pf.wide{grid-column:span 2}
+.act{display:flex;gap:6px;flex-wrap:wrap}
+.act button{font:inherit;font-size:12px;font-weight:800;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.act button.primary{background:var(--accent);color:#2B2118;border-color:transparent}
+.shelf{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.shelf h2{font-family:Fraunces,Georgia,serif;font-size:15px;margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.shelf h2 span{font-family:Nunito;font-size:11px;color:var(--muted);font-weight:800}
+.saved{display:flex;gap:8px;flex-wrap:wrap}
+.sv{width:74px;text-align:center;font-size:10px;color:var(--ink2);cursor:pointer;position:relative}
+.sv svg{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);display:block;margin:0 auto 3px}
+.sv b{display:block;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sv .x{position:absolute;top:-4px;right:0;background:var(--ink);color:var(--bg);border-radius:50%;width:16px;height:16px;font-size:10px;line-height:16px;font-weight:900}
+.empty{color:var(--muted);font-size:12px}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.25s;pointer-events:none;z-index:9}#toast.show{opacity:1}
+.hint{font-size:11px;color:var(--muted);line-height:1.45}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+
+<h1>⬡ Oficina do Favo</h1>
+<div class="sub">Monte a sua versão da logo 03: quantos favos, a grossura do anel, os cantos, a forma e o tamanho do coração e as cores. À direita, a prova em todos os lugares onde a marca vai viver. Guarde as que gostar e copie a lista para o chat.</div>
+
+<div class="wrap">
+<div class="panel">
+  <h2>Ponto de partida</h2>
+  <div class="seg" id="presets"></div>
+
+  <h2>Favos</h2>
+  <div class="seg" id="layout"></div>
+
+  <h2>Anel</h2>
+  <div class="sl"><label for="t">espessura</label><input type="range" id="t" min="0" max="12" step="0.2" value="6.8"><output id="tv">6.8</output></div>
+  <div class="sl"><label for="r">cantos</label><input type="range" id="r" min="0" max="9" step="0.5" value="0"><output id="rv">0</output></div>
+  <div class="sl"><label for="rot">rotação</label><input type="range" id="rot" min="0" max="60" step="30" value="0"><output id="rotv">0°</output></div>
+  <div class="hint">Espessura 0 = favo cheio, com o coração recortado (espaço negativo).</div>
+
+  <h2>Coração</h2>
+  <div class="seg" id="shape"></div>
+  <div class="sl"><label for="hs">tamanho</label><input type="range" id="hs" min="0.5" max="2.3" step="0.05" value="1.5"><output id="hsv">1.50</output></div>
+  <div class="sl"><label for="hy">altura</label><input type="range" id="hy" min="-14" max="16" step="1" value="6"><output id="hyv">6</output></div>
+  <div class="seg">
+    <label class="tog"><input type="checkbox" id="drip"> pingando</label>
+    <label class="tog"><input type="checkbox" id="hole"> coração vazado dentro</label>
+  </div>
+
+  <h2>Cores</h2>
+  <div class="crow"><span>fundo</span><div class="chips" data-for="bg"></div></div>
+  <div class="crow"><span>anel</span><div class="chips" data-for="a"></div></div>
+  <div class="crow"><span>coração</span><div class="chips" data-for="h"></div></div>
+  <div class="seg" id="modes"></div>
+
+  <h2>Ações</h2>
+  <div class="act">
+    <button class="primary" onclick="save()">★ Guardar esta</button>
+    <button onclick="copySVG()">Copiar SVG</button>
+    <button onclick="copyRecipe()">Copiar receita</button>
+    <button onclick="dl('svg')">Baixar SVG</button>
+    <button onclick="dl('png')">Baixar PNG 512</button>
+    <button onclick="surprise()">🎲 Surpreenda-me</button>
+  </div>
+  <div class="hint">"Receita" é o texto com todos os ajustes — cole no chat e eu reproduzo exatamente. Os botões de baixar funcionam no arquivo local; na página publicada, use "Copiar SVG".</div>
+</div>
+
+<div class="stage">
+  <div class="hero">
+    <div class="big" id="big"></div>
+    <div>
+      <div class="brand" id="brand"></div>
+      <div class="hint" style="margin-top:10px" id="recipe"></div>
+    </div>
+  </div>
+  <div class="proofs">
+    <div class="pf"><div class="lb">40px · ícone</div><div id="p40"></div></div>
+    <div class="pf"><div class="lb">20px · favicon</div><div id="p20"></div></div>
+    <div class="pf"><div class="lb">preto puro</div><div id="pmono"></div></div>
+    <div class="pf"><div class="lb">sem fundo</div><div id="pnobg"></div></div>
+    <div class="pf"><div class="lb">tela de início</div><div class="home"><div class="ic" id="pip"></div>HyHoney<div class="row"><i></i><i></i><i></i><i></i></div></div></div>
+    <div class="pf wide"><div class="lb">link no WhatsApp</div><div class="wa"><div class="card"><div class="og" id="pwa"></div><div class="tx"><b>HyHoney</b><p>Sistema oficial de gestão de um relacionamento. Com cupons.</p><small>hyhoney.bitbeagle.com</small></div></div></div></div>
+  </div>
+  <div class="shelf">
+    <h2>Guardadas <span id="scnt"></span> <button class="act" style="margin-left:auto;font:inherit;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer" onclick="copyAll()">Copiar todas para o chat</button></h2>
+    <div class="saved" id="saved"></div>
+  </div>
+</div>
+</div>
+<div id="toast"></div>
+
+<script>
+const MEL='#E8A33D',INK='#2B2118',ROSA='#E36A7C',CREME='#FBF6EC',OURO='#C9962B',NOITE='#1D1913',LAV='#B77FB0',AZ='#5B8FB9',VERDE='#6F9C6B',VINHO='#B3372F',BRANCO='#FFFFFF',PRETO='#111111';
+const SW=[['mel',MEL],['grafite',INK],['creme',CREME],['rosa',ROSA],['ouro',OURO],['noite',NOITE],['lavanda',LAV],['azul',AZ],['verde',VERDE],['vinho',VINHO],['branco',BRANCO],['preto',PRETO]];
+const HEART='M0 8 C-12 -2 -10 -14 -1 -12 C0 -12 0 -10 0 -10 C0 -10 0 -12 1 -12 C10 -14 12 -2 0 8Z';
+const HEART_W='M0 8 C-15 -1 -13 -16 -1 -12 C0 -12 0 -10 0 -10 C0 -10 0 -12 1 -12 C13 -16 15 -1 0 8Z';
+const HEART_G='M0 9 L-12 -3 L-12 -8 L-7 -13 L-2 -13 L0 -10 L2 -13 L7 -13 L12 -8 L12 -3 Z';
+const HEART_H='M0 10 L-11 -1 L-11 -8 L-5 -12 L0 -8 L5 -12 L11 -8 L11 -1 Z';
+const DROP='M0 -3 C3 1 4 3 4 5 A4 4 0 0 1 -4 5 C-4 3 -3 1 0 -3Z';
+const SHAPES=[['classico','clássico'],['largo','largo'],['alto','alto'],['geo','geométrico'],['hexa','hexagonal'],['pixel','pixel'],['traco','traço']];
+const LAYOUTS=[['1','1 favo'],['2lado','2 lado a lado'],['2sobre','2 sobrepostos'],['3tri','3 em triângulo'],['3linha','3 em linha'],['7flor','7 em flor']];
+const PRESETS=[
+ ['Original',{layout:'1',t:6.8,r:0,rot:0,shape:'classico',hs:1.5,hy:6,drip:0,hole:0,bg:INK,a:MEL,h:MEL}],
+ ['Anel fino',{t:3.6}],['Cantos redondos',{r:5}],['Topo reto',{rot:30}],['Coração em traço',{shape:'traco'}],['Cheia',{t:0}],
+ ['Coração hexagonal',{shape:'hexa'}],['Coração rosa',{h:ROSA}],['Tema claro',{bg:CREME,a:INK,h:INK}],['Mel sobre mel',{bg:MEL,a:INK,h:INK}],
+];
+let S={...PRESETS[0][1]};
+let uid=0;
+
+function rhex(scale,rad){ // hexágono com cantos arredondados (raio em unidades da base)
+  const P=[[0,-20],[17,-10],[17,10],[0,20],[-17,10],[-17,-10]];
+  if(rad<=0) return 'M'+P.map(p=>p.join(' ')).join(' L')+'Z';
+  const rr=Math.min(rad,9);let d='';
+  for(let i=0;i<6;i++){const a=P[(i+5)%6],b=P[i],c=P[(i+1)%6];
+    const v1=[a[0]-b[0],a[1]-b[1]],v2=[c[0]-b[0],c[1]-b[1]];const l1=Math.hypot(...v1),l2=Math.hypot(...v2);
+    const p1=[b[0]+v1[0]/l1*rr,b[1]+v1[1]/l1*rr],p2=[b[0]+v2[0]/l2*rr,b[1]+v2[1]/l2*rr];
+    d+=(i?'L':'M')+p1[0].toFixed(2)+' '+p1[1].toFixed(2)+' Q'+b[0]+' '+b[1]+' '+p2[0].toFixed(2)+' '+p2[1].toFixed(2)+' ';}
+  return d+'Z';
+}
+function heartPath(shape){return shape==='largo'?HEART_W:shape==='geo'?HEART_G:shape==='hexa'?HEART_H:HEART}
+function pixelHeart(c){const rows=['.XX.XX.','XXXXXXX','XXXXXXX','.XXXXX.','..XXX..','...X...'];let o='';rows.forEach((row,r)=>{[...row].forEach((ch,k)=>{if(ch==='X')o+=`<rect x="${((k-3)*3.6-1.8).toFixed(1)}" y="${((r-3)*3.6).toFixed(1)}" width="3.6" height="3.6" fill="${c}"/>`})});return `<g transform="translate(0 -1) scale(0.7)">${o}</g>`}
+function heartSVG(s,color,size,y,asHole){ // um coração na origem do favo
+  const sh=s.shape;let inner;
+  if(sh==='pixel') inner=pixelHeart(color);
+  else if(sh==='traco') inner=`<path d="${HEART}" fill="none" stroke="${color}" stroke-width="${(3.2/size).toFixed(2)}" stroke-linejoin="round"/>`;
+  else inner=`<path d="${heartPath(sh)}" fill="${color}"/>`;
+  const sy=sh==='alto'?1.3:1, sx=sh==='alto'?0.85:1;
+  let g=`<g transform="translate(0 ${y}) scale(${(size*sx).toFixed(3)} ${(size*sy).toFixed(3)})">${inner}</g>`;
+  if(s.drip&&!asHole) g+=`<path d="${DROP}" fill="${color}" transform="translate(0 ${(y+8*size*sy+4).toFixed(1)}) scale(${(size*0.75).toFixed(2)})"/>`;
+  if(s.hole&&!asHole&&sh!=='traco'&&sh!=='pixel') g+=`<path d="${HEART}" fill="${s._holeColor}" transform="translate(0 ${(y-3*size).toFixed(1)}) scale(${(size*0.36).toFixed(2)})"/>`;
+  return g;
+}
+function cell(s,x,y,sc,ringColor,withHeart,heartColor,bgColor,id){
+  const outer=rhex(1,s.r), t=s.t; let g='';
+  const inScale=Math.max(0,1.6-t/17);
+  if(t<=0){ // cheio: hexágono sólido com coração recortado
+    g+=`<mask id="${id}m"><rect x="-60" y="-60" width="120" height="120" fill="#fff"/>${withHeart?heartSVG({...s,drip:0,hole:0},'#000',s.hs,s.hy,true):''}</mask>`;
+    g+=`<g mask="url(#${id}m)"><path d="${outer}" fill="${ringColor}" transform="rotate(${s.rot}) scale(1.6)"/></g>`;
+    if(withHeart&&s.hole) g+=heartSVG({...s,drip:0,hole:0},ringColor,s.hs*0.36,s.hy-3*s.hs,true);
+  } else {
+    g+=`<mask id="${id}m"><rect x="-60" y="-60" width="120" height="120" fill="#fff"/><path d="${rhex(1,s.r*inScale/1.6)}" fill="#000" transform="rotate(${s.rot}) scale(${inScale.toFixed(3)})"/></mask>`;
+    g+=`<g mask="url(#${id}m)"><path d="${outer}" fill="${ringColor}" transform="rotate(${s.rot}) scale(1.6)"/></g>`;
+    if(withHeart) g+=heartSVG({...s,_holeColor:bgColor},heartColor,s.hs,s.hy,false);
+  }
+  return `<g transform="translate(${x} ${y}) scale(${sc})">${g}</g>`;
+}
+function symbol(s,colors,id){ // colors: {bg,a,h}
+  const L=s.layout, a=colors.a, h=colors.h, bg=colors.bg||'transparent';
+  const c=(x,y,sc,ring,wh,hc,k)=>cell(s,x,y,sc,ring||a,wh,hc||h,bg,id+k);
+  if(L==='1') return c(0,0,1,a,true,h,'0');
+  if(L==='2lado') return c(-19,0,.6,a,true,h,'0')+c(19,0,.6,a,true,h,'1');
+  if(L==='2sobre'){ const s2={...s,t:Math.max(s.t,3)}; return cell(s2,-12,0,.72,a,false,h,bg,id+'0')+cell(s2,12,0,.72,colors.h!==colors.a?h:a,false,h,bg,id+'1')+heartSVG({...s,_holeColor:bg},h,s.hs*.8,s.hy*.6,false);}
+  if(L==='3tri') return c(0,-16,.52,a,true,h,'0')+c(-17,13,.52,a,true,h,'1')+c(17,13,.52,a,true,h,'2');
+  if(L==='3linha') return c(-28,0,.45,a,false,h,'0')+c(0,0,.45,a,true,h,'1')+c(28,0,.45,a,false,h,'2');
+  if(L==='7flor'){let g='';for(let k=0;k<6;k++){const an=(60*k-90)*Math.PI/180;g+=c(26*Math.cos(an),26*Math.sin(an),.35,a,false,h,'r'+k)}return g+c(0,0,.35,a,true,h,'c');}
+}
+function svgOf(s,colors,opts={}){
+  const id='f'+(uid++)+'_';
+  const bgRect=opts.nobg?'':`<rect x="-50" y="-50" width="100" height="100" rx="${opts.rx??24}" fill="${colors.bg}"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">${bgRect}${symbol(s,colors,id)}</svg>`;
+}
+function monoColors(){ // preto puro: tudo preto sobre branco
+  return {bg:'#FFFFFF',a:'#111111',h:'#111111'};
+}
+function recipeText(s){
+  const L=Object.fromEntries(LAYOUTS),H=Object.fromEntries(SHAPES);
+  return `favo: ${L[s.layout]} · anel ${s.t} · cantos ${s.r} · rotação ${s.rot}° · coração ${H[s.shape]} ${s.hs} alt ${s.hy}${s.drip?' · pingando':''}${s.hole?' · vazado':''} · fundo ${s.bg} · anel ${s.a} · coração ${s.h}`;
+}
+function render(){
+  const col={bg:S.bg,a:S.a,h:S.h};
+  document.getElementById('big').innerHTML=svgOf(S,col);
+  document.getElementById('brand').style.background=S.bg; document.getElementById('brand').style.color=(lum(S.bg)>0.5?INK:'#F2E9DA');
+  document.getElementById('brand').innerHTML=svgOf(S,col,{rx:0})+'<div><div class="wm">HyHoney</div><div class="tg">o app do casal</div></div>';
+  document.getElementById('p40').innerHTML=svgOf(S,col).replace('<svg ','<svg width="40" height="40" ');
+  document.getElementById('p20').innerHTML=svgOf(S,col).replace('<svg ','<svg width="20" height="20" ');
+  document.getElementById('pmono').innerHTML=svgOf(S,monoColors()).replace('<svg ','<svg width="72" height="72" style="border:1px solid var(--line)" ');
+  document.getElementById('pnobg').innerHTML=svgOf(S,{...col,bg:'transparent'},{nobg:1}).replace('<svg ','<svg width="72" height="72" style="border-radius:0" ');
+  document.getElementById('pip').innerHTML=svgOf(S,col,{rx:0});
+  document.getElementById('pwa').style.background=S.bg; document.getElementById('pwa').style.color=(lum(S.bg)>0.5?INK:'#F2E9DA');
+  document.getElementById('pwa').innerHTML=svgOf(S,col)+'<span>HyHoney</span>';
+  document.getElementById('recipe').textContent='Receita: '+recipeText(S);
+  // controles
+  document.querySelectorAll('#layout button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.layout));
+  document.querySelectorAll('#shape button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.shape));
+  ['t','r','rot','hs','hy'].forEach(k=>{document.getElementById(k).value=S[k]});
+  tv.textContent=S.t; rv.textContent=S.r; rotv.textContent=S.rot+'°'; hsv.textContent=Number(S.hs).toFixed(2); hyv.textContent=S.hy;
+  drip.checked=!!S.drip; hole.checked=!!S.hole;
+  document.querySelectorAll('.chips').forEach(ch=>{const k=ch.dataset.for;ch.querySelectorAll('i').forEach(i=>i.classList.toggle('on',i.dataset.c.toLowerCase()===S[k].toLowerCase()));ch.querySelector('input').value=S[k]});
+}
+function lum(hex){const c=hex.replace('#','');const r=parseInt(c.substr(0,2),16)/255,g=parseInt(c.substr(2,2),16)/255,b=parseInt(c.substr(4,2),16)/255;return .2126*r+.7152*g+.0722*b}
+// --- montar controles
+presets.innerHTML=PRESETS.map((p,i)=>`<button onclick="preset(${i})">${p[0]}</button>`).join('');
+function preset(i){ if(i===0) S={...PRESETS[0][1]}; else S={...S,...PRESETS[i][1]}; render(); }
+layout.innerHTML=LAYOUTS.map(([v,l])=>`<button data-v="${v}" onclick="S.layout='${v}';render()">${l}</button>`).join('');
+shape.innerHTML=SHAPES.map(([v,l])=>`<button data-v="${v}" onclick="S.shape='${v}';render()">${l}</button>`).join('');
+['t','r','rot','hs','hy'].forEach(k=>document.getElementById(k).addEventListener('input',e=>{S[k]=+e.target.value;render()}));
+drip.addEventListener('change',e=>{S.drip=e.target.checked?1:0;render()});
+hole.addEventListener('change',e=>{S.hole=e.target.checked?1:0;render()});
+document.querySelectorAll('.chips').forEach(ch=>{const k=ch.dataset.for;ch.innerHTML=SW.map(([n,c])=>`<i title="${n}" data-c="${c}" style="background:${c}" onclick="S['${k}']='${c}';render()"></i>`).join('')+`<input type="color" title="outra cor" oninput="S['${k}']=this.value;render()">`});
+modes.innerHTML=`<button onclick="S.bg='${INK}';S.a='${MEL}';S.h='${MEL}';render()">escuro (original)</button><button onclick="S.bg='${CREME}';S.a='${INK}';S.h='${INK}';render()">claro</button><button onclick="S.bg='${MEL}';S.a='${INK}';S.h='${INK}';render()">mel</button><button onclick="S.bg='${NOITE}';S.a='${OURO}';S.h='${ROSA}';render()">noite</button><button onclick="[S.a,S.h]=[S.h,S.a];render()">↔ trocar anel/coração</button>`;
+// --- ações
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
+function copySVG(){navigator.clipboard?.writeText(svgOf(S,{bg:S.bg,a:S.a,h:S.h})).then(()=>toast('SVG copiado'),()=>toast('Não deu para copiar aqui'))}
+function copyRecipe(){navigator.clipboard?.writeText('Favo — '+recipeText(S)+'\n'+JSON.stringify(S)).then(()=>toast('Receita copiada — cole no chat'),()=>toast('Não deu para copiar aqui'))}
+function dl(kind){const svg=svgOf(S,{bg:S.bg,a:S.a,h:S.h});const name='hyhoney-favo';
+  if(kind==='svg'){const b=new Blob([svg],{type:'image/svg+xml'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name+'.svg';a.click();return}
+  const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=c.height=512;c.getContext('2d').drawImage(img,0,0,512,512);const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download=name+'-512.png';a.click()};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);}
+function surprise(){const pick=a=>a[Math.floor(Math.random()*a.length)];S={...S,layout:pick(['1','1','1','2lado','2sobre','3tri','7flor']),t:pick([0,3,4.5,6.8,6.8,9]),r:pick([0,0,3,6]),rot:pick([0,0,30]),shape:pick(SHAPES)[0],hs:+(0.9+Math.random()*1.2).toFixed(2),hy:pick([2,4,6,6,8]),drip:Math.random()<.15?1:0,hole:Math.random()<.2?1:0};render()}
+let saved=[];try{saved=JSON.parse(localStorage.getItem('hyhoney-oficina-favo')||'[]')}catch(e){}
+function persist(){try{localStorage.setItem('hyhoney-oficina-favo',JSON.stringify(saved))}catch(e){}}
+function save(){const nm=prompt('Nome para esta versão:', 'versão '+(saved.length+1)); if(nm===null)return; saved.push({nm,s:{...S}});persist();drawSaved();toast('Guardada')}
+function loadSaved(i){S={...saved[i].s};render();toast('Carregada: '+saved[i].nm)}
+function delSaved(i,ev){ev.stopPropagation();saved.splice(i,1);persist();drawSaved()}
+function drawSaved(){const el=document.getElementById('saved');document.getElementById('scnt').textContent=saved.length?saved.length+' guardadas · clique para carregar':'';
+  el.innerHTML=saved.length?saved.map((v,i)=>`<div class="sv" onclick="loadSaved(${i})" title="${recipeText(v.s)}">${svgOf(v.s,{bg:v.s.bg,a:v.s.a,h:v.s.h})}<b>${v.nm}</b><span class="x" onclick="delSaved(${i},event)">×</span></div>`).join(''):'<div class="empty">Nada guardado ainda. Ajuste à esquerda e clique em "★ Guardar esta".</div>'}
+function copyAll(){if(!saved.length){toast('Nada guardado');return}const txt='Oficina do Favo — guardadas:\n'+saved.map((v,i)=>`${i+1}. ${v.nm}: ${recipeText(v.s)}\n   ${JSON.stringify(v.s)}`).join('\n');navigator.clipboard?.writeText(txt).then(()=>toast('Lista copiada — cole no chat'),()=>toast('Não deu para copiar aqui'))}
+render();drawSaved();
+</script>
+</body></html>

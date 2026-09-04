@@ -63,6 +63,7 @@ Mockup v1.0 lançado (temas finais, logo 65 oficial, ícones por seção, ＋ Ad
 | P10 | [cowork] Identidade rodada 4 genérica (opcional) | 34_PROMPT | ⏳ fila |
 | P11 | [cowork] App v1.0: temas finais, logo oficial, ícones por seção, botões funcionais | 38_PROMPT | ✅ feito |
 | P12 | [code] Construir o HyHoney v1 | 39_PROMPT | ⏳ fila |
+| P13 | [cowork] Aplicar o ícone oficial novo (Favo refinado): conferir disco, commit, push, confirmar no ar, reinstalar PWA | 52_PROMPT | 🟡 rodando |
 
 ## Checklist das suas ideias (o que você pediu · onde está · o que eu sugiro)
 Marque `[x]` quando tiver revisado. Estado: 💡 ideia · 🎨 no mockup · ✅ decidida · 🔨 em construção · 🚀 no ar

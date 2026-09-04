@@ -95,7 +95,7 @@ class H(http.server.SimpleHTTPRequestHandler):
             man = "/icones/manifest-painel.webmanifest" if "PAINEL" in name else "/icones/manifest.webmanifest"
             head = SKELETON_HEAD.replace("</head>", f'<link rel="manifest" href="{man}"><link rel="apple-touch-icon" href="/icones/apple-touch-icon.png"><meta name="theme-color" content="#E8A33D"><link rel="icon" href="/icones/favicon-64.png"><meta property="og:title" content="HyHoney"><meta property="og:description" content="O app do casal: memórias, cupons raros e um cartório carinhoso."><meta property="og:image" content="/icones/og-1200x630.png"></head>')
             if "MOCKUP" in name:  # o ícone escolhido dentro do app vira o manifest certo (vale ao reinstalar)
-                body += "<script>try{var st=JSON.parse(localStorage.getItem('hyhoney')||'{}');if(st.icone){var l=document.querySelector('link[rel=manifest]');if(l)l.href='/icones/manifest-'+st.icone+'.webmanifest';var a=document.querySelector('link[rel=apple-touch-icon]');if(a&&st.icone!==65)a.href='/icones/alt-'+st.icone+'-192.png'}}catch(e){}</script>"
+                body += "<script>try{var st=JSON.parse(localStorage.getItem('hyhoney')||'{}');if(st.icone){var l=document.querySelector('link[rel=manifest]');if(l)l.href='/icones/manifest-'+st.icone+'.webmanifest';var a=document.querySelector('link[rel=apple-touch-icon]');if(a&&st.icone!==3)a.href='/icones/alt-'+st.icone+'-192.png'}}catch(e){}</script>"
             body = head + body + SKELETON_TAIL
         self.send_html(body)
     def end_headers(self):
