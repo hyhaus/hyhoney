@@ -15,7 +15,7 @@
 | Curadoria da marca | https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef | <servidor>/curadoria | favoritar, ocultar, ordenar por arrasto, anotar, zoom |
 | Temas (galeria) | https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 | <servidor>/11_TEMAS_galeria.html | marque 4 |
 | Histórico de mockups | — | <servidor>/historico-mockups/ | toda versão |
-| Produção (futuro) | https://hyhoney.bitbeagle.com | — | login por casal |
+| Produção 🚀 NO AR | https://hyhoney.bitbeagle.com | — | PWA v1.0 via GitHub Pages; login por casal vem com o prompt 39 |
 
 ## Rotas estáveis do servidor local
 `<servidor>` = `localhost:8787`, IP do Mac ou `nome-do-mac.local:8787`. Rotas: `/app` `/painel` `/dispositivos` `/temas` `/registro` `/indice` `/proximo` `/analise` `/plano` `/guia` — cada uma abre sempre o arquivo mais novo daquele tipo, então os links nunca quebram quando surge uma versão nova.
@@ -45,6 +45,7 @@ Mockup v1.0 lançado (temas finais, logo 65 oficial, ícones por seção, ＋ Ad
 | D15 | Logo 65 = ícone oficial (PWA + WhatsApp); logo 71 = dias juntos na Capa; alternativos 3, 5, 9, 65, 66, 71, 72 | 2026-09-04 | Odin |
 | D16 | Logos por seção: 16 privado · 24 Cartas · 31 Sobre Nós · 34 WhatsApp · 72 Protocolos · 42 Cafeína · 43 Matilha · 47 Lista Louca · 52 Metas · 55 Química · 64 Controle | 2026-09-04 | Odin |
 | D17 | Mockup v1.0 = primeira versão utilizável; próximo passo é o Claude Code (prompt 39) | 2026-09-04 | Odin |
+| D18 | Publicação: github.com/hyhaus/hyhoney (público) + GitHub Pages (site/) + CNAME hyhoney → hyhaus.github.io no Namecheap | 2026-09-04 | Odin/Claude |
 | D12 | Painel e app instaláveis como app (LaunchAgent 13 + Instalar no Chrome/Safari); iPhone via IP fixo | 2026-09-04 | Odin |
 
 ## Prompts (rastreamento)

@@ -28,13 +28,13 @@
 
 ---
 
+## 2026-09-04 · sessão 1 · rodada 9 — 🚀 NO AR · commit `7ea9a49`
+
+**Feito.** `gh auth login` (conta hyhaus) → `15 --criar` criou github.com/hyhaus/hyhoney e enviou 11 commits → Pages ligado (repositório tornado público: plano gratuito não publica Pages privado) → workflow corrigido (YAML) → run #3 verde → CNAME `hyhoney → hyhaus.github.io` criado no Namecheap pelo Claude no Chrome → `http://hyhoney.bitbeagle.com` abre o app v1.0; HTTPS em emissão. **Decisões.** D18. **Pendências.** aguardar HTTPS e ligar `https_enforced`; servidor local no login; instalar no Dock/iPhone; curadoria; P39 no Code. **Como voltar atrás.** apagar o CNAME no Namecheap e desligar Pages (`gh api -X DELETE repos/hyhaus/hyhoney/pages`).
+
 ## 2026-09-04 · sessão 1 · rodada 8 — preparado para o ar
 
 **Criado.** `site/` (index.html com OG/manifest/ícone 65, `sw.js` offline, `CNAME`), workflow do GitHub Pages, guia 41. **Pendências do Odin.** gh auth login → 15 --criar → ligar Pages → CNAME no DNS. **Como voltar atrás.** apagar `site/` e o workflow.
-
-## 2026-09-04 · sessão 2 · rodada 8 — análise das 73, catálogo de bolso, simulações dos 7 ícones
-
-**Criado.** 42 análise das 73 (MD + PDF de 22 páginas, formato celular): ranking refeito, 8 novas na disputa (54, 44, 65, 51, 71, 62, 72, 55), veredito por pedido da rodada 3, a descoberta do teste em preto (listras precisam ser recorte vazado, não segunda cor), lista curta de 5 para decidir · 43 catálogo das 73 (81 páginas, uma logo por página, sumário visual por família) · 44 tela de início com os 7 ícones PWA escolhidos (65, 3, 5, 9, 66, 71, 72) com o contador em 97 · 45 simulação do link no WhatsApp com os mesmos 7. **Decisões.** nenhuma — a escolha entre as 5 continua com o Odin. **Pendências.** escolher 1 das 5 e rodar o kit final da marca. **Como voltar atrás.** apagar 42–45; a 33 continua válida para as 43 primeiras.
 
 ## 2026-09-04 · sessão 1 · rodada 7 — app v1.0, ícones reais, prompt para o Code, GitHub
 
