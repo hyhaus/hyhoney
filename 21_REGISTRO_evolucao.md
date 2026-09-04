@@ -29,6 +29,10 @@
 
 ---
 
+## 2026-09-04 · sessão 1 · rodada 11 — P13 executado · commit `18f00d2`
+
+**Feito.** Conferência do disco (mockup v1.1 e site com `icone||3` ×3, sw v2, alt-65 presente, ícones = 50_MARCA_oficial), `site/index.html` regenerado a partir do 03 atual, manifests do site com scope `/`, commit de 58 arquivos (42–52 + marca nova). **Pendente.** push (Odin), workflow, conferência no ar, reinstalar PWA no iPhone. **Como voltar atrás.** ver a seção do 52_PROMPT.
+
 ## 2026-09-04 · sessão 2 · rodada 10 — 🏷️ marca oficial: Favo refinado
 
 **Decisão D18.** A marca oficial do HyHoney é o Favo escolhido na Oficina (49): 1 favo · anel 4.2 · cantos 0 · rotação 0° · coração hexagonal 1.5 alt 3 · fundo #2B2118 · anel #E8A33D · coração #E8A33D (`{"layout":"1","t":4.2,"r":0,"rot":0,"shape":"hexa","hs":1.5,"hy":3,"drip":0,"hole":0,"bg":"#2B2118","a":"#E8A33D","h":"#E8A33D"}`). **Feito.** kit em `50_MARCA_oficial/` · `icones/` e `site/icones/`: icon-192/512, apple-touch-icon, favicon-64, og-1200x630 e alt-3 = marca nova; o antigo oficial (65 oi com Abelha) virou alt-65 com manifest-65 · mockup v1.1 e `site/index.html`: desenho da logo 03 atualizado (LOGOS_C) e ícone padrão 3 em vez de 65 · servidor local idem · `sw.js` cache v2 (força o PWA a pegar o ícone novo). **Para ir ao ar.** commit + push (o `.git/HEAD.lock` da sessão 1 ainda trava o commit daqui). Quem já instalou o PWA precisa remover e instalar de novo para o ícone da tela de início mudar. **Como voltar atrás.** restaurar v1.0 do histórico; copiar alt-65-* de volta para icon-*; ícone padrão 65.

@@ -15,7 +15,7 @@
 | Curadoria da marca | https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef | <servidor>/curadoria | favoritar, ocultar, ordenar por arrasto, anotar, zoom |
 | Temas (galeria) | https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 | <servidor>/11_TEMAS_galeria.html | marque 4 |
 | Histórico de mockups | — | <servidor>/historico-mockups/ | toda versão |
-| Produção 🚀 NO AR | https://hyhoney.bitbeagle.com | — | PWA v1.0 via GitHub Pages; login por casal vem com o prompt 39 |
+| Produção 🚀 NO AR | https://hyhoney.bitbeagle.com | — | PWA v1.1 · marca oficial Favo refinado · GitHub Pages; login por casal vem com o prompt 39 |
 
 ## Rotas estáveis do servidor local
 `<servidor>` = `localhost:8787`, IP do Mac ou `nome-do-mac.local:8787`. Rotas: `/app` `/painel` `/dispositivos` `/temas` `/registro` `/indice` `/proximo` `/analise` `/plano` `/guia` — cada uma abre sempre o arquivo mais novo daquele tipo, então os links nunca quebram quando surge uma versão nova.
@@ -63,7 +63,7 @@ Mockup v1.0 lançado (temas finais, logo 65 oficial, ícones por seção, ＋ Ad
 | P10 | [cowork] Identidade rodada 4 genérica (opcional) | 34_PROMPT | ⏳ fila |
 | P11 | [cowork] App v1.0: temas finais, logo oficial, ícones por seção, botões funcionais | 38_PROMPT | ✅ feito |
 | P12 | [code] Construir o HyHoney v1 | 39_PROMPT | ⏳ fila |
-| P13 | [cowork] Aplicar o ícone oficial novo (Favo refinado): conferir disco, commit, push, confirmar no ar, reinstalar PWA | 52_PROMPT | 🟡 rodando |
+| P13 | [cowork] Aplicar o ícone oficial novo (Favo refinado): conferir disco, commit, push, confirmar no ar, reinstalar PWA | 52_PROMPT | ✅ feito (commit 18f00d2; push e conferência no ar pelo Odin/Cowork) |
 
 ## Checklist das suas ideias (o que você pediu · onde está · o que eu sugiro)
 Marque `[x]` quando tiver revisado. Estado: 💡 ideia · 🎨 no mockup · ✅ decidida · 🔨 em construção · 🚀 no ar
