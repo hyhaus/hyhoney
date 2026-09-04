@@ -53,6 +53,7 @@ Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, sk
 | P5 | [cowork] Revisar mockup, fechar decisões (nome, data, 4 temas na galeria 11, fatia v0, tecnologia), mockup v1 | 07_PROMPT | 🟡 rodando |
 | P7 | [cowork] Clima do Dia completo | 16_PROMPT | ⏳ fila |
 | P8 | [cowork] Anexos, comentários, tags, filtros, busca geral | 17_PROMPT | ⏳ fila |
+| P9 | [cowork] Identidade rodada 3 (padrões das finalistas) | 34_PROMPT | ⏳ fila |
 
 ## Checklist das suas ideias (o que você pediu · onde está · o que eu sugiro)
 Marque `[x]` quando tiver revisado. Estado: 💡 ideia · 🎨 no mockup · ✅ decidida · 🔨 em construção · 🚀 no ar

@@ -47,6 +47,9 @@ atualizado: 2026-09-04
 | 29 | [[29_MARCA_galeria-v2.html]] | MARCA_rodada2 | 43 identidades com filtros (artefato "Marca do HyHoney · 43") |
 | 30 | [[30_PROMPT_curadoria-de-marca]] | PROMPT_curadoria | ✅ executado |
 | 31 | [[31_MARCA_curadoria.html]] | MARCA_curadoria | mesa de curadoria: ★ sem limite, 🙈, arrasto, notas, zoom (artefato "Curadoria da Marca") |
+| 32 | [[32_PROMPT_analise-de-logos]] | PROMPT_analise-logos | ✅ executado |
+| 33 | [[33_ANALISE_logos]] · PDF | ANALISE_logos | critérios, ranking das 43, 8 finalistas, padrões, recomendação |
+| 34 | [[34_PROMPT_identidade-rodada3]] | PROMPT_identidade-3 | ⏳ fila — novas opções a partir dos padrões |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
 | — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.5 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |
