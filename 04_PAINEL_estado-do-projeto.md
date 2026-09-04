@@ -11,7 +11,7 @@
 | iPhone (mesmo Wi-Fi) | <servidor>/app | <servidor>/painel | o script imprime o IP certo |
 | Dispositivos (iPhone · iPad · PC) | https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 | <servidor>/dispositivos | três telas lado a lado |
 | Tour (app inteiro, iPhone no PC) | https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673 | <servidor>/tour | mapa + guia + feedback por seção |
-| Marca (logo, ícone, WhatsApp) | https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760 (43) · https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f (8) | <servidor>/marca | 43 identidades; marque 5 |
+| Marca (logo, ícone, WhatsApp) | https://claude.ai/code/artifact/8d86352d-2da1-423e-ad23-f1f7ca7ca163 (73, rodada 3) · https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760 (43) · https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f (8) | <servidor>/marca | 43 identidades; marque 5 |
 | Curadoria da marca | https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef | <servidor>/curadoria | favoritar, ocultar, ordenar por arrasto, anotar, zoom |
 | Temas (galeria) | https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 | <servidor>/11_TEMAS_galeria.html | marque 4 |
 | Histórico de mockups | — | <servidor>/historico-mockups/ | toda versão |
@@ -40,6 +40,7 @@ Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, sk
 | D9 | Primeiras versões nascem no Cowork; depois o Cowork gera prompts para o Claude Code e lê os logs | 2026-09-04 | Odin |
 | D10 | Design baseado em apps consagrados + neurociência (skill hyhoney-design); funil de temas 8 → 4 → 3 | 2026-09-04 | Odin/Claude |
 | D11 | Toda versão do mockup arquivada em historico-mockups/; projeto em Git (commit local por rodada; push pelo Mac com 15_GIT_sync.sh) | 2026-09-04 | Odin |
+| D13 | Selo Cupom (conceito 37) incorporado à seção Protocolos do mockup (v0.6) | 2026-09-04 | Odin |
 | D12 | Painel e app instaláveis como app (LaunchAgent 13 + Instalar no Chrome/Safari); iPhone via IP fixo | 2026-09-04 | Odin |
 
 ## Prompts (rastreamento)
@@ -53,7 +54,8 @@ Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, sk
 | P5 | [cowork] Revisar mockup, fechar decisões (nome, data, 4 temas na galeria 11, fatia v0, tecnologia), mockup v1 | 07_PROMPT | 🟡 rodando |
 | P7 | [cowork] Clima do Dia completo | 16_PROMPT | ⏳ fila |
 | P8 | [cowork] Anexos, comentários, tags, filtros, busca geral | 17_PROMPT | ⏳ fila |
-| P9 | [cowork] Identidade rodada 3 (padrões das finalistas) | 34_PROMPT | ⏳ fila |
+| P9 | [cowork] Identidade rodada 3 dirigida pelo Odin (30 novas) | 35_PROMPT | ✅ feito |
+| P10 | [cowork] Identidade rodada 4 genérica (opcional) | 34_PROMPT | ⏳ fila |
 
 ## Checklist das suas ideias (o que você pediu · onde está · o que eu sugiro)
 Marque `[x]` quando tiver revisado. Estado: 💡 ideia · 🎨 no mockup · ✅ decidida · 🔨 em construção · 🚀 no ar

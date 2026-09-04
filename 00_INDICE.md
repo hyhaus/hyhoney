@@ -50,8 +50,11 @@ atualizado: 2026-09-04
 | 32 | [[32_PROMPT_analise-de-logos]] | PROMPT_analise-logos | ✅ executado |
 | 33 | [[33_ANALISE_logos]] · PDF | ANALISE_logos | critérios, ranking das 43, 8 finalistas, padrões, recomendação |
 | 34 | [[34_PROMPT_identidade-rodada3]] | PROMPT_identidade-3 | ⏳ fila — novas opções a partir dos padrões |
+| 35 | [[35_PROMPT_identidade-rodada3-dirigida]] | PROMPT_identidade-3d | ✅ executado |
+| 36 | [[36_MARCA_galeria-v3.html]] | MARCA_rodada3 | 73 identidades (43 + 30 dirigidas) (artefato "Marca do HyHoney · rodada 3") |
+| 37 | [[37_NOTA_dias-juntos-icone-dinamico]] | NOTA_pwa-dinamico | o que muda todo dia num PWA: badge, OG, notificação |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
-| — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.5 |
+| — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.6 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |
 
 ## Guia das seções do app (24)
@@ -74,6 +77,7 @@ Transversais: busca geral 🔍 · anexos/comentários/tags/filtros → [[17_PROM
 - Tour: https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673 · local `/tour`
 - Temas: https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 · local `/temas`
 - Curadoria: https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef · local `/curadoria`
+- Marca rodada 3 (73): https://claude.ai/code/artifact/8d86352d-2da1-423e-ad23-f1f7ca7ca163 · local `/marca`
 - Marca (43): https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760 · rodada 1 (8): https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f · local `/marca`
 - Produção (futuro): https://hyhoney.bitbeagle.com
 

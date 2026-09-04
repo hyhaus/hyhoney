@@ -22,9 +22,14 @@
 | v0.2 | 2026-09-04 | passe de design (alvos 44px, escala, um botão primário) | *(não arquivada; só CSS, contido na v0.3)* | a6b79a7 |
 | v0.3 | 2026-09-04 | + A Roleta (o que fazer hoje, deliverys, templates, IA) | `2026-09-04_v0.3_roleta.html` | a6b79a7 |
 | v0.4 | 2026-09-04 | + Clima do Dia, busca geral ⌘K, merge de seções novas | `2026-09-04_v0.4_clima-busca.html` | a6b79a7 |
-| v0.5 | 2026-09-04 | + ponte com o Tour (23); correção da Saga no iPhone | `2026-09-04_v0.5_ponte-tour.html` | — |
+| v0.5 | 2026-09-04 | + ponte com o Tour (23); correção da Saga no iPhone | `2026-09-04_v0.5_ponte-tour.html` | 3eb4c70 |
+| v0.6 | 2026-09-04 | + selo Cupom na seção Protocolos | `2026-09-04_v0.6_cupom-protocolos.html` | — |
 
 ---
+
+## 2026-09-04 · sessão 1 · rodada 6 — identidade rodada 3 dirigida (30 novas), cupom no app, nota PWA
+
+**Criado.** 35 prompt · 36 galeria v3 (73 conceitos; os 30 novos em 9 famílias pedidas pelo Odin) · curadoria 31 atualizada com todos (favoritas e notas preservadas) · mockup v0.6 com o selo Cupom em Protocolos · 37 nota sobre "dias juntos" dinâmico num PWA (badge ✅, OG ✅, notificação ✅, desenho do ícone ❌). **Decisões.** D13 (cupom no app). **Pendências.** curadoria pelo Odin. **Como voltar atrás.** restaurar v0.5 do histórico; apagar 35–37; a curadoria volta a 43 recolocando a lista da 29.
 
 ## 2026-09-04 · sessão 1 · rodada 5 — análise profissional das logos
 

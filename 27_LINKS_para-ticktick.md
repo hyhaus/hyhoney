@@ -9,6 +9,7 @@
 - 🖥️ iPhone · iPad · PC lado a lado — https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7
 - 🎨 Galeria de temas (marque 4) — https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365
 - ⭐ Curadoria da marca (favoritar, ocultar, ordenar, anotar, zoom) — https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef
+- 🐝 Marca · rodada 3 (73 identidades) — https://claude.ai/code/artifact/8d86352d-2da1-423e-ad23-f1f7ca7ca163
 - 🐝 Marca · 43 identidades — https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760
 - 🐝 Marca · rodada 1 (8) — https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f
 - 🌐 Produção (futuro, com login) — https://hyhoney.bitbeagle.com

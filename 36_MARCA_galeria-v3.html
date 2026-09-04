@@ -1,66 +1,48 @@
-<title>Curadoria da Marca</title>
+<title>Marca do HyHoney · rodada 3</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;700;800;900&family=Caveat:wght@700&family=Playfair+Display:wght@700;900&family=Poppins:wght@600;800&family=Cormorant+Garamond:wght@700&family=Space+Grotesk:wght@700&display=swap">
 <style>
-:root{--bg:#FBF6EC;--surface:#FFFDF7;--surface2:#F3EBDA;--line:#E6DAC2;--ink:#2B2118;--ink2:#6E5E4B;--muted:#9A8A73;--accent:#E8A33D;--accent-soft:#FBE7C2;--rose:#E36A7C;--sage:#6F9C6B}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596;--sage:#8DBB88}}
-:root[data-theme="dark"]{--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596;--sage:#8DBB88}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;padding:18px 16px 90px;font-size:13.5px}
-h1{font-family:Fraunces,Georgia,serif;font-size:24px;margin:0}.sub{color:var(--muted);margin:4px 0 10px;max-width:820px}
-h2{font-family:Fraunces,Georgia,serif;font-size:17px;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
-.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;display:flex;gap:6px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line)}
-button{font:inherit;font-weight:800;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:12px}
-button.primary{background:var(--accent);color:#2B2118;border-color:transparent}button.on{background:var(--accent-soft);border-color:var(--accent)}
-.cnt{font-weight:800;margin-right:6px}
-.shelf{display:flex;gap:10px;overflow-x:auto;padding:10px 4px 14px;min-height:150px;border:2px dashed var(--line);border-radius:14px}
-.shelf:empty::before{content:"Toque ★ em um conceito para ele subir aqui. Depois arraste pela alça ⋮⋮ para ordenar.";color:var(--muted);padding:40px 16px;font-size:13px}
-.fav{flex:0 0 220px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;position:relative;touch-action:none;user-select:none}
-.fav.drag{opacity:.4}.fav.over{outline:2px dashed var(--accent);outline-offset:-2px}
-.fav .pos{position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#2B2118;font-weight:900;display:grid;place-items:center;font-size:12px}
-.fav .grip{position:absolute;top:6px;right:8px;color:var(--muted);cursor:grab;font-size:16px;letter-spacing:-2px}
-.fav .b{display:flex;align-items:center;gap:6px;padding:8px;border-radius:8px;margin-top:8px}.fav .b svg{width:40px;height:40px}.fav .b b{font-size:15px}
-.fav .nm{font-family:Fraunces,serif;font-size:14px;margin-top:6px}
-.fav .x{position:absolute;bottom:6px;right:8px;padding:2px 8px;font-size:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.c{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px}
-.c.fav-on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
-.c .hd{display:flex;align-items:center;gap:6px}.c .hd b{font-family:Fraunces,serif;font-size:14px;flex:1}.c .hd .n{font-size:10px;color:var(--muted)}
-.c .act{display:flex;gap:4px}.c .act button{padding:3px 8px;font-size:11px}
-.c .b{display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px}.c .b svg{width:44px;height:44px;flex:none}.c .b .wm{font-size:20px;font-weight:800;line-height:1}.c .b .tg{font-size:10px;opacity:.75}
-.tags{display:flex;gap:3px;flex-wrap:wrap}.tag{font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:999px;background:var(--surface2);color:var(--ink2)}
-.ctx{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.home{background:linear-gradient(160deg,#6B8CC9,#B77FB0);border-radius:10px;padding:8px 6px 6px;color:#fff;text-align:center;font-size:8px}
-.home .big{margin:0 auto 3px;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;box-shadow:0 4px 8px rgba(0,0,0,.3)}.home .big svg{width:32px;height:32px}
-.wa{background:#0B141A;border-radius:10px;padding:6px;color:#E9EDEF}.wa .og{height:30px;display:flex;align-items:center;gap:4px;padding:0 6px;font-weight:800;font-size:9px;border-radius:5px 5px 0 0}.wa .og svg{width:20px;height:20px}
-.wa .tx{background:#025144;padding:4px 6px;border-radius:0 0 5px 5px}.wa .tx b{display:block;font-size:9px}.wa .tx p{margin:0;font-size:8px;color:#B7C2C6;line-height:1.25}
-.who{color:var(--ink2);font-size:11px}
-details{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
-details summary{cursor:pointer;font-weight:800}
-.hid{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.hid button{display:flex;align-items:center;gap:6px}.hid svg{width:18px;height:18px}
-.note{width:100%;font:inherit;font-size:11px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);resize:vertical;min-height:34px}
-.c .b,.fav .b{cursor:zoom-in}
-#zoom{position:fixed;inset:0;background:rgba(20,14,8,.78);z-index:20;display:none;align-items:center;justify-content:center;padding:20px}
-#zoom.on{display:flex}
-#zoom .box{background:var(--surface);color:var(--ink);border-radius:18px;padding:20px;max-width:900px;width:100%;max-height:92vh;overflow:auto;position:relative}
-#zoom .close{position:absolute;top:10px;right:10px}
-#zoom .big{display:grid;place-items:center;border-radius:14px;padding:20px}#zoom .big svg{width:min(360px,70vw);height:min(360px,70vw)}
-#zoom .sizes{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;margin-top:14px}#zoom .sizes div{text-align:center;font-size:10px;color:var(--muted)}
-#zoom .sizes .ic{border-radius:22%;display:grid;place-items:center;margin:0 auto 4px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-#zoom .sizes .ic svg{width:80%;height:80%}
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.25s;pointer-events:none;z-index:9}#toast.show{opacity:1}
-textarea{width:100%;font:inherit;font-size:11px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink)}
+:root{--bg:#FBF6EC;--surface:#FFFDF7;--surface2:#F3EBDA;--line:#E6DAC2;--ink:#2B2118;--ink2:#6E5E4B;--muted:#9A8A73;--accent:#E8A33D;--accent-soft:#FBE7C2;--rose:#E36A7C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596}}
+:root[data-theme="dark"]{--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;padding:22px 18px 80px;font-size:13.5px}
+h1{font-family:Fraunces,Georgia,serif;font-size:26px;margin:0}.sub{color:var(--muted);margin:4px 0 12px;max-width:820px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:16px}
+.bar button,.f button{font:inherit;font-weight:800;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:12px}
+.bar button.primary{background:var(--accent);color:#2B2118;border-color:transparent}
+.f button.on{background:var(--accent-soft);border-color:var(--accent)}
+.bar input{font:inherit;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:180px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.c{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.c.picked{outline:3px solid var(--accent)}
+.c h3{font-family:Fraunces,Georgia,serif;font-size:16px;margin:0;display:flex;align-items:center;gap:6px}
+.c h3 .n{font-size:10px;color:var(--muted);font-family:Nunito;font-weight:800}
+.c h3 label{margin-left:auto;font-size:11px;color:var(--muted);display:flex;gap:3px;align-items:center;cursor:pointer;font-family:Nunito;font-weight:400}
+.tags{display:flex;gap:4px;flex-wrap:wrap}.tag{font-size:10px;font-weight:800;padding:1px 7px;border-radius:999px;background:var(--surface2);color:var(--ink2)}
+.who{color:var(--ink2);font-size:12px;min-height:34px}
+.brand{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px}
+.brand svg{width:52px;height:52px;flex:none}.brand .wm{font-size:24px;font-weight:800;line-height:1}.brand .tg{font-size:11px;opacity:.75}
+.sw{display:flex;gap:3px}.sw i{flex:1;height:8px;border-radius:2px}
+.ctx{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.home{background:linear-gradient(160deg,#6B8CC9,#B77FB0);border-radius:14px;padding:12px 8px 8px;color:#fff;text-align:center;font-size:9px;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.home .big{margin:0 auto 4px;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;box-shadow:0 5px 12px rgba(0,0,0,.3)}
+.home .big svg{width:46px;height:46px}
+.home .row{display:flex;justify-content:space-around;margin-top:8px}.home .row i{display:block;width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#eee,#ccc)}
+.wa{background:#0B141A;border-radius:12px;padding:8px;color:#E9EDEF}
+.wa .card{background:#025144;border-radius:6px;overflow:hidden}
+.wa .og{height:44px;display:flex;align-items:center;gap:6px;padding:0 8px;font-weight:800;font-size:11px}.wa .og svg{width:30px;height:30px}
+.wa .tx{padding:6px 8px}.wa .tx b{display:block;font-size:11px}.wa .tx p{margin:1px 0 0;font-size:10px;color:#B7C2C6;line-height:1.3}.wa .tx small{display:block;color:#8696A0;font-size:9px;margin-top:2px}
+.mono{display:flex;gap:6px;align-items:center;font-size:10px;color:var(--muted)}.mono svg{width:22px;height:22px}
+.next{margin-top:24px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--ink2)}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.25s;pointer-events:none}#toast.show{opacity:1}
 </style>
-<h1>🐝 Curadoria da Marca <span style="font-size:13px;color:var(--muted);font-family:Nunito;font-weight:400">73 conceitos · os novos (r3) começam no nº 44</span></h1>
-<div class="sub">Quantas favoritas quiser. <b>Clique na marca</b> para dar zoom (e ver em 180/120/80/60/40px, preto e branco). Escreva em cada cartão o que gostou. Gestos: <b>★</b> favorita (sobe para a prateleira), <b>🙈</b> oculta (vai para a gaveta no rodapé, nunca é apagada), e na prateleira <b>arraste pela alça ⋮⋮</b> para ordenar por preferência. Tudo fica salvo neste navegador; use "Copiar ranking" para me mandar, ou Exportar/Importar para levar do iPhone ao Mac.</div>
-<div class="bar"><span class="cnt" id="cnt"></span><button class="primary" onclick="copyRank()">⬇ Copiar ranking</button><button onclick="exportJ()">Exportar</button><button onclick="importJ()">Importar</button><span style="width:10px"></span><div id="fam" style="display:contents"></div><div id="tom" style="display:contents"></div><button id="onlyFav" onclick="onlyFav=!onlyFav;render()">★ só favoritas</button></div>
-<h2>⭐ Minhas favoritas <span style="font-size:11px;color:var(--muted);font-family:Nunito;font-weight:400">arraste para ordenar · 1º é o preferido</span></h2>
-<div class="shelf" id="shelf"></div>
-<h2>🗂️ Mesa <span id="mesaN" style="font-size:11px;color:var(--muted);font-family:Nunito;font-weight:400"></span></h2>
+<h1>🐝 Marca do HyHoney · rodada 3 dirigida (43 + 30)</h1>
+<div class="sub">As 43 anteriores + 30 novas (marcadas r3, do nº 44 em diante), geradas a partir das suas opiniões: coração listrado, pote, voo em coração, átomo de mel, polinização, Venn, "oi", dias juntos e o cupom: abelha, mel, favo, amor e paixão, flor e pólen, cartório, tipografia, contemplação e abstrato. Cada uma com ícone no iPhone, prévia do link no WhatsApp e marca. Use a <b>mesa de curadoria</b> (/curadoria) para favoritar, ocultar, ordenar e anotar — ela já contém todos estes conceitos.</div>
+<div class="bar"><b id="cnt">0 / 5</b><input id="q" placeholder="buscar…" oninput="render()"><div class="f" id="fam"></div><div class="f" id="tom"></div><button id="onlyFav" onclick="onlyFav=!onlyFav;render()">★ só favoritas</button><button class="primary" onclick="copyPick()">⬇ Copiar escolha</button></div>
 <div class="grid" id="g"></div>
-<details id="hidbox"><summary>🙈 Ocultos (<span id="hidN">0</span>) — clique para trazer de volta</summary><div class="hid" id="hid"></div></details>
-<details><summary>⚙️ Exportar / Importar (JSON)</summary><textarea id="io" rows="4" placeholder="cole aqui um JSON exportado e clique em Importar"></textarea></details>
-<div id="zoom" onclick="if(event.target.id==='zoom')closeZoom()"><div class="box"><button class="close" onclick="closeZoom()">✕</button><div id="zoomIn"></div></div></div>
+<div class="next"><b>Próximo passo.</b> Marque 5, copie a escolha e cole no chat. Eu aplico as 5 no ícone real do iPhone e no cartão do WhatsApp (arquivos 180/192/512, favicon e OG 1200×630) para você comparar em tamanho real e fechar em 3, depois em 1.</div>
 <div id="toast"></div>
 <script>
+
 const bee=(c1,c2,x=0,y=0,s=1,rot=0)=>`<g transform="translate(${x} ${y}) scale(${s}) rotate(${rot})"><ellipse cx="0" cy="0" rx="14" ry="10" fill="${c1}"/><path d="M-6 -9 v18 M0 -10 v20 M6 -9 v18" stroke="${c2}" stroke-width="3" stroke-linecap="round"/><circle cx="-13" cy="-2" r="6" fill="${c2}"/><circle cx="-15" cy="-3" r="1.6" fill="#fff"/><ellipse cx="4" cy="-13" rx="8" ry="5" fill="#fff" opacity=".85" transform="rotate(-20 4 -13)"/><ellipse cx="-4" cy="-13" rx="7" ry="4.5" fill="#fff" opacity=".7" transform="rotate(-35 -4 -13)"/></g>`;
 const heart=(c,x=0,y=0,s=1,extra='')=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 8 C-12 -2 -10 -14 -1 -12 C0 -12 0 -10 0 -10 C0 -10 0 -12 1 -12 C10 -14 12 -2 0 8Z" fill="${c}" ${extra}/>`;
 const heartO=(c,x=0,y=0,s=1,w=2)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 8 C-12 -2 -10 -14 -1 -12 C0 -12 0 -10 0 -10 C0 -10 0 -12 1 -12 C10 -14 12 -2 0 8Z" fill="none" stroke="${c}" stroke-width="${w}"/>`;
@@ -165,59 +147,29 @@ C.push(
 {id:'r3-venn-abelhas',n:'Venn de Abelhas',f:'amor',t:'fofo',who:'Dois corpos de abelha (mel e rosa) se sobrepondo; as listras dos dois se cruzam na interseção e viram xadrez.',pal:[MEL,ROSA,INK,CREME],font:"'Poppins',sans-serif",bg:CREME,ink:INK,og:['HyHoney','Onde as listras se cruzam, é nosso.'],sym:bg=>svg(`<ellipse cx="-12" cy="0" rx="24" ry="17" fill="${MEL}" opacity=".9"/><ellipse cx="12" cy="0" rx="24" ry="17" fill="${ROSA}" opacity=".85"/><path d="M-22 -14 v28 M-8 -17 v34 M8 -17 v34 M22 -14 v28" stroke="${INK}" stroke-width="3" opacity=".8"/>`+heart(CREME,0,4,.7),bg)},
 );
 
-const FAM={abelha:'🐝',mel:'🍯',favo:'⬡',amor:'💗',flor:'🌸',cartorio:'🏛️',tipografia:'✍️',contemplacao:'🌙',abstrato:'🧪'};
+const FAM={abelha:'🐝 abelha',mel:'🍯 mel',favo:'⬡ favo',amor:'💗 amor',flor:'🌸 flor',cartorio:'🏛️ cartório',tipografia:'✍️ tipografia',contemplacao:'🌙 contemplação',abstrato:'🧪 abstrato'};
 const TOM=['romântico','engraçado','inteligente','elegante','fofo'];
-let S={fav:[],hid:[],notes:{}};try{S=Object.assign(S,JSON.parse(localStorage.getItem('hyhoney-curadoria')||'{}'));S.notes=S.notes||{}}catch(e){}
-let fam='',tom='',onlyFav=false;
-const byId=id=>C.find(c=>c.id===id);const num=c=>String(C.indexOf(c)+1).padStart(2,'0');
-function save(){try{localStorage.setItem('hyhoney-curadoria',JSON.stringify(S))}catch(e){}render()}
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1600)}
-function brand(c,small){return `<div class="b" style="background:${c.bg};color:${c.ink}" onclick="zoom('${c.id}')" title="clique para dar zoom">${c.sym('')}<div><div class="wm" style="font-family:${c.font}">HyHoney</div><div class="tg">o app do casal</div></div></div>`}
-function ctx(c){return `<div class="ctx"><div class="home"><div class="big" style="background:${c.bg}">${c.sym('')}</div>HyHoney</div><div class="wa"><div class="og" style="background:${c.bg};color:${c.ink}">${c.sym('')}<span style="font-family:${c.font}">HyHoney</span></div><div class="tx"><b>${c.og[0]}</b><p>${c.og[1]}</p></div></div></div>`}
+let fam='',tom='',onlyFav=false,pick=[];try{pick=JSON.parse(localStorage.getItem('hyhoney-marca3')||'[]')}catch(e){}
+function mono(c){return c.sym('').replace(/fill="#(?!fff)[0-9A-Fa-f]{6}"/g,'fill="#111"').replace(/stroke="#[0-9A-Fa-f]{6}"/g,'stroke="#111"')}
 function render(){
  document.getElementById('fam').innerHTML=Object.entries(FAM).map(([k,v])=>`<button class="${fam===k?'on':''}" onclick="fam=fam==='${k}'?'':'${k}';render()">${v}</button>`).join('');
  document.getElementById('tom').innerHTML=TOM.map(k=>`<button class="${tom===k?'on':''}" onclick="tom=tom==='${k}'?'':'${k}';render()">${k}</button>`).join('');
  document.getElementById('onlyFav').classList.toggle('on',onlyFav);
- // prateleira
- const sh=document.getElementById('shelf');sh.innerHTML=S.fav.map((id,i)=>{const c=byId(id);return `<div class="fav" draggable="true" data-id="${id}"><span class="pos">${i+1}º</span><span class="grip" title="arraste">⋮⋮</span><div class="b" style="background:${c.bg};color:${c.ink}" onclick="zoom('${id}')">${c.sym('')}<b style="font-family:${c.font}">HyHoney</b></div><div class="nm">${num(c)} ${c.n}</div><textarea class="note" placeholder="por que é favorita…" onchange="S.notes['${id}']=this.value;save()" style="margin:6px 0 24px">${esc(S.notes[id]||'')}</textarea><button class="x" onclick="unfav('${id}')">tirar ★</button></div>`}).join('');
- sh.querySelectorAll('.fav').forEach(el=>drag(el));
- // mesa
- const list=C.filter(c=>!S.hid.includes(c.id)&&(!fam||c.f===fam)&&(!tom||c.t===tom)&&(!onlyFav||S.fav.includes(c.id)));
- document.getElementById('g').innerHTML=list.map(c=>{const f=S.fav.includes(c.id);return `<div class="c${f?' fav-on':''}"><div class="hd"><span class="n">${num(c)}</span><b>${c.n}</b><div class="act"><button class="${f?'on':''}" onclick="togFav('${c.id}')" title="favoritar">★${f?' '+(S.fav.indexOf(c.id)+1)+'º':''}</button><button onclick="hide('${c.id}')" title="ocultar">🙈</button></div></div><div class="tags"><span class="tag">${FAM[c.f]} ${c.f}</span><span class="tag">${c.t}</span></div>${brand(c)}${ctx(c)}<div class="who">${c.who}</div><textarea class="note" placeholder="o que gostei · observações…" onchange="S.notes['${c.id}']=this.value;save()">${esc(S.notes[c.id]||'')}</textarea></div>`}).join('');
- document.getElementById('mesaN').textContent=`${list.length} na mesa`;
- document.getElementById('hidN').textContent=S.hid.length;
- document.getElementById('hid').innerHTML=S.hid.map(id=>{const c=byId(id);return `<button onclick="unhide('${id}')">${c.sym('').replace('<svg','<svg style="width:18px;height:18px"')} ${num(c)} ${c.n} ↩︎</button>`}).join('');
- document.getElementById('cnt').textContent=`${C.length} · ${S.hid.length} ocultos · ${S.fav.length} favoritas`}
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function zoom(id){const c=byId(id);const mono=c.sym('').replace(/fill="#(?!fff)[0-9A-Fa-f]{6}"/g,'fill="#111"').replace(/stroke="#[0-9A-Fa-f]{6}"/g,'stroke="#111"');
- document.getElementById('zoomIn').innerHTML=`<h2 style="margin:0 0 4px">${num(c)} ${c.n}</h2><div class="who" style="margin-bottom:10px">${c.who}</div>
- <div class="big" style="background:${c.bg}">${c.sym('')}</div>
- <div class="sizes">${[180,120,80,60,40].map(s=>`<div><div class="ic" style="width:${s}px;height:${s}px;background:${c.bg}">${c.sym('')}</div>${s}px</div>`).join('')}<div><div class="ic" style="width:80px;height:80px;background:#fff;border:1px solid var(--line)">${mono}</div>preto</div><div><div class="ic" style="width:80px;height:80px;background:#111">${c.sym('').replace(/fill="#(?!fff)[0-9A-Fa-f]{6}"/g,'fill="#fff"').replace(/stroke="#[0-9A-Fa-f]{6}"/g,'stroke="#fff"')}</div>branco</div></div>
- <div style="display:flex;gap:6px;margin-top:14px;flex-wrap:wrap"><button class="${S.fav.includes(id)?'on':''}" onclick="togFav('${id}');zoom('${id}')">★ ${S.fav.includes(id)?'favorita ('+(S.fav.indexOf(id)+1)+'º)':'favoritar'}</button><button onclick="hide('${id}');closeZoom()">🙈 ocultar</button></div>
- <textarea class="note" style="margin-top:10px;min-height:60px" placeholder="o que gostei · observações…" onchange="S.notes['${id}']=this.value;save()">${esc(S.notes[id]||'')}</textarea>`;
- document.getElementById('zoom').classList.add('on')}
-function closeZoom(){document.getElementById('zoom').classList.remove('on')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom()});
-function togFav(id){S.fav.includes(id)?S.fav=S.fav.filter(x=>x!==id):S.fav.push(id);save()}
-function unfav(id){S.fav=S.fav.filter(x=>x!==id);save()}
-function hide(id){S.hid.push(id);S.fav=S.fav.filter(x=>x!==id);save();toast('Oculto — está na gaveta no rodapé')}
-function unhide(id){S.hid=S.hid.filter(x=>x!==id);save()}
-/* arrasto na prateleira: mouse (HTML5 DnD) + dedo (pointer events) */
-let dragId=null;
-function drag(el){
- el.addEventListener('dragstart',e=>{dragId=el.dataset.id;el.classList.add('drag');e.dataTransfer.setData('text/plain',dragId)});
- el.addEventListener('dragend',()=>{el.classList.remove('drag');document.querySelectorAll('.fav.over').forEach(x=>x.classList.remove('over'))});
- el.addEventListener('dragover',e=>{e.preventDefault();el.classList.add('over')});
- el.addEventListener('dragleave',()=>el.classList.remove('over'));
- el.addEventListener('drop',e=>{e.preventDefault();move(dragId,el.dataset.id)});
- // toque
- let startX=null;el.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')return;if(!e.target.classList.contains('grip'))return;dragId=el.dataset.id;el.classList.add('drag');el.setPointerCapture(e.pointerId)});
- el.addEventListener('pointermove',e=>{if(e.pointerType!=='touch'||dragId!==el.dataset.id)return;const t=document.elementFromPoint(e.clientX,e.clientY)?.closest('.fav');document.querySelectorAll('.fav.over').forEach(x=>x.classList.remove('over'));if(t&&t!==el)t.classList.add('over')});
- el.addEventListener('pointerup',e=>{if(e.pointerType!=='touch'||dragId!==el.dataset.id)return;const t=document.elementFromPoint(e.clientX,e.clientY)?.closest('.fav');el.classList.remove('drag');if(t&&t.dataset.id!==dragId)move(dragId,t.dataset.id);else render();dragId=null});
-}
-function move(from,to){if(!from||from===to)return;const a=S.fav;const i=a.indexOf(from),j=a.indexOf(to);if(i<0||j<0)return;a.splice(i,1);a.splice(j,0,from);save();toast('Ordem atualizada')}
-function copyRank(){const s='Ranking da marca HyHoney:\n'+(S.fav.map((id,i)=>`${i+1}º ${num(byId(id))} ${byId(id).n}${S.notes[id]?' — '+S.notes[id]:''}`).join('\n')||'(nenhuma favorita)')+'\nOutras observações:\n'+Object.entries(S.notes).filter(([id,v])=>v&&!S.fav.includes(id)).map(([id,v])=>`- ${num(byId(id))} ${byId(id).n}: ${v}`).join('\n')+`\nOcultos: ${S.hid.length}`;navigator.clipboard?.writeText(s).then(()=>toast('Ranking copiado — cole no chat'),()=>{document.getElementById('io').value=s;toast('Veja a caixa Exportar/Importar')})}
-function exportJ(){const s=JSON.stringify(S);document.getElementById('io').value=s;document.querySelector('details:last-of-type').open=true;navigator.clipboard?.writeText(s).then(()=>toast('JSON copiado'),()=>toast('JSON na caixa abaixo'))}
-function importJ(){try{const v=JSON.parse(document.getElementById('io').value);if(v&&Array.isArray(v.fav)){S={fav:v.fav.filter(byId),hid:(v.hid||[]).filter(byId)};save();toast('Importado')}}catch(e){toast('JSON inválido')}}
+ const q=(document.getElementById('q').value||'').toLowerCase();
+ const list=C.filter(c=>(!fam||c.f===fam)&&(!tom||c.t===tom)&&(!onlyFav||pick.includes(c.id))&&(!q||(c.n+' '+c.who).toLowerCase().includes(q)));
+ document.getElementById('g').innerHTML=list.map((c,i)=>`<div class="c${pick.includes(c.id)?' picked':''}">
+  <h3><span class="n">${String(C.indexOf(c)+1).padStart(2,'0')}</span>${c.n}<label><input type="checkbox" ${pick.includes(c.id)?'checked':''} onchange="tog('${c.id}',this)">★</label></h3>
+  <div class="tags"><span class="tag">${FAM[c.f]}</span><span class="tag">${c.t}</span><span class="tag">${c.font.split(',')[0].replace(/'/g,'')}</span></div>
+  <div class="who">${c.who}</div>
+  <div class="brand" style="background:${c.bg};color:${c.ink}">${c.sym('')}<div><div class="wm" style="font-family:${c.font}">HyHoney</div><div class="tg">o app do casal</div></div></div>
+  <div class="sw">${c.pal.map(p=>`<i style="background:${p};border:1px solid var(--line)"></i>`).join('')}</div>
+  <div class="ctx"><div class="home"><div class="big" style="background:${c.bg}">${c.sym('')}</div>HyHoney<div class="row"><i></i><i></i><i></i><i></i></div></div>
+  <div class="wa"><div class="card"><div class="og" style="background:${c.bg};color:${c.ink}">${c.sym('')}<span style="font-family:${c.font}">HyHoney</span></div><div class="tx"><b>${c.og[0]}</b><p>${c.og[1]}</p><small>hyhoney.bitbeagle.com</small></div></div></div></div>
+  <div class="mono"><svg viewBox="-50 -50 100 100">${mono(c).replace(/<svg[^>]*>|<\/svg>/g,'')}</svg>teste monocromático</div>
+ </div>`).join('');
+ document.getElementById('cnt').textContent=`${pick.length} / 5`}
+function tog(id,el){if(el.checked){if(pick.length>=5){el.checked=false;toast('Máximo de 5');return}pick.push(id)}else pick=pick.filter(x=>x!==id);try{localStorage.setItem('hyhoney-marca3',JSON.stringify(pick))}catch(e){}render()}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function copyPick(){const s='Marca do HyHoney (rodada 2) — favoritas: '+(pick.map(id=>{const c=C.find(x=>x.id===id);return `${String(C.indexOf(c)+1).padStart(2,'0')} ${c.n}`}).join(', ')||'nenhuma');navigator.clipboard?.writeText(s).then(()=>toast('Copiado — cole no chat'),()=>toast(s))}
 render();
 </script>
