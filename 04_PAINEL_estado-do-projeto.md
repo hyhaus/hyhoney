@@ -7,12 +7,15 @@
 | Onde | App (mockup) | Painel | Como |
 |---|---|---|---|
 | Nuvem (qualquer aparelho) | https://claude.ai/code/artifact/6448d5c1-704a-4f34-9fd1-26f76809338e | https://claude.ai/code/artifact/9a923be5-2657-4719-89af-385adf3033f9 | artefatos publicados |
-| Computador (local) | http://localhost:8787/app | http://localhost:8787/painel | `python3 09_SERVIDOR_local.py` na pasta HyHoney |
-| iPhone (mesmo Wi-Fi) | http://192.168.0.13:8787/app | http://192.168.0.13:8787/painel | o script imprime o IP certo |
-| Dispositivos (iPhone · iPad · PC) | https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 | http://192.168.0.13:8787/dispositivos | três telas lado a lado |
-| Temas (galeria) | https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 | http://192.168.0.13:8787/11_TEMAS_galeria.html | marque 4 |
-| Histórico de mockups | — | http://192.168.0.13:8787/historico-mockups/ | toda versão |
+| Computador (local) | <servidor>/app | <servidor>/painel | `python3 09_SERVIDOR_local.py` na pasta HyHoney |
+| iPhone (mesmo Wi-Fi) | <servidor>/app | <servidor>/painel | o script imprime o IP certo |
+| Dispositivos (iPhone · iPad · PC) | https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 | <servidor>/dispositivos | três telas lado a lado |
+| Temas (galeria) | https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 | <servidor>/11_TEMAS_galeria.html | marque 4 |
+| Histórico de mockups | — | <servidor>/historico-mockups/ | toda versão |
 | Produção (futuro) | https://hyhoney.bitbeagle.com | — | login por casal |
+
+## Rotas estáveis do servidor local
+`<servidor>` = `localhost:8787`, IP do Mac ou `nome-do-mac.local:8787`. Rotas: `/app` `/painel` `/dispositivos` `/temas` `/registro` `/indice` `/proximo` `/analise` `/plano` `/guia` — cada uma abre sempre o arquivo mais novo daquele tipo, então os links nunca quebram quando surge uma versão nova.
 
 ## Índice de arquivos
 Veja `00_INDICE.md` (formato Obsidian, com guia das 24 seções). No painel HTML, aba "Índice de arquivos".

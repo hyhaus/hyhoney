@@ -50,11 +50,37 @@ class H(http.server.SimpleHTTPRequestHandler):
             f = latest("PAINEL"); return self.serve_wrapped(f) if f else self.send_error(404)
         if path == "/dispositivos":
             f = latest("PREVIEW"); return self.serve_wrapped(f) if f else self.send_error(404)
+        if path == "/temas":
+            f = latest("TEMAS"); return self.serve_wrapped(f) if f else self.send_error(404)
+        # rotas estáveis para documentos: /registro /indice /plano /analise /proximo — sempre o arquivo mais novo daquele tipo
+        DOCS = {"/registro": "REGISTRO", "/indice": "INDICE", "/plano": "PLANO", "/analise": "ANALISE", "/proximo": "PROMPT", "/guia": "GUIA", "/claude": "CLAUDE"}
+        if path in DOCS:
+            files = sorted(glob.glob(os.path.join(ROOT, f"*_{DOCS[path]}_*.md")) + glob.glob(os.path.join(ROOT, f"*_{DOCS[path]}.md")))
+            if not files: return self.send_error(404)
+            if path == "/proximo":  # o próximo prompt é o marcado "proximo-passo"; senão, o PROMPT mais novo
+                pp = [f for f in files if "proximo-passo" in f]
+                files = pp or files
+            return self.serve_markdown(os.path.basename(files[-1]))
+        if path.endswith(".md"):
+            f = os.path.join(ROOT, path.lstrip("/"))
+            if os.path.isfile(f):
+                return self.serve_markdown(path.lstrip("/"))
         if path.endswith(".html"):
             f = os.path.join(ROOT, path.lstrip("/"))
             if os.path.isfile(f):
                 return self.serve_wrapped(path.lstrip("/"))
         return super().do_GET()
+    def serve_markdown(self, name):
+        with open(os.path.join(ROOT, name), encoding="utf-8") as fh:
+            md = fh.read()
+        try:
+            import markdown as _md
+            body = _md.markdown(md, extensions=["tables"])
+        except Exception:
+            import html as _h
+            body = "<pre style='white-space:pre-wrap'>" + _h.escape(md) + "</pre>"
+        css = "<style>body{font-family:-apple-system,system-ui,sans-serif;max-width:820px;margin:0 auto;padding:24px 18px;background:#FBF6EC;color:#2B2118;line-height:1.5}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid #E6DAC2;padding:6px;text-align:left;vertical-align:top}a{color:#B07A1E}code{background:#F3EBDA;padding:1px 5px;border-radius:4px}</style>"
+        self.send_html(SKELETON_HEAD + f"<title>{name}</title>" + css + f"<p><a href='/'>← início</a> · <small>{name}</small></p>" + body + SKELETON_TAIL)
     def serve_wrapped(self, name):
         with open(os.path.join(ROOT, name), encoding="utf-8") as fh:
             body = fh.read()
@@ -90,6 +116,9 @@ ul{{padding-left:18px;font-size:13px}} a{{color:#2B2118}}
 <a class="big" href="/app">📱 Abrir o app<small>{app or 'nenhum mockup encontrado'}</small></a>
 <a class="big" href="/painel">🧭 Abrir o painel<small>{painel or 'nenhum painel encontrado'}</small></a>
 <a class="big" href="/dispositivos">🖥️ iPhone · iPad · computador lado a lado<small>{latest("PREVIEW") or '—'}</small></a>
+<a class="big" href="/temas">🎨 Galeria de temas<small>marque 4</small></a>
+<a class="big" href="/registro">📓 Registro de evolução<small>diário de bordo, mais recente no topo</small></a>
+<a class="big" href="/proximo">🟡 Próximo prompt<small>o mais novo da pasta</small></a>
 <p style="margin-top:22px">Todos os arquivos:</p><ul>{li}</ul>""" + SKELETON_TAIL
 
 if __name__ == "__main__":
@@ -109,7 +138,8 @@ if __name__ == "__main__":
             print(f"  iPhone     : http://{ip}:{PORT}   (mesmo Wi-Fi; fixe o IP do Mac no roteador para não mudar)")
         else:
             print("  iPhone     : desligado (--so-local)")
-        print(f"  Rotas      : /app  /painel  /dispositivos  /historico-mockups/")
+        print(f"  Rotas      : /app /painel /dispositivos /temas /registro /indice /plano /analise /proximo /guia /historico-mockups/")
+        print(f"  Dica       : no iPhone, http://{socket.gethostname().split('.')[0]}.local:{PORT} costuma funcionar sem decorar IP")
         print("\n  Ctrl+C para parar.\n")
         try:
             httpd.serve_forever()

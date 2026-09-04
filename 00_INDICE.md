@@ -35,6 +35,8 @@ atualizado: 2026-09-04
 | 17 | [[17_PROMPT_anexos-tags-busca]] | PROMPT_P8 | ⏳ anexos, tags, filtros, busca |
 | 18 | [[18_PROMPT_analise-v2-e-replanejamento]] | PROMPT_analise-v2 | ✅ executado |
 | 19 | [[19_ANALISE_v2-replanejamento]] · PDF | ANALISE_v2 | o que focar, esconder, otimizar; roadmap v2 |
+| 20 | [[20_PROMPT_registro-de-evolucao]] | PROMPT_registro | ✅ executado |
+| 21 | [[21_REGISTRO_evolucao]] | REGISTRO_evolucao | diário de bordo (changelog), mais recente no topo |
 | — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.4 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |
 
@@ -51,7 +53,8 @@ Hoje (A Capa) · Clima do Dia (O Termômetro) → [[16_PROMPT_clima-do-dia]] · 
 Transversais: busca geral 🔍 · anexos/comentários/tags/filtros → [[17_PROMPT_anexos-tags-busca]] · temas → [[06_SKILLS/hyhoney-design/SKILL]]
 
 ## Links vivos
-- App: https://claude.ai/code/artifact/6448d5c1-704a-4f34-9fd1-26f76809338e · local `http://192.168.0.13:8787/app`
+> Locais: troque `<servidor>` por `localhost:8787`, pelo IP do Mac ou por `nome-do-mac.local:8787`. Rotas estáveis (sempre o arquivo mais novo): `/app` `/painel` `/dispositivos` `/temas` `/registro` `/indice` `/proximo` `/analise` `/plano` `/guia`.
+- App: https://claude.ai/code/artifact/6448d5c1-704a-4f34-9fd1-26f76809338e · local `<servidor>/app`
 - Painel: https://claude.ai/code/artifact/9a923be5-2657-4719-89af-385adf3033f9 · local `/painel`
 - Dispositivos: https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 · local `/dispositivos`
 - Temas: https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365
