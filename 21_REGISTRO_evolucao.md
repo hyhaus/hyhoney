@@ -26,6 +26,10 @@
 
 ---
 
+## 2026-09-04 · sessão 1 · rodada 3 — identidade (8 → 43), links para o TickTick
+
+**Criado.** 25 prompt de identidade · 26 galeria de marca (8) · 27 links para o TickTick · 28 prompt rodada 2 · 29 galeria de marca com 43 identidades (filtros por família e tom, busca, 5 favoritas) · temas no painel · rota `/marca`. **Decisões.** nenhuma; pergunta aberta 7 (identidade) e 8 (temas). **Pendências.** servidor no login, GitHub, marcar 4 temas + 5 marcas, P5. **Como voltar atrás.** apagar 25–29; a rota `/marca` volta a apontar para a galeria mais nova que restar.
+
 ## 2026-09-04 · sessão 1 · rodada 2 — tour do app, escolha de design, CLAUDE.md na raiz
 
 **Criado.** 22 prompt do tour · 23 Tour (artefato "Tour do HyHoney", rota `/tour`): iPhone real no centro, mapa das 24 seções à esquerda, guia (o que é, funcional, humor, IA, links) à direita, feedback por seção com "copiar para o chat" · 24 prompt de escolha de design · `CLAUDE.md` gerado na raiz · mockup v0.5. **Decisões.** nenhuma nova. **Pendências.** as mesmas (servidor no login, GitHub, 4 temas, P5). **Como voltar atrás.** apagar 22–24 e o CLAUDE.md; restaurar v0.4 do histórico.

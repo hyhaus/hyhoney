@@ -42,6 +42,9 @@ atualizado: 2026-09-04
 | 24 | [[24_PROMPT_escolha-de-design]] | PROMPT_design-escolha | funil de temas 8 → 4 → 3 |
 | 25 | [[25_PROMPT_identidade-e-logo]] | PROMPT_identidade | ✅ executado |
 | 26 | [[26_MARCA_galeria.html]] | MARCA_rodada1 | 8 logos: ícone iPhone, WhatsApp, marca (artefato "Marca do HyHoney") |
+| 27 | [[27_LINKS_para-ticktick]] | LINKS_ticktick | lista de links para colar no TickTick |
+| 28 | [[28_PROMPT_identidade-rodada2]] | PROMPT_identidade-2 | ✅ executado |
+| 29 | [[29_MARCA_galeria-v2.html]] | MARCA_rodada2 | 43 identidades com filtros (artefato "Marca do HyHoney · 43") |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
 | — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.5 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |
@@ -65,6 +68,7 @@ Transversais: busca geral 🔍 · anexos/comentários/tags/filtros → [[17_PROM
 - Dispositivos: https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 · local `/dispositivos`
 - Tour: https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673 · local `/tour`
 - Temas: https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 · local `/temas`
+- Marca (43): https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760 · rodada 1 (8): https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f · local `/marca`
 - Produção (futuro): https://hyhoney.bitbeagle.com
 
 ## Amanhã
