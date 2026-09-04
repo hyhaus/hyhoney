@@ -7,7 +7,7 @@ atualizado: 2026-09-04
 > Abra esta pasta como cofre no Obsidian: os `[[links]]` abaixo funcionam. Ordem de uso = número do arquivo. Nome canônico = `AAAA-MM-DD_TIPO`. O mesmo índice vive no painel (04) na aba "Índice de arquivos".
 
 ## Comece por aqui
-1. [[05_CLAUDE_texto-para-colar-no-projeto|CLAUDE.md do projeto]] → vira `CLAUDE.md` na raiz (uma vez).
+1. `CLAUDE.md` já está na raiz (gerado do [[05_CLAUDE_texto-para-colar-no-projeto|05]]).
 2. [[04_PAINEL_estado-do-projeto|Painel — fonte da verdade]] → estado, decisões, prompts, checklist.
 3. [[07_PROMPT_proximo-passo-P5|P5 — próximo prompt]] 🟡 rodando.
 4. [[11_TEMAS_galeria.html|Galeria de temas]] → marque 4.
@@ -37,7 +37,11 @@ atualizado: 2026-09-04
 | 19 | [[19_ANALISE_v2-replanejamento]] · PDF | ANALISE_v2 | o que focar, esconder, otimizar; roadmap v2 |
 | 20 | [[20_PROMPT_registro-de-evolucao]] | PROMPT_registro | ✅ executado |
 | 21 | [[21_REGISTRO_evolucao]] | REGISTRO_evolucao | diário de bordo (changelog), mais recente no topo |
-| — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.4 |
+| 22 | [[22_PROMPT_tour-iphone-no-computador]] | PROMPT_tour | ✅ executado |
+| 23 | [[23_TOUR_iphone-no-computador.html]] | TOUR | app inteiro numa tela de iPhone, mapa + guia (artefato "Tour do HyHoney") |
+| 24 | [[24_PROMPT_escolha-de-design]] | PROMPT_design-escolha | funil de temas 8 → 4 → 3 |
+| — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
+| — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.5 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |
 
 ## Guia das seções do app (24)
@@ -57,7 +61,8 @@ Transversais: busca geral 🔍 · anexos/comentários/tags/filtros → [[17_PROM
 - App: https://claude.ai/code/artifact/6448d5c1-704a-4f34-9fd1-26f76809338e · local `<servidor>/app`
 - Painel: https://claude.ai/code/artifact/9a923be5-2657-4719-89af-385adf3033f9 · local `/painel`
 - Dispositivos: https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 · local `/dispositivos`
-- Temas: https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365
+- Tour: https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673 · local `/tour`
+- Temas: https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 · local `/temas`
 - Produção (futuro): https://hyhoney.bitbeagle.com
 
 ## Amanhã

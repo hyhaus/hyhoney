@@ -50,6 +50,8 @@ class H(http.server.SimpleHTTPRequestHandler):
             f = latest("PAINEL"); return self.serve_wrapped(f) if f else self.send_error(404)
         if path == "/dispositivos":
             f = latest("PREVIEW"); return self.serve_wrapped(f) if f else self.send_error(404)
+        if path == "/tour":
+            f = latest("TOUR"); return self.serve_wrapped(f) if f else self.send_error(404)
         if path == "/temas":
             f = latest("TEMAS"); return self.serve_wrapped(f) if f else self.send_error(404)
         # rotas estáveis para documentos: /registro /indice /plano /analise /proximo — sempre o arquivo mais novo daquele tipo
@@ -116,6 +118,7 @@ ul{{padding-left:18px;font-size:13px}} a{{color:#2B2118}}
 <a class="big" href="/app">📱 Abrir o app<small>{app or 'nenhum mockup encontrado'}</small></a>
 <a class="big" href="/painel">🧭 Abrir o painel<small>{painel or 'nenhum painel encontrado'}</small></a>
 <a class="big" href="/dispositivos">🖥️ iPhone · iPad · computador lado a lado<small>{latest("PREVIEW") or '—'}</small></a>
+<a class="big" href="/tour">🧭 Tour do app inteiro (iPhone no computador)<small>{latest("TOUR") or "—"}</small></a>
 <a class="big" href="/temas">🎨 Galeria de temas<small>marque 4</small></a>
 <a class="big" href="/registro">📓 Registro de evolução<small>diário de bordo, mais recente no topo</small></a>
 <a class="big" href="/proximo">🟡 Próximo prompt<small>o mais novo da pasta</small></a>
@@ -138,7 +141,7 @@ if __name__ == "__main__":
             print(f"  iPhone     : http://{ip}:{PORT}   (mesmo Wi-Fi; fixe o IP do Mac no roteador para não mudar)")
         else:
             print("  iPhone     : desligado (--so-local)")
-        print(f"  Rotas      : /app /painel /dispositivos /temas /registro /indice /plano /analise /proximo /guia /historico-mockups/")
+        print(f"  Rotas      : /app /painel /tour /dispositivos /temas /registro /indice /plano /analise /proximo /guia /historico-mockups/")
         print(f"  Dica       : no iPhone, http://{socket.gethostname().split('.')[0]}.local:{PORT} costuma funcionar sem decorar IP")
         print("\n  Ctrl+C para parar.\n")
         try:

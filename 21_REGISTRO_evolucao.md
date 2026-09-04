@@ -22,10 +22,15 @@
 | v0.2 | 2026-09-04 | passe de design (alvos 44px, escala, um botão primário) | *(não arquivada; só CSS, contido na v0.3)* | a6b79a7 |
 | v0.3 | 2026-09-04 | + A Roleta (o que fazer hoje, deliverys, templates, IA) | `2026-09-04_v0.3_roleta.html` | a6b79a7 |
 | v0.4 | 2026-09-04 | + Clima do Dia, busca geral ⌘K, merge de seções novas | `2026-09-04_v0.4_clima-busca.html` | a6b79a7 |
+| v0.5 | 2026-09-04 | + ponte com o Tour (23); correção da Saga no iPhone | `2026-09-04_v0.5_ponte-tour.html` | — |
 
 ---
 
-## 2026-09-04 · sessão 1 · rodada única — do briefing ao kit completo · commit `a6b79a7`
+## 2026-09-04 · sessão 1 · rodada 2 — tour do app, escolha de design, CLAUDE.md na raiz
+
+**Criado.** 22 prompt do tour · 23 Tour (artefato "Tour do HyHoney", rota `/tour`): iPhone real no centro, mapa das 24 seções à esquerda, guia (o que é, funcional, humor, IA, links) à direita, feedback por seção com "copiar para o chat" · 24 prompt de escolha de design · `CLAUDE.md` gerado na raiz · mockup v0.5. **Decisões.** nenhuma nova. **Pendências.** as mesmas (servidor no login, GitHub, 4 temas, P5). **Como voltar atrás.** apagar 22–24 e o CLAUDE.md; restaurar v0.4 do histórico.
+
+## 2026-09-04 · sessão 1 · rodada 1 — do briefing ao kit completo · commit `a6b79a7`
 
 **Criado.** 00 índice (Obsidian) · 01 briefing · 02 plano · 03 mockup v0→v0.4 · 04 painel (.md + .html, com checklist das suas ideias, links e índice de arquivos) · 05 CLAUDE.md · 06 quatro skills (sessao, nova-secao, atualizar-painel + ponte Code, design) · 07 prompt P5 · 08 análise 1 (PDF) · 09 servidor local · 10 preview em 3 aparelhos · 11 galeria de 8 temas · 12 prompt design+neuro (executado) · 13 instalador do servidor no login · 14 guia Dock/iPhone/IP fixo · 15 git sync · 16 prompt Clima do Dia · 17 prompt anexos/tags/busca · 18 prompt análise v2 (executado) · 19 análise v2 + roadmap (PDF) · 20 prompt deste registro · 21 este registro · `historico-mockups/` · `icones/` · `logs/` · `.gitignore`.
 
