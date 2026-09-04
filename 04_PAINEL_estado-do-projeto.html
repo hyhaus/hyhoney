@@ -1,0 +1,142 @@
+<title>Painel HyHoney</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;700;800&display=swap">
+<style>
+:root{--bg:#FBF6EC;--surface:#FFFDF7;--surface2:#F3EBDA;--line:#E6DAC2;--ink:#2B2118;--ink2:#6E5E4B;--muted:#9A8A73;--accent:#E8A33D;--accent-soft:#FBE7C2;--rose:#E36A7C;--rose-soft:#FBDDE2;--sage:#6F9C6B;--sage-soft:#DDEBD9;--sky:#5B8FB9;--sky-soft:#DCE9F3;--display:'Fraunces',Georgia,serif;--body:'Nunito',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596;--rose-soft:#3F2A2E;--sage:#8DBB88;--sage-soft:#26332A;--sky:#7FB0D8;--sky-soft:#22303A}}
+:root[data-theme="dark"]{--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596;--rose-soft:#3F2A2E;--sage:#8DBB88;--sage-soft:#26332A;--sky:#7FB0D8;--sky-soft:#22303A}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 80px}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+h1{font-family:var(--display);font-size:30px;font-weight:800;margin:0}
+h2{font-family:var(--display);font-size:18px;font-weight:600;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.sub{color:var(--muted)}
+.label{font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card.wide{grid-column:1/-1}
+.state{background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.state textarea{width:100%;font:inherit;font-family:var(--display);font-size:17px;background:transparent;border:0;color:var(--ink);resize:none}
+.kpis{display:flex;gap:18px}
+.kpi b{display:block;font-family:var(--display);font-size:30px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11px;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:800;background:var(--surface2);color:var(--ink2);cursor:pointer;border:0;font-family:inherit}
+.chip.rodando{background:var(--accent-soft);color:var(--ink)} .chip.feito{background:var(--sage-soft);color:var(--sage)} .chip.fila{background:var(--sky-soft);color:var(--sky)} .chip.ideia{background:var(--surface2)} .chip.mockup{background:var(--rose-soft);color:var(--rose)} .chip.decidida{background:var(--sage-soft);color:var(--sage)} .chip.construcao{background:var(--accent-soft)} .chip.noar{background:var(--sky-soft);color:var(--sky)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:6px 6px;border-bottom:1px solid var(--line)}
+td{padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto}
+.row{display:flex;gap:10px;align-items:flex-start;padding:7px 4px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row input[type=checkbox]{margin-top:3px;accent-color:var(--sage)}
+.row .t{flex:1}.row .t small{display:block;color:var(--muted)}
+.row.done .t{text-decoration:line-through;color:var(--muted)}
+.add{display:flex;gap:6px;margin-top:10px}
+.add input{flex:1;font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink)}
+.add button,.tb{font:inherit;padding:7px 12px;border-radius:8px;border:0;background:var(--accent);color:#2B2118;font-weight:800;cursor:pointer}
+.tb.ghost{background:var(--surface2);color:var(--ink2)}
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.del{border:0;background:none;color:var(--muted);cursor:pointer;font-size:14px}
+.q{font-family:var(--display);font-size:14px}
+.ans{width:100%;font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);margin-top:4px}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.25s;pointer-events:none}
+#toast.show{opacity:1}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+<div class="wrap">
+<header><h1>🍯 Painel HyHoney</h1><span class="sub">estado do projeto · clique nas etiquetas para mudar o status · tudo fica salvo neste navegador</span></header>
+<div class="state"><div><div class="label">Estado atual, em uma frase</div><textarea id="estado" rows="2"></textarea></div><div class="kpis"><div class="kpi"><b id="kSec">0</b><span>seções</span></div><div class="kpi"><b id="kDec">0</b><span>decisões</span></div><div class="kpi"><b id="kIde">0</b><span>ideias abertas</span></div><div class="kpi"><b id="kSes">1</b><span>sessões</span></div></div></div>
+
+<div class="grid">
+ <div class="card wide"><h2>🔗 Links de acesso</h2><div class="tw"><table><thead><tr><th>Onde</th><th>App (mockup)</th><th>Painel</th><th>Como</th></tr></thead><tbody>
+  <tr><td><b>Nuvem</b> (qualquer aparelho)</td><td><a href="https://claude.ai/code/artifact/6448d5c1-704a-4f34-9fd1-26f76809338e">claude.ai · HyHoney</a></td><td><a href="https://claude.ai/code/artifact/9a923be5-2657-4719-89af-385adf3033f9">claude.ai · Painel HyHoney</a></td><td class="sub">artefatos publicados; sempre a última versão que o Claude republicou</td></tr>
+  <tr><td><b>Computador</b> (local)</td><td><a href="http://localhost:8787/app">localhost:8787/app</a></td><td><a href="http://localhost:8787/painel">localhost:8787/painel</a></td><td class="sub">rodar <code>python3 09_SERVIDOR_local.py</code> dentro da pasta HyHoney</td></tr>
+  <tr><td><b>iPhone</b> (mesmo Wi-Fi)</td><td><a href="http://192.168.0.13:8787/app">192.168.0.13:8787/app</a></td><td><a href="http://192.168.0.13:8787/painel">192.168.0.13:8787/painel</a></td><td class="sub">o script imprime o IP certo ao iniciar; troque aqui se mudar</td></tr>
+  <tr><td><b>Dispositivos</b> (iPhone · iPad · PC)</td><td><a href="https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7">claude.ai · HyHoney em Dispositivos</a></td><td><a href="http://192.168.0.13:8787/dispositivos">local: /dispositivos</a></td><td class="sub">as três telas lado a lado, clicáveis; foco no iPhone</td></tr>
+  <tr><td><b>Temas</b> (galeria, marque 4)</td><td colspan="2"><a href="https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365">claude.ai · Temas do HyHoney</a> · <a href="http://192.168.0.13:8787/11_TEMAS_galeria.html">local</a></td><td class="sub">rodada 1 do funil 8 → 4 → 3</td></tr>
+  <tr><td><b>Histórico de mockups</b></td><td colspan="2"><a href="http://192.168.0.13:8787/historico-mockups/">local: /historico-mockups/</a></td><td class="sub">toda versão arquivada</td></tr>
+  <tr><td><b>Produção</b> (futuro)</td><td colspan="2"><a href="https://hyhoney.bitbeagle.com">hyhoney.bitbeagle.com</a></td><td class="sub">ainda não existe; login por casal</td></tr>
+ </tbody></table></div></div>
+ <div class="card"><h2>🧭 Prompts <span class="label" style="margin-left:auto">rastreamento</span></h2><div id="prompts"></div><div class="add"><input id="npPrompt" placeholder="Novo prompt (ex.: P6 — mockup v1)"><button onclick="addPrompt()">＋</button></div></div>
+ <div class="card"><h2>❓ Perguntas abertas <span class="label" style="margin-left:auto">para o Odin</span></h2><div id="perguntas"></div></div>
+ <div class="card wide"><h2>☑️ Checklist das suas ideias <span class="label" style="margin-left:auto">o que você pediu · onde está · o que eu sugiro</span></h2><div class="tw"><table><thead><tr><th></th><th>Sua ideia</th><th>Estado</th><th>Virou / sugestão do Claude</th><th></th></tr></thead><tbody id="suas"></tbody></table></div><div class="add"><input id="nuIde" placeholder="Nova ideia sua para o app"><button onclick="addSua()">＋</button></div></div>
+ <div class="card wide"><h2>🗂️ Seções do app</h2><div class="tw"><table><thead><tr><th>Pasta</th><th>Seção</th><th>Apelido</th><th>Status</th><th>Obs.</th><th></th></tr></thead><tbody id="secoes"></tbody></table></div><div class="add"><input id="nsPasta" placeholder="Pasta" style="flex:0 0 120px"><input id="nsNome" placeholder="Nova seção"><input id="nsObs" placeholder="observação"><button onclick="addSec()">＋</button></div></div>
+ <div class="card"><h2>📌 Decisões</h2><div class="tw"><table><thead><tr><th>#</th><th>Decisão</th><th>Data</th></tr></thead><tbody id="decisoes"></tbody></table></div><div class="add"><input id="ndDec" placeholder="Nova decisão"><button onclick="addDec()">＋</button></div></div>
+ <div class="card"><h2>💡 Backlog de ideias</h2><div id="ideias"></div><div class="add"><input id="niIde" placeholder="Nova ideia (a sua ou minha)"><button onclick="addIdea()">＋</button></div></div>
+ <div class="card wide"><h2>📁 Índice de arquivos <span class="label" style="margin-left:auto">pasta HyHoney · links abrem pelo servidor local</span></h2><div class="tw"><table><thead><tr><th>Nº</th><th>Arquivo</th><th>Para quê</th></tr></thead><tbody id="arquivos"></tbody></table></div><div class="sub" style="margin-top:8px">Guia das seções (24): <b>Nós</b> Hoje · Clima do Dia · Linha do Tempo · Calendário · Álbum · Arquivo WhatsApp · Cartas & Presentes — <b>Cartório</b> Termos & Condições · Protocolos · Manual · Matilha — <b>Laboratório</b> Universos Paralelos · Dicionário · Roleta · To-do Mágico · Histórias a Dois · Metas — <b>Painel</b> Próximos · To-do Chato · Viagens · Cinema · Registro Íntimo · Sala de Controle · Cofre</div></div>
+ <div class="card wide"><h2>🕰️ Histórico de sessões</h2><div id="sessoes"></div><div class="tools"><button class="tb" onclick="exportMd()">⬇ Copiar painel em Markdown (cole no chat ou no 04_PAINEL.md)</button><button class="tb ghost" onclick="reset()">↺ Restaurar versão da sessão 1</button></div></div>
+</div>
+</div>
+<div id="toast"></div>
+<script>
+const SEC_ST=['ideia','mockup','decidida','construcao','noar'],SEC_LB={ideia:'💡 ideia',mockup:'🎨 mockup',decidida:'✅ decidida',construcao:'🔨 construção',noar:'🚀 no ar'};
+const P_ST=['fila','rodando','feito'],P_LB={fila:'⏳ fila',rodando:'🟡 rodando',feito:'✅ feito'};
+const INIT={estado:'Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, skills, PDF, servidor local, git iniciado. Próximo: P5 — fechar decisões (nome, data, 4 temas, fatia v0, tecnologia) e mockup v1.',sessoes:['2026-09-04 · sessão 1 — Briefing, plano, mockup v0→v0.4 (mobile, design neuro, roleta, clima, busca), painel, CLAUDE.md, 4 skills, PDF, servidor local + LaunchAgent, galeria de temas, histórico de mockups, git iniciado, prompts P5/P7/P8.'],
+prompts:[['P1','Planejamento (briefing mestre) · 01_PROMPT','feito'],['P2','Análise + arquitetura + sugestões · 02_PLANO','feito'],['P3','Mockup v0 estilo TickTick · 03_MOCKUP','feito'],['P4','Painel, CLAUDE.md, skills, PDF · 04–08','feito'],['P6','[cowork] Design profissional + neurociência, galeria de 8 temas, histórico de versões · 12_PROMPT','feito'],['P5','[cowork] Revisar mockup, fechar decisões (inclui escolher 4 temas na galeria 11), mockup v1 · 07_PROMPT','rodando'],['P7','[cowork] Clima do Dia completo (registro, pedidos, compatibilidade, histórico) · 16_PROMPT','fila'],['P8','[cowork] Anexos, comentários, tags, filtros e busca geral · 17_PROMPT','fila']],
+perguntas:[['Nome da parceira no app (mockup usa "Mel") e data real de início',''],['Tema padrão: Mel & Papel, Cartório Noturno, Polaroid, Neon Arcade, Passaporte?',''],['Fatia v0: Capa + Próximos + To-dos + Protocolos?',''],['Tecnologia: PWA em hyhoney.bitbeagle.com — mesma pilha do Corveio/HyHobbit?',''],['Backup do WhatsApp em que versão? (proposta: última)',''],['Multas afetivas: entram ou ficam fora?','']],
+secoes:[['Nós','Hoje','A Capa','mockup','4 estilos de countdown, memória surpresa'],['Nós','Clima do Dia','O Termômetro','mockup','energia, humor, modo (festa/silêncio/exausto/carinho/espaço…), manual de 1 linha, pedidos de um toque'],['Nós','Linha do Tempo','A Saga','mockup','títulos épicos'],['Nós','Calendário','O Almanaque','mockup','passado+futuro, feriados inventados'],['Nós','Álbum','O Museu','mockup','timeline, viagem, era'],['Nós','Arquivo WhatsApp','Os Autos','mockup','original intocável + marcações'],['Nós','Cartas & Presentes','O Correio','mockup','lacre, cápsula do tempo'],['Cartório','Termos & Condições','O Contrato','mockup','aditivos, assinatura, multas opt-in'],['Cartório','Protocolos','Os Cupons','mockup','5 raridades, usos, registro'],['Cartório','Manual do Parceiro','O Manual','mockup','manual de eletrodoméstico'],['Cartório','A Matilha','O Bando','mockup','cargos engraçados'],['Laboratório','Universos Paralelos','O Multiverso','mockup','árvore + fake news + IA'],['Laboratório','Dicionário do Casal','O Dicionário','mockup','IA completa verbetes'],['Laboratório','To-do Mágico','A Lista Louca','mockup','nível de loucura'],['Laboratório','O Que Fazer Hoje?','A Roleta','mockup','sorteio por tipo/energia/dinheiro/vibe, deliverys de sempre, templates, IA'],['Laboratório','Histórias a Dois','A Oficina','mockup','modo alternado'],['Laboratório','Metas & Sonhos','O Mapa','mockup','progresso → marco'],['Painel','Próximos','A Agenda','mockup','categoria Só Existir'],['Painel','To-do Chato','Os Deveres','mockup','placar semanal'],['Painel','Viagens','O Passaporte','mockup','countdown, checklist, carimbos'],['Painel','Cinema','A Cinemateca','mockup','notas dos dois, discordância'],['Painel','Registro Íntimo','O Placar','mockup','PIN, streaks, recordes'],['Painel','Sala de Controle','As Estatísticas','mockup','recordes do casal'],['Painel','Finanças & Responsabilidades','O Cofre','mockup','oculto, admin'],['—','Perguntas da Semana','','ideia','sugestão'],['—','Cutucão','','ideia','sugestão'],['—','Retrospectiva do Mês','','ideia','relatório dia 1']],
+decisoes:[['D1','Layout TickTick: sidebar + centro + detalhe','2026-09-04'],['D2','Um só tipo de cartão, vestido por seção','2026-09-04'],['D3','Pastas: Nós · Cartório · Laboratório · Painel','2026-09-04'],['D4','hyhoney.bitbeagle.com, login, uma casa por casal','2026-09-04'],['D5','Edição simétrica com "o outro vê?"; admin só no estrutural','2026-09-04'],['D6','Cofre oculto; Registro Íntimo com PIN','2026-09-04'],['D7','IA só propõe, nunca grava sozinha','2026-09-04'],['D8','Foco em iPhone/mobile, organização estilo TickTick mobile; desktop e iPad derivam do mobile','2026-09-04'],['D9','Primeiras versões nascem no Cowork; depois o Cowork gera prompts para o Claude Code e lê os logs','2026-09-04'],['D10','Design baseado em apps consagrados + neurociência (skill hyhoney-design); funil de temas 8 → 4 → 3 alternáveis','2026-09-04'],['D11','Toda versão do mockup fica arquivada em historico-mockups/; projeto versionado em Git (commit local a cada rodada, push pelo Mac com 15_GIT_sync.sh)','2026-09-04'],['D12','Painel e app instaláveis como app (LaunchAgent 13 + Instalar no Chrome/Safari); iPhone via IP fixo do Mac','2026-09-04']],
+suas:[
+['Countdown de dias juntos no topo, vários estilos','mockup','Hoje/A Capa: 4 estilos (número, anos+meses+dias, anel %, semanas+barra). Sugestão: estilo "relógio" animado depois.',false],
+['Próximos eventos (amigos, família, sofá, viagens)','mockup','Próximos/A Agenda com categoria "Só Existir"; eventos tipo viagem abrem em Viagens.',false],
+['Manual do parceiro (gosta / não gosta)','mockup','Manual em formato de eletrodoméstico (Cuidados, Modo de usar, Solução de problemas), um por pessoa.',false],
+['To-do chato vs to-do mágico','mockup','Duas seções em pastas diferentes: Os Deveres (Painel, com placar semanal) e A Lista Louca (Laboratório, nível de loucura).',false],
+['Calendário com primeiras vezes, fotos, "há X dias", lembretes','mockup','O Almanaque: passado+futuro no mesmo calendário, "Hoje há…", feriados inventados.',false],
+['Backup do WhatsApp com camada de edição (original intocado)','mockup','Os Autos: original só leitura idêntico ao WhatsApp + marcações com autor e data. Sugestão: deixar para a última versão (tecnicamente mais chato).',false],
+['Seções imaginativas criáveis no app (histórias alternativas)','mockup','A Oficina (modo alternado, cor por autor) + botão "＋ Nova seção" com moldes.',false],
+['Protocolos gamificados com raridade e usos limitados','mockup','Os Cupons: 5 raridades, usos, botão "Usar" com registro; admin edita limites.',false],
+['Álbum de fotos com timeline','mockup','O Museu: timeline, por viagem, por era; legendas em tom de placa de museu (IA).',false],
+['Linha do tempo cronológica','mockup','A Saga: marcos com títulos épicos automáticos; metas concluídas viram marcos.',false],
+['Registro de relações sexuais com estatísticas e streaks','mockup','O Placar: PIN, média, streak, recordes, projeção, calendário de fogo. Sugestão: título automático do mês.',false],
+['Lista de coisas para fazer antes de morrer','mockup','Fundida na Lista Louca (aba "Antes de morrer"). Pode virar seção própria se preferir.',false],
+['Universos paralelos / fake news em fluxograma com IA','mockup','O Multiverso: árvore de decisões + manchetes; IA gera cenário aleatório.',false],
+['Séries e filmes vistos (data, cinema/casa, nota, progresso)','mockup','A Cinemateca: notas dos dois, selo discordância, barra de progresso. Sugestão: busca por título (TMDB).',false],
+['Viagens (próximas, histórico, destinos, comprovantes, checklist, countdown)','mockup','O Passaporte: countdown, checklist, carimbos, mapa de desejos. Sugestão: diário de bordo vira capítulo.',false],
+['Dicionário de palavras inventadas com IA','mockup','O Dicionário (Academia HyHoney de Letras): verbetes; IA completa e padroniza.',false],
+['Metas e sonhos do casal','mockup','O Mapa: cartões com progresso e sub-passos.',false],
+['Finanças/responsabilidades ocultas, só admin, liberável','mockup','O Cofre: oculto, 👑 admin; liberar pelo botão direito. Generalizado: qualquer um pode ter cantinhos privados ("o outro vê?").',false],
+['Matilha (amigos e cachorros)','mockup','O Bando com cargos engraçados e lembretes de aniversário.',false],
+['Termos e condições (contrato com humor, assinado, IA formaliza)','mockup','O Contrato: cláusulas, aditivos, assinatura, multas afetivas opt-in.',false],
+['Cartas digitalizadas ou escritas no app + presentes','mockup','O Correio: cartas com lacre, cápsula do tempo, presentes com foto.',false],
+['Integração com IA (opcional)','mockup','Botão ✨ IA em toda seção, 3–5 ações; só propõe, nunca grava.',false],
+['Personalização total: arrastar atalhos, ordem, 3 pontinhos','mockup','Modo Personalizar, drag & drop, ⋯ com mais atalhos, temas, exportar configuração.',false],
+['Duas contas, visão compartilhada; edição simétrica com "o outro vê?"','decidida','D5 no painel; entra no mockup v1 (P5) com diário de mudanças.',false],
+['hyhoney.bitbeagle.com com login por casal, escalável','decidida','D4; "uma casa por casal" desde o dia 1. Tela de login/casa no mockup v1.',false],
+['Otimizado para mobile, estilo TickTick mobile','mockup','Gaveta de listas, barra inferior de ícones (4 atalhos + Mais), folha de detalhe. Servidor local para ver no iPhone (09).',false],
+['Sugestão de deliverys, guia de rolês (aleatório ou por tipo/energia/dinheiro/vibe), templates e IA','mockup','A Roleta (Laboratório): filtros, 🎲 Sortear, deliverys de sempre com ranking, 5 templates, 4 ações de IA.',false],
+['Design profissional baseado em apps que funcionam e neurociência; várias opções de tema → 3 finais','mockup','Skill hyhoney-design + galeria 11 (8 temas, marque 4) + passe v0.2 (alvos 44px, escala, um botão primário).',false],
+['Histórico de todas as versões do mockup','decidida','historico-mockups/ com README; v0 não foi arquivada (sobrescrita antes da regra), v0.1 em diante sim.',false],
+['Salvar no GitHub automaticamente (Cowork e futuramente Code)','construcao','Git iniciado na pasta; commit local a cada rodada; push pelo Mac com 15_GIT_sync.sh --criar (precisa do gh).',false],
+['Painel/app como app no MacBook e iPhone com IP fixo','construcao','13_INSTALL (LaunchAgent) + 14_GUIA (Instalar no Chrome/Safari, Adicionar à Tela de Início, reserva de DHCP).',false],
+['Clima do Dia: energia/humor/modo de cada um, pedir carinho ou espaço','mockup','O Termômetro (Nós) v. mínima + 16_PROMPT com a versão completa (compatibilidade, histórico, IA opt-in, sem gamificar humor).',false],
+['Anexos, comentários, tags, filtros e busca geral estilo TickTick','ideia','Busca 🔍/⌘K já no mockup (mínima); o resto está no 17_PROMPT (P8).',false],
+['Você colaborar na criação do app','ideia','Fase 1: painel e mockup compartilháveis (já). Fase 2: painel com dados compartilhados (você edita pelo iPhone, eu leio). Fase 3: repositório do app com você aprovando cada fatia.',false]],
+ideias:[['Memória Surpresa diária na capa',false],['Voto Duplo → selo UNANIMIDADE',false],['Certificados em PDF (1000 dias)',false],['Diário de bordo em viagem vira capítulo',false],['Mapa de desejos com pins',false],['Título automático do mês no Placar',false]]};
+let S;try{S=JSON.parse(localStorage.getItem('hyhoney-painel'))}catch(e){}if(!S)S=JSON.parse(JSON.stringify(INIT));for(const k in INIT){if(S[k]===undefined)S[k]=JSON.parse(JSON.stringify(INIT[k]))}
+function save(){try{localStorage.setItem('hyhoney-painel',JSON.stringify(S))}catch(e){}render()}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function cyc(arr,v){return arr[(arr.indexOf(v)+1)%arr.length]}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function render(){
+ document.getElementById('estado').value=S.estado;
+ document.getElementById('prompts').innerHTML=S.prompts.map((p,i)=>`<div class="row"><b style="width:26px">${p[0]}</b><div class="t">${esc(p[1])}</div><button class="chip ${p[2]}" onclick="S.prompts[${i}][2]=cyc(P_ST,S.prompts[${i}][2]);save()">${P_LB[p[2]]}</button><button class="del" onclick="S.prompts.splice(${i},1);save()">×</button></div>`).join('');
+ document.getElementById('perguntas').innerHTML=S.perguntas.map((q,i)=>`<div class="row"><div class="t"><div class="q">${i+1}. ${esc(q[0])}</div><input class="ans" placeholder="sua resposta…" value="${esc(q[1])}" onchange="S.perguntas[${i}][1]=this.value;save()"></div></div>`).join('');
+ document.getElementById('suas').innerHTML=(S.suas||[]).map((s,i)=>`<tr class="${s[3]?'done':''}"><td><input type="checkbox" ${s[3]?'checked':''} onchange="S.suas[${i}][3]=this.checked;save()" title="marcar como revisada por você"></td><td ${s[3]?'style="text-decoration:line-through;color:var(--muted)"':''}>${esc(s[0])}</td><td><button class="chip ${s[1]}" onclick="S.suas[${i}][1]=cyc(SEC_ST,S.suas[${i}][1]);save()">${SEC_LB[s[1]]}</button></td><td class="sub">${esc(s[2])}</td><td><button class="del" onclick="S.suas.splice(${i},1);save()">×</button></td></tr>`).join('');
+ document.getElementById('secoes').innerHTML=S.secoes.map((s,i)=>`<tr><td>${esc(s[0])}</td><td><b>${esc(s[1])}</b></td><td class="sub">${esc(s[2])}</td><td><button class="chip ${s[3]}" onclick="S.secoes[${i}][3]=cyc(SEC_ST,S.secoes[${i}][3]);save()">${SEC_LB[s[3]]}</button></td><td class="sub">${esc(s[4])}</td><td><button class="del" onclick="S.secoes.splice(${i},1);save()">×</button></td></tr>`).join('');
+ document.getElementById('decisoes').innerHTML=S.decisoes.map((d,i)=>`<tr><td>${d[0]}</td><td>${esc(d[1])}</td><td class="sub">${d[2]}</td></tr>`).join('');
+ document.getElementById('ideias').innerHTML=S.ideias.map((d,i)=>`<div class="row${d[1]?' done':''}"><input type="checkbox" ${d[1]?'checked':''} onchange="S.ideias[${i}][1]=this.checked;save()"><div class="t">${esc(d[0])}</div><button class="del" onclick="S.ideias.splice(${i},1);save()">×</button></div>`).join('');
+ document.getElementById('sessoes').innerHTML=S.sessoes.map(s=>`<div class="row"><div class="t">${esc(s)}</div></div>`).join('');
+ kSec.textContent=S.secoes.length;kDec.textContent=S.decisoes.length;kIde.textContent=S.ideias.filter(i=>!i[1]).length;kSes.textContent=S.sessoes.length;
+}
+document.getElementById('estado').addEventListener('change',e=>{S.estado=e.target.value;save()});
+function addPrompt(){const v=npPrompt.value.trim();if(!v)return;S.prompts.push(['P'+(S.prompts.length+1),v,'fila']);npPrompt.value='';save()}
+function addSec(){const v=nsNome.value.trim();if(!v)return;S.secoes.push([nsPasta.value||'—',v,'','ideia',nsObs.value]);nsNome.value=nsObs.value='';save()}
+function addDec(){const v=ndDec.value.trim();if(!v)return;S.decisoes.push(['D'+(S.decisoes.length+1),v,new Date().toISOString().slice(0,10)]);ndDec.value='';save()}
+function addSua(){const v=nuIde.value.trim();if(!v)return;(S.suas=S.suas||[]).push([v,'ideia','',false]);nuIde.value='';save()}
+function addIdea(){const v=niIde.value.trim();if(!v)return;S.ideias.push([v,false]);niIde.value='';save()}
+function reset(){S=JSON.parse(JSON.stringify(INIT));save();toast('Painel restaurado')}
+function exportMd(){const md=`# 04 · PAINEL — Estado do projeto HyHoney\n> Exportado em ${new Date().toISOString().slice(0,10)}\n\n## Estado atual\n${S.estado}\n\n## Decisões\n${S.decisoes.map(d=>`- ${d[0]} · ${d[1]} (${d[2]})`).join('\n')}\n\n## Prompts\n${S.prompts.map(p=>`- ${p[0]} · ${p[1]} · ${P_LB[p[2]]}`).join('\n')}\n\n## Checklist das suas ideias\n${(S.suas||[]).map(s=>`- [${s[3]?'x':' '}] ${s[0]} · ${SEC_LB[s[1]]} · ${s[2]}`).join('\n')}\n\n## Seções\n| Pasta | Seção | Apelido | Status | Obs |\n|---|---|---|---|---|\n${S.secoes.map(s=>`| ${s[0]} | ${s[1]} | ${s[2]} | ${SEC_LB[s[3]]} | ${s[4]} |`).join('\n')}\n\n## Perguntas abertas\n${S.perguntas.map((q,i)=>`${i+1}. ${q[0]}${q[1]?` → **${q[1]}**`:''}`).join('\n')}\n\n## Backlog de ideias\n${S.ideias.map(i=>`- [${i[1]?'x':' '}] ${i[0]}`).join('\n')}\n\n## Histórico de sessões\n${S.sessoes.map(s=>`- ${s}`).join('\n')}\n`;
+ navigator.clipboard?.writeText(md).then(()=>toast('Markdown copiado'),()=>{console.log(md);toast('Veja o console')})}
+const ARQ=[['00','00_INDICE.md','mapa Obsidian de tudo'],['01','01_PROMPT_planejamento-hyhoney.md','briefing mestre'],['02','02_PLANO_analise-arquitetura-sugestoes.md','4 pastas, sugestões, temas, roadmap v1'],['03','03_MOCKUP_hyhoney-app.html','app navegável v0.4'],['04','04_PAINEL_estado-do-projeto.md','fonte da verdade (este painel em texto)'],['05','05_CLAUDE_texto-para-colar-no-projeto.md','CLAUDE.md do projeto'],['06','06_SKILLS/','sessao · nova-secao · atualizar-painel · design'],['07','07_PROMPT_proximo-passo-P5.md','🟡 próximo prompt'],['08','08_ANALISE_projeto-estado-e-futuro.pdf','análise 1'],['09','09_SERVIDOR_local.py','servidor local'],['10','10_PREVIEW_dispositivos.html','iPhone · iPad · PC'],['11','11_TEMAS_galeria.html','8 temas, marque 4'],['12','12_PROMPT_design-neuro.md','✅ design + neurociência'],['13','13_INSTALL_servidor-no-login.sh','servidor no login'],['14','14_GUIA_app-no-dock-iphone-ip-fixo.md','app no Mac/iPhone, IP fixo'],['15','15_GIT_sync.sh','commit + push'],['16','16_PROMPT_clima-do-dia.md','⏳ Clima do Dia completo'],['17','17_PROMPT_anexos-tags-busca.md','⏳ anexos, tags, filtros, busca'],['18','18_PROMPT_analise-v2-e-replanejamento.md','✅ executado'],['19','19_ANALISE_v2-replanejamento.pdf','o que focar, esconder, otimizar; roadmap v2'],['—','historico-mockups/','v0.1 → v0.4']];document.getElementById('arquivos').innerHTML=ARQ.map(r=>`<tr><td>${r[0]}</td><td><a href="http://192.168.0.13:8787/${r[1]}">${r[1]}</a></td><td class="sub">${r[2]}</td></tr>`).join('');
+render();
+</script>

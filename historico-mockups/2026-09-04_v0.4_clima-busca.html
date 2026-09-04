@@ -1,0 +1,640 @@
+<title>HyHoney</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,800,100&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#FBF6EC; --surface:#FFFDF7; --surface2:#F3EBDA; --line:#E6DAC2;
+  --ink:#2B2118; --ink2:#6E5E4B; --muted:#9A8A73;
+  --accent:#E8A33D; --accent-ink:#2B2118; --accent-soft:#FBE7C2;
+  --rose:#E36A7C; --rose-soft:#FBDDE2; --sage:#6F9C6B; --sage-soft:#DDEBD9; --sky:#5B8FB9; --sky-soft:#DCE9F3;
+  --gold:#C9962B; --shadow:0 8px 24px rgba(80,55,20,.10);
+  --display:'Fraunces',Georgia,serif; --body:'Nunito',system-ui,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1D1913; --surface:#26211A; --surface2:#2F2921; --line:#3D352A;
+    --ink:#F2E9DA; --ink2:#C9BBA4; --muted:#8F8270; --accent:#F0B24F; --accent-soft:#3D3320;
+    --rose:#F08596; --rose-soft:#3F2A2E; --sage:#8DBB88; --sage-soft:#26332A; --sky:#7FB0D8; --sky-soft:#22303A;
+    --shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1D1913; --surface:#26211A; --surface2:#2F2921; --line:#3D352A;
+  --ink:#F2E9DA; --ink2:#C9BBA4; --muted:#8F8270; --accent:#F0B24F; --accent-soft:#3D3320;
+  --rose:#F08596; --rose-soft:#3F2A2E; --sage:#8DBB88; --sage-soft:#26332A; --sky:#7FB0D8; --sky-soft:#22303A;
+  --shadow:0 8px 24px rgba(0,0,0,.35);
+}
+/* Temas alternativos (peles) aplicados no #app */
+#app[data-skin="cartorio"]{ --bg:#1B1A1F; --surface:#24232A; --surface2:#2E2C35; --line:#3E3B46; --ink:#EFE6D2; --ink2:#C3B79C; --muted:#857B69; --accent:#D4AF5A; --accent-soft:#3A3120; --rose:#C97A8A; --rose-soft:#3A2830; --sage:#8AA88A; --sage-soft:#26322A; --sky:#8AA6C4; --sky-soft:#242E3A; --display:'Fraunces',Georgia,serif; --r:6px; --shadow:0 10px 30px rgba(0,0,0,.45)}
+#app[data-skin="polaroid"]{ --bg:#FFFFFF; --surface:#FFFFFF; --surface2:#F4F4F2; --line:#E2E2DE; --ink:#1E1E1E; --ink2:#5A5A5A; --muted:#9A9A96; --accent:#E36A7C; --accent-soft:#FDE3E7; --rose:#E36A7C; --rose-soft:#FDE3E7; --sage:#6F9C6B; --sage-soft:#E3EEE1; --sky:#5B8FB9; --sky-soft:#E0EBF4; --r:4px; --shadow:0 6px 18px rgba(0,0,0,.14)}
+#app[data-skin="arcade"]{ --bg:#0F0B1A; --surface:#181229; --surface2:#221A38; --line:#332A4F; --ink:#F4EEFF; --ink2:#BFB3DE; --muted:#7E7399; --accent:#FF3FA4; --accent-soft:#3D1531; --rose:#FF3FA4; --rose-soft:#3D1531; --sage:#3FE0C8; --sage-soft:#123531; --sky:#3FD2FF; --sky-soft:#12303A; --r:2px; --shadow:0 0 24px rgba(255,63,164,.25)}
+#app[data-skin="passaporte"]{ --bg:#EEF2F0; --surface:#FFFFFF; --surface2:#E3EAE6; --line:#CCD8D1; --ink:#14263A; --ink2:#3F5468; --muted:#7D8E9C; --accent:#1F6F5B; --accent-soft:#D6EBE3; --rose:#B8433F; --rose-soft:#F3D9D7; --sage:#1F6F5B; --sage-soft:#D6EBE3; --sky:#214E7C; --sky-soft:#D8E4F1; --r:10px; --shadow:0 8px 24px rgba(20,38,58,.12)}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.45}
+#app{display:grid;grid-template-columns:264px 1fr 320px;height:100vh;background:var(--bg);color:var(--ink);transition:background .3s}
+@media (max-width:1000px){#app{grid-template-columns:240px 1fr}#detail{display:none}}
+/* ---------- MOBILE (estilo TickTick: gaveta de listas + barra inferior de ícones + folha de detalhe) ---------- */
+.mob-top{display:none}
+.tabbar{display:none}
+.scrim{display:none}
+@media (max-width:680px){
+  #app{grid-template-columns:1fr;height:100dvh;position:relative}
+  #sidebar{position:fixed;inset:0 18% 0 0;z-index:40;transform:translateX(-105%);transition:transform .25s;box-shadow:var(--shadow);max-width:340px}
+  #app.drawer #sidebar{transform:none}
+  .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:35;opacity:0;pointer-events:none;transition:opacity .25s}
+  #app.drawer .scrim{opacity:1;pointer-events:auto}
+  #sidebar .shortcuts{display:none}
+  #main{padding:0 14px 92px}
+  .mob-top{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;background:var(--bg);padding:12px 0 8px;margin-bottom:6px}
+  .mob-top .ham{width:38px;height:38px;border-radius:10px;font-size:20px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line)}
+  .mob-top .couple{margin-left:auto;display:flex}.mob-top .couple .avatar{margin-left:-6px;border:2px solid var(--bg)}
+  .topbar{flex-wrap:wrap;margin-bottom:12px}.topbar h2{font-size:22px}.topbar .tools{width:100%;margin-left:0;overflow-x:auto}
+  .hero,.grid[style*="grid-template-columns"]{grid-template-columns:1fr !important}
+  .big{font-size:48px}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom));justify-content:space-around}
+  .tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;border-radius:10px;font-size:10px;font-weight:800;color:var(--muted);position:relative}
+  .tabbar button .i{font-size:22px;line-height:1}
+  .tabbar button.active{color:var(--ink)}
+  .tabbar button.active::after{content:"";position:absolute;top:-7px;width:26px;height:3px;border-radius:2px;background:var(--accent)}
+  .tabbar button .badge{position:absolute;top:0;right:calc(50% - 20px);min-width:14px;height:14px;border-radius:7px;background:var(--rose);color:#fff;font-size:9px;display:grid;place-items:center;padding:0 3px}
+  #app.editing .tabbar button{animation:wiggle .35s ease-in-out infinite alternate}
+  #detail{display:block;position:fixed;left:0;right:0;bottom:0;top:auto;max-height:72vh;border-left:0;border-top:1px solid var(--line);border-radius:18px 18px 0 0;box-shadow:var(--shadow);z-index:45;transform:translateY(105%);transition:transform .25s}
+  #app.sheet #detail{transform:none}
+  #detail::before{content:"";display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:-6px auto 12px}
+  .pop{position:fixed;left:8px !important;right:8px;top:auto !important;bottom:70px;max-height:70vh;overflow:auto}
+  .contract{padding:20px 16px}
+  .tag-ex{display:none}
+  /* v0.2 — passe de design (Fitts, Hick, fluência): alvos ≥ 44px, escala fixa, um botão primário */
+  body{font-size:15px}
+  .row{min-height:48px;padding:10px 8px;gap:12px}
+  .check{width:22px;height:22px;font-size:12px}
+  .topbar h2{font-size:28px;letter-spacing:-.01em}
+  .topbar .tools .tb{min-height:44px;padding:0 16px}
+  .topbar .tools .tb:not(.primary):not(.ai){display:none}
+  .tabbar button{min-height:52px;font-size:11px}
+  .tabbar button .i{font-size:24px}
+  .card{padding:16px 14px}
+  .coupon .use,.tb.primary{min-height:44px}
+  .shortcuts .sc,.item{min-height:44px}
+  .cd-units b{font-size:40px}
+  .label{font-size:11px}
+}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.row.done .check{animation:pop .35s ease-out}
+@media (prefers-reduced-motion:reduce){.row.done .check{animation:none}}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance}
+.num{font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.02em;background:var(--surface2);color:var(--ink2)}
+.chip.rose{background:var(--rose-soft);color:var(--rose)} .chip.sage{background:var(--sage-soft);color:var(--sage)} .chip.sky{background:var(--sky-soft);color:var(--sky)} .chip.gold{background:var(--accent-soft);color:var(--ink)}
+.label{font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
+.avatar{width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;font-weight:800;font-size:12px;color:#fff}
+.av-a{background:var(--accent);color:var(--accent-ink)} .av-b{background:var(--rose)}
+
+/* ---------- SIDEBAR ---------- */
+#sidebar{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+.brand{display:flex;align-items:center;gap:10px;padding:14px 16px 8px}
+.brand h1{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.brand .sub{font-size:11px;color:var(--muted)}
+.couple{margin-left:auto;display:flex}
+.couple .avatar{margin-left:-6px;border:2px solid var(--surface)}
+.shortcuts{display:flex;align-items:center;gap:4px;padding:6px 12px;border-bottom:1px solid var(--line)}
+.shortcuts .sc{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px;position:relative;transition:transform .15s}
+.shortcuts .sc:hover,.shortcuts .sc.active{background:var(--surface2)}
+.shortcuts .sc .badge{position:absolute;top:2px;right:2px;min-width:14px;height:14px;border-radius:7px;background:var(--rose);color:#fff;font-size:9px;font-weight:800;display:grid;place-items:center;padding:0 3px}
+.shortcuts .more{margin-left:auto;width:32px;height:32px;border-radius:8px;display:grid;place-items:center;font-size:18px;letter-spacing:1px;color:var(--ink2)}
+.shortcuts .more:hover{background:var(--surface2)}
+.tree{flex:1;overflow:auto;padding:8px 8px 16px}
+.folder{margin-bottom:8px}
+.folder>.fh{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px;cursor:pointer;color:var(--ink2);font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.folder>.fh:hover{background:var(--surface2)}
+.folder>.fh .caret{transition:transform .2s;font-size:10px}
+.folder.closed>.fh .caret{transform:rotate(-90deg)}
+.folder.closed>.items{display:none}
+.item{display:flex;align-items:center;gap:8px;padding:6px 8px 6px 14px;border-radius:8px;cursor:pointer;color:var(--ink);position:relative}
+.item:hover{background:var(--surface2)}
+.item.active{background:var(--accent-soft);font-weight:800}
+.item .ico{width:22px;text-align:center;font-size:15px}
+.item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .cnt{font-size:11px;color:var(--muted)}
+.item .lock{font-size:11px}
+.item.hidden-sec{opacity:.45}
+.item .grip,.sc .grip{display:none;color:var(--muted);font-size:12px;cursor:grab}
+/* modo personalizar */
+#app.editing .item .grip,#app.editing .sc .grip{display:inline}
+#app.editing .sc .grip{position:absolute;bottom:-3px;right:-2px;font-size:9px}
+#app.editing .item,#app.editing .sc{animation:wiggle .35s ease-in-out infinite alternate}
+#app.editing .item:nth-child(odd),#app.editing .sc:nth-child(odd){animation-delay:.12s}
+@keyframes wiggle{from{transform:rotate(-.8deg)}to{transform:rotate(.8deg)}}
+@media (prefers-reduced-motion:reduce){#app.editing .item,#app.editing .sc{animation:none;outline:1px dashed var(--accent)}}
+.dragover{outline:2px dashed var(--accent);outline-offset:-2px;background:var(--accent-soft)}
+.dragging{opacity:.4}
+.sidefoot{border-top:1px solid var(--line);padding:8px 10px;display:flex;gap:6px}
+.sidefoot button{flex:1;padding:8px;border-radius:9px;background:var(--surface2);font-weight:700;font-size:12px}
+.sidefoot button.on{background:var(--accent);color:var(--accent-ink)}
+
+/* ---------- MAIN ---------- */
+#main{overflow:auto;padding:22px 28px 60px}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.topbar h2{font-size:26px;font-weight:800}
+.topbar .nick{font-family:var(--display);font-style:italic;color:var(--muted);font-size:15px}
+.topbar .tools{margin-left:auto;display:flex;gap:6px}
+.tb{padding:7px 12px;border-radius:9px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:12px;display:inline-flex;gap:6px;align-items:center}
+.tb.ai{background:var(--accent-soft);border-color:transparent}
+.tb.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card h3{font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card h3 .label{margin-left:auto}
+.row{display:flex;align-items:center;gap:10px;padding:8px 6px;border-radius:8px;cursor:pointer}
+.row:hover{background:var(--surface2)}
+.row .t{flex:1}
+.row .t small{display:block;color:var(--muted);font-size:11.5px}
+.check{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;font-size:11px}
+.row.done .check{background:var(--sage);border-color:var(--sage);color:#fff}
+.row.done .t{text-decoration:line-through;color:var(--muted)}
+.bar{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.bar.rose i{background:var(--rose)} .bar.sage i{background:var(--sage)} .bar.sky i{background:var(--sky)}
+.stamp{display:inline-block;padding:4px 10px;border:2px solid var(--rose);color:var(--rose);font-family:var(--display);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:11px;transform:rotate(-4deg);border-radius:4px;opacity:.9}
+.note{font-size:12px;color:var(--ink2);background:var(--surface2);padding:8px 10px;border-radius:8px}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+.big{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;letter-spacing:-.02em}
+
+/* HOJE countdown */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-bottom:14px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.countdown{background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--line);border-radius:var(--r);padding:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;min-height:220px}
+.countdown .modes{position:absolute;top:12px;right:12px;display:flex;gap:4px}
+.countdown .modes button{width:26px;height:26px;border-radius:7px;font-size:12px;background:var(--surface);border:1px solid var(--line)}
+.countdown .modes button.on{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.cd-units{display:flex;gap:18px;align-items:baseline}
+.cd-units b{font-family:var(--display);font-size:44px;font-weight:800;line-height:1}
+.cd-units span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.ring{width:120px;height:120px;border-radius:50%;background:conic-gradient(var(--accent) var(--p,60%),var(--surface2) 0);display:grid;place-items:center}
+.ring i{width:92px;height:92px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:22px;font-style:normal}
+.memory{background:var(--rose-soft);border-radius:var(--r);padding:18px;position:relative}
+.memory .photo{width:100%;aspect-ratio:16/8;border-radius:10px;background:linear-gradient(135deg,var(--rose),var(--accent));opacity:.55;margin-bottom:10px}
+.memory q{font-family:var(--display);font-size:17px;font-style:italic;display:block}
+
+/* Protocolos */
+.coupon{border:2px dashed var(--line);border-radius:12px;padding:14px;position:relative;background:var(--surface)}
+.coupon.rare{border-color:var(--sky)} .coupon.epic{border-color:var(--rose)} .coupon.legend{border-color:var(--gold);background:linear-gradient(160deg,var(--accent-soft),var(--surface))} .coupon.unique{border-color:var(--ink);border-style:double;border-width:4px}
+.coupon .rar{position:absolute;top:-9px;left:12px;background:var(--surface);padding:0 6px}
+.coupon h4{font-family:var(--display);font-size:16px;margin:6px 0 4px}
+.coupon .uses{display:flex;gap:4px;margin:8px 0}
+.coupon .uses i{width:14px;height:14px;border-radius:3px;background:var(--accent)} .coupon .uses i.spent{background:var(--surface2)}
+.coupon .use{padding:6px 10px;border-radius:8px;background:var(--ink);color:var(--bg);font-weight:800;font-size:12px}
+.coupon .use:disabled{opacity:.35;cursor:not-allowed}
+
+/* Contrato */
+.contract{background:var(--surface);border:1px solid var(--line);padding:30px 34px;font-family:var(--display);max-width:720px;line-height:1.6;position:relative}
+.contract h3{text-align:center;letter-spacing:.1em;text-transform:uppercase;font-size:14px;margin-bottom:16px;display:block}
+.contract ol{padding-left:22px}.contract li{margin-bottom:8px}
+.contract .sigs{display:flex;gap:30px;margin-top:26px;justify-content:space-between}
+.contract .sig{flex:1;border-top:1px solid var(--ink);padding-top:6px;font-size:12px;text-align:center;font-family:var(--body)}
+.contract .sig b{display:block;font-family:'Fraunces',cursive;font-style:italic;font-size:22px;font-weight:400;margin-bottom:-6px}
+.contract .stamp{position:absolute;right:26px;top:22px}
+
+/* WhatsApp */
+.wa{background:var(--surface2);border-radius:var(--r);padding:14px;max-width:640px}
+.wa .b{max-width:78%;padding:7px 10px;border-radius:10px;margin:4px 0;font-size:13px;position:relative;background:var(--surface)}
+.wa .b.me{margin-left:auto;background:var(--sage-soft)}
+.wa .b .tm{font-size:10px;color:var(--muted);text-align:right;margin-top:2px}
+.wa .b.hl{outline:2px solid var(--accent)}
+.wa .b .mk{position:absolute;top:-10px;right:-6px;font-size:14px}
+.wa .day{text-align:center;font-size:11px;color:var(--muted);margin:8px 0}
+
+/* Multiverso */
+.tree svg text{font-family:var(--body);font-size:12px;fill:var(--ink)}
+.tree svg .nd{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.tree svg .nd.root{fill:var(--accent-soft);stroke:var(--accent)}
+.tree svg .ln{stroke:var(--line);stroke-width:2;fill:none}
+
+/* Dicionário */
+.verb{padding:10px 0;border-bottom:1px solid var(--line)}
+.verb b{font-family:var(--display);font-size:18px}
+.verb i{color:var(--muted);font-size:12px;margin-left:6px}
+.verb p{margin:4px 0 0}
+.verb .ex{color:var(--ink2);font-style:italic;font-size:13px}
+
+/* Placar */
+.stat{display:flex;flex-direction:column;gap:4px}
+.stat b{font-family:var(--display);font-size:30px;font-weight:800;line-height:1}
+.stat span{font-size:11.5px;color:var(--muted)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:110px;padding-top:10px}
+.bars div{flex:1;background:var(--rose);border-radius:4px 4px 0 0;position:relative;min-height:4px}
+.bars div small{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+.streak{display:flex;gap:4px;flex-wrap:wrap}
+.streak i{width:16px;height:16px;border-radius:4px;background:var(--surface2)} .streak i.on{background:var(--rose)}
+
+/* Álbum */
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.ph{aspect-ratio:1;border-radius:10px;position:relative;overflow:hidden;background:var(--surface2)}
+.ph::after{content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;padding:6px;font-size:10.5px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff}
+.polaroid .ph{border:8px solid #fff;border-bottom-width:28px;box-shadow:var(--shadow);border-radius:2px;transform:rotate(var(--rot,0deg))}
+
+/* Timeline */
+.tl{position:relative;padding-left:26px;border-left:2px solid var(--line);margin-left:8px}
+.tl .ev{position:relative;margin-bottom:18px}
+.tl .ev::before{content:"";position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--surface)}
+.tl .ev.big::before{background:var(--rose);width:16px;height:16px;left:-35px}
+.tl .ev b{font-family:var(--display);font-size:15px}
+.tl .ev small{display:block;color:var(--muted)}
+
+/* Matilha */
+.pack{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.member{text-align:center;padding:14px 10px}
+.member .face{width:56px;height:56px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;font-size:26px;background:var(--surface2)}
+.member b{display:block}.member small{color:var(--muted);display:block;font-size:11px}
+
+/* ---------- DETAIL ---------- */
+#detail{background:var(--surface);border-left:1px solid var(--line);padding:20px;overflow:auto}
+#detail .label{margin-bottom:6px}
+#detail h3{font-size:18px;margin-bottom:6px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.field{margin-top:14px}
+.field textarea,.field input{width:100%;font:inherit;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--ink);resize:vertical}
+.attach{display:flex;gap:6px;margin-top:6px}
+.attach div{width:54px;height:54px;border-radius:8px;background:linear-gradient(135deg,var(--sky-soft),var(--accent-soft))}
+.attach button{width:54px;height:54px;border-radius:8px;border:1px dashed var(--line);font-size:20px;color:var(--muted)}
+.cmt{display:flex;gap:8px;margin-top:10px;font-size:12.5px}
+.cmt .avatar{flex:none;width:22px;height:22px;font-size:10px}
+.cmt small{display:block;color:var(--muted);font-size:10.5px}
+.hist{font-size:11px;color:var(--muted);margin-top:16px;border-top:1px solid var(--line);padding-top:10px}
+
+/* ---------- POPOVER / TOAST ---------- */
+.pop{position:absolute;z-index:20;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:8px;min-width:230px}
+.pop .label{padding:6px 8px 4px}
+.pop button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:7px 8px;border-radius:8px;font-size:13px}
+.pop button:hover{background:var(--surface2)}
+.pop .sep{height:1px;background:var(--line);margin:6px 0}
+.pop .skins{display:flex;gap:6px;padding:4px 8px}
+.pop .skins button{width:auto;padding:0;border-radius:50%;width:22px;height:22px;border:2px solid var(--line)}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:30}
+#toast.show{opacity:1}
+.tag-ex{position:fixed;top:8px;right:8px;z-index:9;font-size:10px;color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:2px 8px;border-radius:999px}
+[contenteditable="true"]{outline:1px dashed var(--accent);padding:0 3px;border-radius:4px}
+</style>
+
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand">
+      <div><h1>HyHoney</h1><div class="sub">o app do casal · mockup v0.2</div></div>
+      <div class="couple" title="Duas contas, uma casa"><span class="avatar av-a">O</span><span class="avatar av-b">M</span></div>
+    </div>
+    <div class="shortcuts" id="shortcuts"></div>
+    <div class="tree" id="tree"></div>
+    <div class="sidefoot">
+      <button data-busca title="Buscar em tudo (⌘K)" style="flex:0 0 40px">🔍</button>
+      <button id="btnEdit" title="Arrastar, renomear, ocultar">✎ Personalizar</button>
+      <button id="btnNew">＋ Nova seção</button>
+    </div>
+  </aside>
+
+  <div class="scrim" id="scrim"></div>
+  <main id="main"></main>
+  <nav class="tabbar" id="tabbar"></nav>
+
+  <aside id="detail">
+    <div class="empty">Clique em qualquer item para ver notas, fotos, comentários e quem mexeu.</div>
+  </aside>
+</div>
+<div id="toast"></div>
+<div class="tag-ex">dados de exemplo</div>
+
+<script>
+/* ==================== DADOS ==================== */
+const ME={id:'a',name:'Odin',cls:'av-a',ini:'O'};
+const YOU={id:'b',name:'Mel',cls:'av-b',ini:'M'}; // nome de exemplo; editável em ⋯ → Configurações
+const START='2021-08-14'; // data de exemplo do início do namoro
+
+const DEFAULT_SECTIONS=[
+ // pasta NÓS
+ {id:'hoje',ico:'🏠',name:'Hoje',nick:'A Capa',folder:'nos'},
+ {id:'clima',ico:'🌡️',name:'Clima do Dia',nick:'O Termômetro',folder:'nos'},
+ {id:'saga',ico:'📜',name:'Linha do Tempo',nick:'A Saga',folder:'nos'},
+ {id:'almanaque',ico:'📅',name:'Calendário',nick:'O Almanaque',folder:'nos'},
+ {id:'museu',ico:'📸',name:'Álbum',nick:'O Museu',folder:'nos'},
+ {id:'autos',ico:'💬',name:'Arquivo WhatsApp',nick:'Os Autos',folder:'nos'},
+ {id:'correio',ico:'💌',name:'Cartas & Presentes',nick:'O Correio',folder:'nos'},
+ // CARTÓRIO
+ {id:'contrato',ico:'📜',name:'Termos & Condições',nick:'O Contrato',folder:'cartorio'},
+ {id:'protocolos',ico:'🎟️',name:'Protocolos',nick:'Os Cupons',folder:'cartorio',cnt:7},
+ {id:'manual',ico:'📘',name:'Manual do Parceiro',nick:'O Manual',folder:'cartorio'},
+ {id:'matilha',ico:'🐾',name:'A Matilha',nick:'O Bando',folder:'cartorio'},
+ // LABORATÓRIO
+ {id:'multiverso',ico:'🗺️',name:'Universos Paralelos',nick:'O Multiverso',folder:'lab'},
+ {id:'dicionario',ico:'📖',name:'Dicionário do Casal',nick:'O Dicionário',folder:'lab',cnt:14},
+ {id:'louca',ico:'✨',name:'To-do Mágico',nick:'A Lista Louca',folder:'lab',cnt:9},
+ {id:'roleta',ico:'🎲',name:'O Que Fazer Hoje?',nick:'A Roleta',folder:'lab'},
+ {id:'oficina',ico:'✍️',name:'Histórias a Dois',nick:'A Oficina',folder:'lab'},
+ {id:'mapa',ico:'🎯',name:'Metas & Sonhos',nick:'O Mapa',folder:'lab'},
+ // PAINEL
+ {id:'agenda',ico:'🗓️',name:'Próximos',nick:'A Agenda',folder:'painel',cnt:4},
+ {id:'deveres',ico:'🧹',name:'To-do Chato',nick:'Os Deveres',folder:'painel',cnt:5},
+ {id:'viagens',ico:'🧳',name:'Viagens',nick:'O Passaporte',folder:'painel'},
+ {id:'cinema',ico:'🎬',name:'Cinema',nick:'A Cinemateca',folder:'painel'},
+ {id:'placar',ico:'🔥',name:'Registro Íntimo',nick:'O Placar',folder:'painel',pin:true},
+ {id:'controle',ico:'📊',name:'Sala de Controle',nick:'As Estatísticas',folder:'painel'},
+ {id:'cofre',ico:'🔒',name:'Finanças & Responsabilidades',nick:'O Cofre',folder:'painel',admin:true,hidden:true},
+];
+const FOLDERS=[{id:'nos',ico:'💗',name:'Nós'},{id:'cartorio',ico:'🏛️',name:'Cartório'},{id:'lab',ico:'🧪',name:'Laboratório'},{id:'painel',ico:'⚙️',name:'Painel'},{id:'custom',ico:'📁',name:'Minhas seções'}];
+const DEFAULT_SHORTCUTS=['hoje','agenda','louca','protocolos','viagens'];
+
+let state=load()||{sections:JSON.parse(JSON.stringify(DEFAULT_SECTIONS)),shortcuts:[...DEFAULT_SHORTCUTS],skin:'mel',cdMode:0,closed:{},current:'hoje',protoUsed:{},done:{}};
+let editing=false;
+// seções novas do padrão entram mesmo em quem já tinha personalização salva
+DEFAULT_SECTIONS.forEach((d,i)=>{if(!state.sections.find(s=>s.id===d.id)){const after=DEFAULT_SECTIONS[i-1];const j=after?state.sections.findIndex(s=>s.id===after.id):-1;state.sections.splice(j+1,0,JSON.parse(JSON.stringify(d)))}});
+state.roleta=state.roleta||{};
+state.clima=state.clima||{a:{e:3,h:'😐 neutro',m:'cafe',n:''},b:{e:2,h:'🥱 manhosa',m:'colo',n:'dia longo, quero sofá e mão na cabeça'}};
+const MODOS={festa:['🎉','festa','pode chamar a Matilha, tô elétrico'],silencio:['🤫','modo silencioso','pode sentar do lado; só não pergunta nada'],exausto:['🪫','exausto do trabalho','preciso de 40 min sem ninguém precisar de mim'],carinho:['🤗','quero carinho','abraço de 20 segundos resolve 80%'],espaco:['🌵','quero espaço','não é com você; volto sozinho'],comida:['🍕','quero comida','decide você, eu como qualquer coisa'],colo:['🧸','colo, mas sem falar','deita aqui e coloca uma série'],cafe:['☕','recuperando, volto já','me dá 1 episódio e um café']};
+const CORMODO={festa:'var(--accent-soft)',silencio:'var(--surface2)',exausto:'var(--sky-soft)',carinho:'var(--rose-soft)',espaco:'var(--sage-soft)',comida:'var(--accent-soft)',colo:'var(--rose-soft)',cafe:'var(--surface2)'};
+
+function load(){try{const s=localStorage.getItem('hyhoney');return s?JSON.parse(s):null}catch(e){return null}}
+function save(){try{localStorage.setItem('hyhoney',JSON.stringify(state))}catch(e){}}
+const sec=id=>state.sections.find(s=>s.id===id);
+const $=s=>document.querySelector(s);
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800)}
+function daysSince(d){return Math.floor((Date.now()-new Date(d+'T00:00:00'))/864e5)}
+function fmt(d){return new Date(d+'T00:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'})}
+function ago(d){const n=daysSince(d);return n===0?'hoje':n===1?'ontem':`há ${n.toLocaleString('pt-BR')} dias`}
+
+/* ==================== SIDEBAR ==================== */
+function renderSidebar(){
+  const sc=$('#shortcuts');sc.innerHTML='';
+  state.shortcuts.forEach(id=>{const s=sec(id);if(!s)return;
+    const b=document.createElement('button');b.className='sc'+(state.current===id?' active':'');b.draggable=true;b.dataset.id=id;b.title=s.name;
+    b.innerHTML=`${s.ico}${s.cnt?`<span class="badge">${s.cnt}</span>`:''}<span class="grip">⋮⋮</span>`;
+    b.onclick=()=>open(id);drag(b,'sc');sc.appendChild(b)});
+  const more=document.createElement('button');more.className='more';more.textContent='⋯';more.title='Mais atalhos e personalização';more.onclick=e=>morePop(e);sc.appendChild(more);
+
+  const tree=$('#tree');tree.innerHTML='';
+  FOLDERS.forEach(f=>{const items=state.sections.filter(s=>s.folder===f.id);if(f.id==='custom'&&!items.length&&!editing)return;
+    const d=document.createElement('div');d.className='folder'+(state.closed[f.id]?' closed':'');
+    d.innerHTML=`<div class="fh"><span class="caret">▼</span>${f.ico} <span>${f.name}</span><span style="margin-left:auto;font-weight:400">${items.length}</span></div><div class="items" data-folder="${f.id}"></div>`;
+    d.querySelector('.fh').onclick=()=>{state.closed[f.id]=!state.closed[f.id];save();renderSidebar()};
+    const box=d.querySelector('.items');
+    box.addEventListener('dragover',e=>{e.preventDefault();box.classList.add('dragover')});
+    box.addEventListener('dragleave',()=>box.classList.remove('dragover'));
+    box.addEventListener('drop',e=>{e.preventDefault();box.classList.remove('dragover');const id=e.dataTransfer.getData('sec');if(!id)return;const s=sec(id);if(s){s.folder=f.id;save();renderSidebar();toast(`"${s.name}" movida para ${f.name}`)}});
+    items.forEach(s=>{const it=document.createElement('div');it.className='item'+(state.current===s.id?' active':'')+(s.hidden?' hidden-sec':'');it.draggable=true;it.dataset.id=s.id;
+      it.innerHTML=`<span class="grip">⋮⋮</span><span class="ico">${s.ico}</span><span class="nm">${s.name}</span>${s.admin?'<span class="lock" title="Só o admin vê">👑</span>':''}${s.pin?'<span class="lock" title="PIN">🔐</span>':''}${s.hidden?'<span class="lock" title="Oculta para '+YOU.name+'">🙈</span>':''}${s.cnt?`<span class="cnt num">${s.cnt}</span>`:''}`;
+      it.onclick=()=>open(s.id);it.oncontextmenu=e=>{e.preventDefault();itemPop(e,s)};
+      it.querySelector('.nm').ondblclick=e=>{if(editing){e.stopPropagation();rename(it.querySelector('.nm'),s)}};
+      drag(it,'sec');box.appendChild(it)});
+    tree.appendChild(d)});
+  renderTabbar();
+}
+function drag(el,kind){
+  el.addEventListener('dragstart',e=>{e.dataTransfer.setData(kind,el.dataset.id);e.dataTransfer.setData('text/plain',el.dataset.id);el.classList.add('dragging')});
+  el.addEventListener('dragend',()=>el.classList.remove('dragging'));
+  el.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();el.classList.add('dragover')});
+  el.addEventListener('dragleave',()=>el.classList.remove('dragover'));
+  el.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();el.classList.remove('dragover');
+    const from=e.dataTransfer.getData(kind)||e.dataTransfer.getData('text/plain');const to=el.dataset.id;if(!from||from===to)return;
+    if(kind==='sc'){const a=state.shortcuts;const i=a.indexOf(from),j=a.indexOf(to);if(i<0)return;a.splice(i,1);a.splice(j,0,from)}
+    else{const a=state.sections;const i=a.findIndex(s=>s.id===from),j=a.findIndex(s=>s.id===to);const [m]=a.splice(i,1);m.folder=a[j>i?j-1:j]?.folder||m.folder;a.splice(a.findIndex(s=>s.id===to),0,m)}
+    save();renderSidebar();toast('Ordem atualizada')});
+}
+function rename(el,s){el.contentEditable='true';el.focus();document.execCommand('selectAll',false,null);
+  const end=()=>{el.contentEditable='false';s.name=el.textContent.trim()||s.name;save();renderSidebar();if(state.current===s.id)renderMain()};
+  el.onblur=end;el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();el.blur()}}}
+function closePops(){document.querySelectorAll('.pop').forEach(p=>p.remove())}
+function pop(e,html){closePops();const p=document.createElement('div');p.className='pop';p.innerHTML=html;document.body.appendChild(p);
+  const r=e.currentTarget.getBoundingClientRect();p.style.left=Math.min(r.left,innerWidth-260)+'px';p.style.top=(r.bottom+6)+'px';
+  setTimeout(()=>document.addEventListener('click',closePops,{once:true}),0);p.onclick=ev=>ev.stopPropagation();return p}
+function morePop(e){
+  const extra=state.sections.filter(s=>!state.shortcuts.includes(s.id)&&!(s.hidden&&!s.admin));
+  const p=pop(e,`<div class="label">Mais atalhos</div>${extra.map(s=>`<button data-open="${s.id}"><span>${s.ico}</span>${s.name}<span style="margin-left:auto" class="chip">${s.nick}</span></button>`).join('')}
+   <div class="sep"></div><div class="label">Personalizar</div>
+   <button data-act="edit">✎ Arrastar e renomear</button><button data-act="new">＋ Criar seção nova</button>
+   <button data-act="shortcuts">⭐ Escolher atalhos fixos</button>
+   <div class="sep"></div><div class="label">Tema (pele)</div>
+   <div class="skins">${[['mel','#E8A33D','Mel & Papel'],['cartorio','#1B1A1F','Cartório Noturno'],['polaroid','#ffffff','Polaroid'],['arcade','#FF3FA4','Neon Arcade'],['passaporte','#1F6F5B','Passaporte']].map(([k,c,n])=>`<button data-skin="${k}" title="${n}" style="background:${c}"></button>`).join('')}</div>
+   <div class="sep"></div><button data-act="export">⬇ Exportar configuração</button><button data-act="reset">↺ Restaurar padrão</button>`);
+  p.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{open(b.dataset.open);closePops()});
+  p.querySelectorAll('[data-skin]').forEach(b=>b.onclick=()=>{state.skin=b.dataset.skin;applySkin();save();toast('Tema: '+b.title)});
+  p.querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{const a=b.dataset.act;closePops();
+    if(a==='edit')toggleEdit();if(a==='new')newSection();if(a==='export')exportCfg();if(a==='shortcuts')toast('Arraste uma seção da lista até a barra de atalhos (ou use o botão direito → Fixar)');
+    if(a==='reset'){try{localStorage.removeItem('hyhoney')}catch(_){}location.reload()}});
+}
+function itemPop(e,s){const p=pop(e,`<div class="label">${s.ico} ${s.name}</div>
+  <button data-a="pin">${state.shortcuts.includes(s.id)?'⭐ Tirar dos atalhos':'⭐ Fixar nos atalhos'}</button>
+  <button data-a="rename">✎ Renomear</button><button data-a="emoji">🎲 Trocar ícone</button>
+  <button data-a="hide">${s.hidden?'👁 Mostrar para '+YOU.name:'🙈 Ocultar de '+YOU.name}</button>
+  ${s.folder==='custom'?'<button data-a="del">🗑 Apagar</button>':''}`);
+  p.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{const a=b.dataset.a;closePops();
+    if(a==='pin'){const i=state.shortcuts.indexOf(s.id);i<0?state.shortcuts.push(s.id):state.shortcuts.splice(i,1)}
+    if(a==='hide'){s.hidden=!s.hidden;toast(s.hidden?`Só você vê "${s.name}" agora`:`"${s.name}" liberada para ${YOU.name}`)}
+    if(a==='emoji'){const E=['💛','🍯','🐝','🌙','🎈','🍕','🎲','🦆','🧸','🌵'];s.ico=E[Math.floor(Math.random()*E.length)]}
+    if(a==='del'){state.sections=state.sections.filter(x=>x.id!==s.id);state.shortcuts=state.shortcuts.filter(x=>x!==s.id);if(state.current===s.id)state.current='hoje'}
+    if(a==='rename'){if(!editing)toggleEdit();setTimeout(()=>{const el=document.querySelector(`.item[data-id="${s.id}"] .nm`);if(el)rename(el,s)},50);return}
+    save();renderSidebar();renderMain()})}
+/* busca geral (v0.4, mínima): seções, protocolos, rolês, deliverys, verbetes, matilha */
+function indice(){const I=[];state.sections.forEach(s=>I.push({s:s.id,k:'Seção',t:s.name,sub:s.nick||''}));
+ PROTOS.forEach(p=>I.push({s:'protocolos',k:'Protocolo',t:p.t,sub:p.d}));ROLES.forEach(r=>I.push({s:'roleta',k:'Rolê',t:r.t,sub:r.d}));DELIV.forEach(d=>I.push({s:'roleta',k:'Delivery',t:d[1],sub:d[2]}));
+ ['Sofazar','Ninice','Pastelício','Desculpismo'].forEach(w=>I.push({s:'dicionario',k:'Verbete',t:w,sub:'Dicionário do Casal'}));['Nina','Bento','Rafa','Ju','Dona Lúcia','Caio'].forEach(n=>I.push({s:'matilha',k:'Matilha',t:n,sub:'A Matilha'}));
+ MEMS.forEach(m=>I.push({s:'almanaque',k:'Memória',t:m.q,sub:fmt(m.d)}));return I}
+function buscaPop(e){const p=pop(e,`<div class="label">Buscar em tudo · ⌘K</div><input data-q placeholder="primeira vez, Nina, pastel, julho 2023…" style="width:100%;font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);margin-bottom:6px"><div data-res><div class="note">Sugestões: <b>primeira vez</b> · <b>Nina</b> · <b>pastel</b> · <b>louça</b></div></div>`);
+ p.style.minWidth='300px';const inp=p.querySelector('[data-q]');const res=p.querySelector('[data-res]');inp.focus();
+ inp.oninput=()=>{const q=inp.value.trim().toLowerCase();if(!q){res.innerHTML='';return}const hits=indice().filter(i=>(i.t+' '+i.sub).toLowerCase().includes(q)).slice(0,8);
+  res.innerHTML=hits.length?hits.map(h=>`<button data-go="${h.s}"><span class="chip" style="min-width:74px;justify-content:center">${h.k}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${h.t}</span></button>`).join(''):'<div class="note">Nada com esse nome. Rascunhos privados do outro nunca aparecem.</div>';
+  res.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{closePops();open(b.dataset.go)})}}
+document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();const b=document.querySelector('[data-busca]');if(b)b.click()}});
+function toggleEdit(){editing=!editing;$('#app').classList.toggle('editing',editing);$('#btnEdit').classList.toggle('on',editing);toast(editing?'Modo personalizar: arraste, clique 2× para renomear, botão direito para mais':'Personalização salva');renderSidebar()}
+const MOLDES=[['lista','📋','Lista'],['galeria','🖼️','Galeria'],['calendario','📅','Calendário'],['dicionario','📖','Dicionário'],['arvore','🌳','Árvore'],['placar','🏆','Placar']];
+function newSection(){const id='c'+Date.now();const m=MOLDES[Math.floor(Math.random()*MOLDES.length)];
+  state.sections.push({id,ico:m[1],name:'Nova seção ('+m[2]+')',nick:'molde: '+m[2],folder:'custom',molde:m[0]});save();
+  if(!editing)toggleEdit();renderSidebar();open(id);setTimeout(()=>{const el=document.querySelector(`.item[data-id="${id}"] .nm`);if(el)rename(el,sec(id))},60)}
+function exportCfg(){const cfg=JSON.stringify({shortcuts:state.shortcuts,skin:state.skin,sections:state.sections.map(s=>({id:s.id,name:s.name,ico:s.ico,folder:s.folder,hidden:!!s.hidden}))},null,1);
+  navigator.clipboard?.writeText(cfg).then(()=>toast('Configuração copiada — cole no chat com o Claude'),()=>toast('Não consegui copiar; veja o console'));console.log(cfg)}
+function applySkin(){$('#app').dataset.skin=state.skin;document.body.classList.toggle('polaroid',state.skin==='polaroid')}
+
+/* ==================== MAIN ==================== */
+function open(id){state.current=id;save();$('#app').classList.remove('drawer','sheet');renderSidebar();renderMain();$('#main').scrollTop=0;window.scrollTo(0,0)}
+/* barra inferior mobile: os 4 primeiros atalhos + ⋯ (mesma lista arrastável da sidebar) */
+function renderTabbar(){const tb=$('#tabbar');tb.innerHTML='';
+  state.shortcuts.slice(0,4).forEach(id=>{const s=sec(id);if(!s)return;const b=document.createElement('button');b.className=state.current===id?'active':'';b.draggable=true;b.dataset.id=id;
+    b.innerHTML=`<span class="i">${s.ico}</span>${s.name.split(' ')[0]}${s.cnt?`<span class="badge">${s.cnt}</span>`:''}`;b.onclick=()=>open(id);drag(b,'sc');tb.appendChild(b)});
+  const more=document.createElement('button');more.innerHTML='<span class="i">⋯</span>Mais';more.onclick=e=>morePop(e);tb.appendChild(more)}
+function renderMain(){const s=sec(state.current)||sec('hoje');const m=$('#main');
+  const v=VIEWS[s.id]||generic;
+  m.innerHTML=`<div class="mob-top"><button class="ham" id="ham" title="Listas">☰</button><b style="font-family:var(--display);font-size:18px">HyHoney</b><button class="ham" data-busca title="Buscar em tudo" style="margin-left:auto">🔍</button><div class="couple" style="margin-left:6px"><span class="avatar av-a">O</span><span class="avatar av-b">M</span></div></div><div class="topbar"><span style="font-size:26px">${s.ico}</span><h2>${s.name}</h2><span class="nick">${s.nick||''}</span>
+   <div class="tools">${s.admin?'<span class="chip gold">👑 só admin</span>':''}${s.hidden?'<span class="chip">🙈 oculta para '+YOU.name+'</span>':''}<button class="tb ai" data-ai>✨ IA</button><button class="tb">⚙︎ Visualização</button><button class="tb primary">＋ Adicionar</button></div></div>${v(s)}`;
+  m.querySelector('[data-ai]').onclick=e=>aiPop(e,s);
+  m.querySelector('#ham').onclick=()=>$('#app').classList.add('drawer');
+  m.querySelector('[data-busca]').onclick=e=>buscaPop(e);
+  renderTabbar();
+  m.querySelectorAll('[data-detail]').forEach(el=>el.addEventListener('click',()=>detail(JSON.parse(el.dataset.detail))));
+  m.querySelectorAll('.row .check').forEach(c=>c.addEventListener('click',e=>{e.stopPropagation();const r=c.closest('.row');r.classList.toggle('done');state.done[r.dataset.k]=r.classList.contains('done');save();if(r.classList.contains('done'))toast('Feito! +1 no placar de '+ME.name)}));
+  m.querySelectorAll('.cd-mode').forEach(b=>b.onclick=()=>{state.cdMode=+b.dataset.m;save();renderMain()});
+  m.querySelectorAll('[data-modo]').forEach(b=>b.onclick=()=>{state.clima.a.m=b.dataset.modo;save();renderMain();toast('Estado atualizado — '+YOU.name+' já vê')});
+  m.querySelectorAll('[data-energia]').forEach(b=>b.onclick=()=>{state.clima.a.e=+b.dataset.energia;save();renderMain()});
+  m.querySelectorAll('[data-humor]').forEach(b=>b.onclick=()=>{if(b.dataset.humor==='+'){toast('Humor inventado vai para o Dicionário (mockup)');return}state.clima.a.h=b.dataset.humor;save();renderMain()});
+  const mn=m.querySelector('[data-manual]');if(mn)mn.onchange=()=>{state.clima.a.n=mn.value;save();renderMain()};
+  m.querySelectorAll('[data-pedido]').forEach(b=>b.onclick=()=>{toast(b.dataset.pedido+' enviado para '+YOU.name+' — ela responde com um toque');detail({t:b.dataset.pedido,sub:'Pedido enviado agora · aguardando: chegando / 20 min / hoje não',by:ME,when:'agora',kind:'Pedido'})});
+  m.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{const g=b.dataset.f,v=b.dataset.v;state.roleta[g]=state.roleta[g]===v?undefined:v;delete state.roleta.pick;save();renderMain()});
+  const so=m.querySelector('[data-sortear]');if(so)so.onclick=()=>{const f=state.roleta;const l=ROLES.map((r,i)=>[r,i]).filter(([r])=>(!f.k||r.k===f.k)&&(!f.e||r.e===+f.e)&&(!f.m||r.m===+f.m)&&(!f.h||r.h===f.h));if(!l.length){toast('Nada combina — afrouxe um filtro');return}state.roleta.pick=l[Math.floor(Math.random()*l.length)][1];save();renderMain();toast('🎲 Saiu na roleta!')};
+  const lp=m.querySelector('[data-limpar]');if(lp)lp.onclick=()=>{state.roleta={};save();renderMain()};
+  const ar=m.querySelector('[data-ai-roleta]');if(ar)ar.onclick=e=>{const p=pop(e,`<div class="label">IA · A Roleta</div><button>✨ Inventar 3 rolês com estes filtros</button><button>✨ Sugerir pelo Manual do Parceiro</button><button>✨ Criar template a partir do que mais repetimos</button><button>✨ Rolê surpresa (só revela na hora)</button><div class="sep"></div><div class="note">A IA só propõe; vocês aprovam antes de entrar no catálogo.</div>`);p.querySelectorAll('button').forEach(b=>b.onclick=()=>{closePops();toast('IA: proposta pronta para revisar (mockup)')})};
+  m.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{const k=b.dataset.use;state.protoUsed[k]=(state.protoUsed[k]||0)+1;save();renderMain();toast('Protocolo usado e registrado. Adicione nota e foto →');detail({t:PROTOS.find(p=>p.k===k).t,sub:'Uso registrado agora por '+ME.name,by:ME,when:'agora',kind:'Protocolo'})});
+}
+function aiPop(e,s){const acts={dicionario:['Completar verbete','Padronizar todos','Sugerir origem falsa'],multiverso:['Gerar cenário aleatório','Ramificar este nó','Escrever manchete'],contrato:['Formalizar cláusula','Sugerir aditivo','Detectar brechas cômicas'],hoje:['Frase do dia','Resumo do mês','Ideia de encontro (usa o Manual)'],cinema:['Recomendar próximo filme','Resumir sem spoiler']}[s.id]||['Sugerir ideias para esta seção','Resumir','Legendar em tom de museu'];
+  const p=pop(e,`<div class="label">IA · ${s.name}</div>${acts.map(a=>`<button>✨ ${a}</button>`).join('')}<div class="sep"></div><div class="note">A IA só propõe. Nada é gravado sem você revisar.</div>`);
+  p.querySelectorAll('button').forEach(b=>b.onclick=()=>{closePops();toast('IA: "'+b.textContent.slice(2)+'" — proposta pronta para revisar (mockup)')})}
+
+/* --- helpers de item --- */
+const D=o=>`data-detail='${JSON.stringify(o).replace(/'/g,'&#39;')}'`;
+function row(k,t,sub,by,when,extra=''){const done=state.done[k];return `<div class="row${done?' done':''}" data-k="${k}" ${D({t,sub,by,when,kind:'Item'})}><span class="check">✓</span><div class="t">${t}<small>${sub||''}</small></div>${extra}<span class="avatar ${by.cls}" style="width:20px;height:20px;font-size:9px">${by.ini}</span></div>`}
+
+/* --- HOJE --- */
+const MEMS=[{d:'2022-03-05',q:'Primeira vez que dormimos de conchinha com a Nina no meio.',by:YOU},{d:'2023-11-19',q:'O dia do pastel de feira que virou instituição.',by:ME},{d:'2024-07-02',q:'Primeira briga sobre ar-condicionado. Vencedor: o ventilador.',by:YOU}];
+function hoje(){const days=daysSince(START);const y=Math.floor(days/365.25),mo=Math.floor((days%365.25)/30.44),dd=Math.floor(days%30.44);
+  const anniv=new Date(START+'T00:00:00');anniv.setFullYear(new Date().getFullYear());if(anniv<new Date())anniv.setFullYear(anniv.getFullYear()+1);const toAnniv=Math.ceil((anniv-Date.now())/864e5);const p=Math.round((1-toAnniv/365)*100);
+  const modes=['1','∑','◔','⏳'];
+  const body=[`<div class="label">Juntos há</div><div class="big num">${days.toLocaleString('pt-BR')}</div><div style="color:var(--ink2)">dias, contando. Desde ${fmt(START)}.</div>`,
+   `<div class="label">Juntos há</div><div class="cd-units num"><div><b>${y}</b><span>anos</span></div><div><b>${mo}</b><span>meses</span></div><div><b>${dd}</b><span>dias</span></div></div><div style="color:var(--ink2);margin-top:8px">e ${(days*24).toLocaleString('pt-BR')} horas de sofá acumuladas (estimativa oficial)</div>`,
+   `<div style="display:flex;gap:18px;align-items:center"><div class="ring" style="--p:${p}%"><i>${p}%</i></div><div><div class="label">Ano de namoro nº ${y+1}</div><div style="font-family:var(--display);font-size:22px;font-weight:800">${toAnniv} dias para o aniversário</div><div style="color:var(--ink2)">${days.toLocaleString('pt-BR')} dias no total · estilo TickTick</div></div></div>`,
+   `<div class="label">Juntos há</div><div class="big num">${Math.floor(days/7).toLocaleString('pt-BR')}<span style="font-size:22px"> semanas</span></div><div class="bar" style="margin-top:10px"><i style="width:${p}%"></i></div><div style="color:var(--ink2);margin-top:6px">${p}% do caminho até o próximo aniversário</div>`][state.cdMode];
+  const mem=MEMS[daysSince('2020-01-01')%MEMS.length];
+  return `<div class="hero"><div class="countdown"><div class="modes">${modes.map((m,i)=>`<button class="cd-mode${state.cdMode===i?' on':''}" data-m="${i}" title="Estilo ${i+1}">${m}</button>`).join('')}</div>${body}</div>
+   <div class="memory" ${D({t:'Memória surpresa',sub:mem.q,by:mem.by,when:fmt(mem.d),kind:'Memória'})}><div class="label">Memória surpresa · ${ago(mem.d)}</div><div class="photo"></div><q>${mem.q}</q><div style="font-size:11.5px;color:var(--muted);margin-top:6px">registrado por ${mem.by.name} em ${fmt(mem.d)}</div></div></div>
+   <div class="grid g3">
+    <div class="card"><h3>🗓️ Próximos <span class="label">3 de 4</span></h3>${row('e1','Jantar com a Matilha','sáb · 20h · casa do Rafa',ME,'')}${row('e2','Só Existir 🥿','dom · sofá · temporada 3',YOU,'')}${row('e3','Almoço família','15 set · 12h',YOU,'')}</div>
+    <div class="card"><h3>🎟️ Protocolo em destaque</h3><div class="coupon legend"><span class="rar chip gold">Lendário · 1 uso</span><h4>Passe Livre da Louça</h4><div style="font-size:12.5px;color:var(--ink2)">Isenta o portador de toda louça por 7 dias. Intransferível.</div><div class="uses"><i></i></div><button class="use" data-use="louca">Usar agora</button></div></div>
+    <div class="card"><h3>📊 Esta semana</h3><div class="grid" style="grid-template-columns:1fr 1fr;gap:10px"><div class="stat"><b class="num">2</b><span>filmes vistos</span></div><div class="stat"><b class="num">3</b><span>palavras novas</span></div><div class="stat"><b class="num">1</b><span>protocolo gasto</span></div><div class="stat"><b class="num">🔥 4</b><span>placar íntimo</span></div></div><div class="note" style="margin-top:10px">Retrospectiva oficial do mês sai dia 1. Com carimbo.</div></div>
+   </div>`}
+
+/* --- AGENDA --- */
+function agenda(){return `<div class="grid g2"><div class="card"><h3>Esta semana</h3>${row('e1','Jantar com a Matilha','sábado · 20h · casa do Rafa · leva o vinho',ME,'',`<span class="chip sky">amigos</span>`)}${row('e2','Só Existir 🥿','domingo · sofá · temporada 3, ep. 4–6',YOU,'',`<span class="chip sage">descanso</span>`)}</div>
+ <div class="card"><h3>Depois</h3>${row('e3','Almoço de família','15 set · 12h · mãe da Mel',YOU,'',`<span class="chip rose">família</span>`)}${row('e4','Viagem: Serra da Canastra','3 out · 4 dias · ver O Passaporte →',ME,'',`<span class="chip gold">viagem</span>`)}<div class="note" style="margin-top:8px">Eventos do tipo <b>viagem</b> abrem automaticamente na seção Viagens, com checklist e countdown.</div></div></div>`}
+function deveres(){return `<div class="grid g2"><div class="card"><h3>Hoje <span class="label">rotina</span></h3>${row('d1','Comprar pão e café','recorrente · seg/qua/sex',ME,'')}${row('d2','Levar a Nina no banho','16h · petshop',YOU,'')}${row('d3','Pagar a luz','vence amanhã',ME,'')}</div><div class="card"><h3>Placar dos Deveres <span class="label">semana</span></h3><div style="display:flex;gap:20px;align-items:baseline"><div class="stat"><b class="num">7</b><span>${ME.name}</span></div><div class="stat"><b class="num">9</b><span>${YOU.name}</span></div></div><div class="bar sage" style="margin:10px 0"><i style="width:56%"></i></div><div class="note">${YOU.name} lidera. ${ME.name} alega "trabalho invisível". Recurso negado pelo Cartório.</div>${row('d4','Trocar lâmpada do corredor','desde março (sim)',YOU,'')}${row('d5','Declarar a conta conjunta','só o admin vê o Cofre →',ME,'')}</div></div>`}
+function louca(){return `<div class="grid g2"><div class="card"><h3>Antes de morrer <span class="label">nível de loucura</span></h3>${row('l1','Ver aurora boreal','Islândia ou Noruega · 2028?',YOU,'',`<span class="chip sky">😱😱😱</span>`)}${row('l2','Abrir um bar de um dia só','só para a Matilha',ME,'',`<span class="chip sky">😱😱</span>`)}${row('l3','Aprender a dançar forró de verdade','inscrição pendente há 2 anos',YOU,'',`<span class="chip sky">😱</span>`)}</div><div class="card"><h3>Ideias estúpidas <span class="label">aprovadas</span></h3>${row('l4','Fazer um documentário da Nina','narrado em tom de David Attenborough',ME,'',`<span class="chip rose">unanimidade</span>`)}${row('l5','Um dia inteiro falando só no dicionário do casal','com multa por palavra normal',YOU,'')}${row('l6','Refazer a primeira foto todo ano','mesma pose, mesmo lugar',ME,'',`<span class="chip rose">unanimidade</span>`)}<div class="note" style="margin-top:8px">Qualquer item pode virar <b>evento</b>, <b>viagem</b> ou <b>meta</b> com um clique.</div></div></div>`}
+
+/* --- PROTOCOLOS --- */
+const PROTOS=[{k:'louca',t:'Passe Livre da Louça',r:'legend',rn:'Lendário',n:1,d:'Isenta o portador de toda louça por 7 dias.'},{k:'filme',t:'Veto de Filme',r:'rare',rn:'Raro',n:3,d:'Cancela a escolha de filme do outro, sem discussão.'},{k:'massagem',t:'Massagem Obrigatória',r:'epic',rn:'Épico',n:2,d:'20 minutos. Sem reclamar. Sem celular.'},{k:'desculpa',t:'Pedido de Desculpas Antecipado',r:'common',rn:'Comum',n:10,d:'Vale para uma bobagem futura, não especificada.'},{k:'pizza',t:'Pizza Sem Culpa',r:'common',rn:'Comum',n:6,d:'Pedido de pizza em dia útil sem julgamento.'},{k:'sim',t:'O Sim Incondicional',r:'unique',rn:'Único',n:1,d:'Um pedido. Qualquer pedido (dentro da lei). Uma vez na vida.'},{k:'sono',t:'Direito de Dormir Até Tarde',r:'rare',rn:'Raro',n:4,d:'A Nina é responsabilidade do outro até as 11h.'}];
+function protocolos(){return `<div class="note" style="margin-bottom:12px">👑 Como admin, você define a raridade e o número de usos. Cada uso fica registrado com nota e foto. Quanto mais raro, menos usos.</div><div class="grid g3">${PROTOS.map(p=>{const u=state.protoUsed[p.k]||0;const left=p.n-u;return `<div class="coupon ${p.r}"><span class="rar chip ${p.r==='rare'?'sky':p.r==='epic'?'rose':p.r==='legend'?'gold':''}">${p.rn} · ${p.n} uso${p.n>1?'s':''}</span><h4>${p.t}</h4><div style="font-size:12.5px;color:var(--ink2)">${p.d}</div><div class="uses">${Array.from({length:p.n},(_,i)=>`<i class="${i<u?'spent':''}"></i>`).join('')}</div><div style="display:flex;gap:8px;align-items:center"><button class="use" data-use="${p.k}" ${left<=0?'disabled':''}>${left>0?'Usar agora':'Esgotado'}</button><small style="color:var(--muted)">${left} restante${left===1?'':'s'}</small></div></div>`}).join('')}</div>`}
+
+/* --- CONTRATO --- */
+function contrato(){return `<div class="grid" style="grid-template-columns:1fr 300px"><div class="contract"><span class="stamp">Registrado</span><h3>Termos & Condições do Namoro<br><span style="font-size:11px;letter-spacing:.05em;text-transform:none;color:var(--muted)">Instrumento particular · 2ª versão · sem direito a devolução</span></h3>
+ <p>Pelo presente instrumento, as partes <b>${ME.name}</b> (doravante "O Contratante do Café") e <b>${YOU.name}</b> (doravante "A Detentora do Controle Remoto") acordam:</p>
+ <ol><li><b>Da louça.</b> A louça é um bem indivisível e alternado. Exceções mediante Protocolo válido.</li><li><b>Do lado da cama.</b> O lado esquerdo pertence a quem chegou primeiro em 2021 e assim permanecerá, salvo aditivo assinado.</li><li><b>Do último pedaço.</b> O último pedaço de qualquer alimento deve ser oferecido antes de consumido. O oferecimento pode ser puramente cerimonial.</li><li><b>Das séries.</b> É vedado avançar episódio sem a presença da outra parte. A infração gera multa afetiva (cláusula 9).</li><li><b>Do silêncio matinal.</b> Antes do café, nenhuma frase com mais de quatro palavras será considerada válida.</li></ol>
+ <div class="sigs"><div class="sig"><b>${ME.name}</b>${ME.name} · assinado em ${fmt('2021-09-01')}</div><div class="sig"><b>${YOU.name}</b>${YOU.name} · assinado em ${fmt('2021-09-01')}</div></div></div>
+ <div><div class="card"><h3>Aditivos pendentes</h3>${row('c1','Cláusula 10: do uso do cobertor','proposta por '+YOU.name+' · aguarda assinatura',YOU,'')}${row('c2','Anexo B: lista de apelidos oficiais','rascunho · IA formalizou',ME,'')}<div class="note" style="margin-top:8px">Fluxo: escrever informal → ✨ IA formaliza → revisar → enviar para o outro assinar (desenha no dedo). Cada versão fica no histórico.</div></div><div class="card" style="margin-top:12px"><h3>Multas afetivas <span class="label">opt-in</span></h3><div class="stat"><b class="num">2</b><span>infrações à cláusula 4 este mês (${ME.name})</span></div><div style="font-size:12px;color:var(--ink2);margin-top:6px">Pagável em: 1 massagem ou 1 Protocolo Comum.</div></div></div></div>`}
+
+/* --- MANUAL / MATILHA --- */
+function manual(){const c=(t,list,cls)=>`<div class="card"><h3>${t}</h3>${list.map(x=>`<div class="row" ${D({t:x,sub:'Manual do Parceiro',by:YOU,when:'2024',kind:'Verbete'})}><span class="chip ${cls}">${cls==='sage'?'gosta':cls==='rose'?'não gosta':'às vezes'}</span><div class="t">${x}</div></div>`).join('')}</div>`;
+ return `<div style="display:flex;gap:8px;margin-bottom:12px"><button class="tb primary">Manual de ${YOU.name}</button><button class="tb">Manual de ${ME.name}</button></div><div class="note" style="margin-bottom:12px">Formato de manual de eletrodoméstico: <b>Cuidados</b>, <b>Modo de usar</b>, <b>Solução de problemas</b>. Cada um escreve o próprio; o outro lê e ri.</div><div class="grid g3">${c('🍽️ Cuidados alimentares',['Café antes de qualquer conversa','Coentro em qualquer coisa','Sobremesa "só um pedacinho" = metade'],'sage')}${c('⚠️ Solução de problemas',['Barulho de mastigação','Ser acordada com luz acesa','Planos mudados em cima da hora'],'rose')}${c('🔧 Modo de usar',['Filme de terror (só de dia)','Praia (se tiver sombra)','Acampar (nunca mais, mas talvez)'],'sky')}</div>`}
+function matilha(){const M=[['🐕','Nina','Cachorra-chefe · 6 anos','Ministra do Sofá'],['🐩','Bento','Cachorro do Rafa · visitante','Adido Canino'],['🧔','Rafa','Amigo desde 2015','Ministro do Churrasco'],['👩','Ju','Amiga de infância da '+YOU.name,'Secretária de Fofocas'],['👵','Dona Lúcia','Mãe da '+YOU.name,'Suprema Corte'],['🧑','Caio','Irmão do '+ME.name,'Embaixador do Videogame']];
+ return `<div class="pack">${M.map(([f,n,s,c])=>`<div class="card member" ${D({t:n,sub:s+' · '+c,by:ME,when:'2023',kind:'Membro da Matilha'})}><div class="face">${f}</div><b>${n}</b><small>${s}</small><span class="chip gold" style="margin-top:8px">${c}</span></div>`).join('')}</div><div class="note" style="margin-top:12px">Lembretes automáticos de aniversário e "última vez que vimos: há 34 dias".</div>`}
+
+/* --- LAB --- */
+function multiverso(){return `<div class="grid" style="grid-template-columns:1fr 280px"><div class="card tree"><h3>E se…? <span class="label">fluxograma</span></h3><div style="overflow-x:auto"><svg viewBox="0 0 640 300" width="640" height="300">
+ <path class="ln" d="M120 150 C180 150 180 70 240 70"/><path class="ln" d="M120 150 C180 150 180 230 240 230"/><path class="ln" d="M360 70 C420 70 420 30 480 30"/><path class="ln" d="M360 70 C420 70 420 110 480 110"/><path class="ln" d="M360 230 C420 230 420 270 480 270"/>
+ <rect class="nd root" x="10" y="125" width="110" height="50" rx="10"/><text x="65" y="146" text-anchor="middle">Nos conhecemos</text><text x="65" y="162" text-anchor="middle">no churrasco (real)</text>
+ <rect class="nd" x="240" y="45" width="120" height="50" rx="10"/><text x="300" y="66" text-anchor="middle">…na fila do banco</text><text x="300" y="82" text-anchor="middle" style="fill:var(--muted)">por ${YOU.name}</text>
+ <rect class="nd" x="240" y="205" width="120" height="50" rx="10"/><text x="300" y="226" text-anchor="middle">…como vizinhos</text><text x="300" y="242" text-anchor="middle" style="fill:var(--muted)">por ${ME.name}</text>
+ <rect class="nd" x="480" y="5" width="150" height="50" rx="10"/><text x="555" y="26" text-anchor="middle">Ela sai na frente</text><text x="555" y="42" text-anchor="middle">e nunca se falam 😢</text>
+ <rect class="nd" x="480" y="85" width="150" height="50" rx="10"/><text x="555" y="106" text-anchor="middle">O caixa quebra</text><text x="555" y="122" text-anchor="middle">e ficam 3h juntos ✨</text>
+ <rect class="nd" x="480" y="245" width="150" height="50" rx="10"/><text x="555" y="266" text-anchor="middle">Briga pelo lixo,</text><text x="555" y="282" text-anchor="middle">viram inimigos, depois…</text></svg></div></div>
+ <div><div class="card"><h3>📰 Fake news do casal</h3>${row('m1','"Casal de BH é flagrado assistindo 9 episódios seguidos"','manchete · por '+YOU.name,YOU,'')}${row('m2','"Cachorra Nina assume cargo de CEO da casa"','manchete · por '+ME.name,ME,'')}</div><div class="card" style="margin-top:12px"><h3>✨ IA</h3><div style="font-size:12.5px;color:var(--ink2)">"Gerar cenário aleatório" cria um nó novo a partir de qualquer ponto da árvore. Modo alternado: cada um escreve um nó por vez.</div></div></div></div>`}
+function dicionario(){const V=[['Sofazar','verbo intransitivo','Deitar no sofá com intenção de não fazer nada e cumprir a intenção.','"Hoje eu vou sofazar até a Nina reclamar."','origem: inverno de 2022'],['Ninice','substantivo feminino','Qualquer ato fofo praticado pela Nina, mesmo que seja só existir.','"Olha a ninice dela dormindo de barriga pra cima."','origem: '+YOU.name],['Pastelício','adjetivo','Diz-se do domingo que inclui feira e pastel. Estado de graça.','"Domingo pastelício, não me liguem."','origem: nov 2023'],['Desculpismo','substantivo','Uso excessivo de Protocolos de Desculpa Antecipada.','"Isso já é desculpismo, três num dia."','origem: Cartório']];
+ return `<div class="card" style="max-width:720px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="label">Academia HyHoney de Letras · 14 verbetes</span><span class="chip">A–Z</span></div>${V.map(([w,c,d,e,o])=>`<div class="verb" ${D({t:w,sub:d,by:YOU,when:o,kind:'Verbete'})}><b>${w}</b><i>${c}</i><p>${d}</p><p class="ex">${e}</p><p style="font-size:11px;color:var(--muted)">${o}</p></div>`).join('')}<div class="note" style="margin-top:12px">Escreva só a palavra e um rascunho; ✨ IA completa classe, exemplo e origem falsa, no formato de dicionário.</div></div>`}
+/* --- CLIMA DO DIA --- */
+function climaCard(who,st,mine){const M=MODOS[st.m];return `<div class="card" style="background:${CORMODO[st.m]}" ${D({t:(mine?'Meu estado':'Estado de '+who.name),sub:M[0]+' '+M[1]+' · '+st.h+(st.n?' · "'+st.n+'"':''),by:who,when:'válido até dormir',kind:'Clima do Dia'})}><div style="display:flex;align-items:center;gap:8px"><span class="avatar ${who.cls}">${who.ini}</span><b>${who.name}</b><span class="label" style="margin-left:auto">até dormir</span></div>
+ <div style="font-family:var(--display);font-size:22px;font-weight:800;margin:8px 0 2px">${M[0]} ${M[1]}</div><div style="color:var(--ink2)">${st.h} · ${'🔋'.repeat(st.e)}${'▫️'.repeat(5-st.e)}</div>
+ <div class="note" style="margin-top:8px;background:rgba(255,255,255,.35)">📖 manual: "${st.n||M[2]}"</div></div>`}
+function clima(){const me=state.clima.a;const chips=Object.entries(MODOS).map(([k,v])=>`<button class="chip ${me.m===k?'gold':''}" data-modo="${k}">${v[0]} ${v[1]}</button>`).join('');
+ const H=['😄 feliz','😐 neutro','😬 ansioso','😤 irritado','🥲 triste','🥱 manhoso','⚡ elétrico'];
+ const days=[3,4,2,5,1,2,4,3,3,2,5,4,1,2];const cols={1:'var(--sky)',2:'var(--sky-soft)',3:'var(--surface2)',4:'var(--accent-soft)',5:'var(--accent)'};
+ return `<div class="note" style="margin-bottom:12px">Cada um diz como está; o outro sabe como agir sem perguntar. Expira sozinho (estado velho é pior que nenhum). Sem ranking, sem streak de humor.</div>
+ <div class="grid g2">${climaCard(ME,state.clima.a,true)}${climaCard(YOU,state.clima.b,false)}</div>
+ <div class="grid g2" style="margin-top:14px"><div class="card"><h3>Meu estado agora <span class="label">3 toques</span></h3>
+  <div class="label">Energia</div><div style="display:flex;gap:6px;margin:4px 0 10px">${[1,2,3,4,5].map(n=>`<button class="chip ${me.e===n?'gold':''}" data-energia="${n}">${'🔋'.repeat(n)}</button>`).join('')}</div>
+  <div class="label">Humor</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px">${H.map(h=>`<button class="chip ${me.h===h?'rose':''}" data-humor="${h}">${h}</button>`).join('')}<button class="chip" data-humor="+">＋ inventar</button></div>
+  <div class="label">Modo — o que eu preciso</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px">${chips}</div>
+  <div class="label">Manual de 1 linha (como agir comigo)</div><input data-manual value="${me.n.replace(/"/g,'&quot;')}" placeholder="${MODOS[me.m][2]}" style="width:100%;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);margin-top:4px">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px"><span class="chip">válido: até dormir ▾</span><span class="chip">${YOU.name} vê: tudo ▾</span></div></div>
+ <div><div class="card"><h3>Pedidos <span class="label">um toque, sem conversa difícil</span></h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${[['🤗','Pedir carinho'],['🌵','Pedir espaço'],['🆘','Pedir ajuda'],['🎲','Pedir um rolê'],['🎟️','Pedir um Protocolo'],['🍕','Pedir comida']].map(([i,t])=>`<button class="tb" data-pedido="${t}" style="justify-content:center;min-height:48px">${i} ${t}</button>`).join('')}</div><div class="note" style="margin-top:10px">${YOU.name} responde com um toque: "chegando" · "daqui a 20 min" · "hoje não consigo". Sem "visto" pesando.</div></div>
+ <div class="card" style="margin-top:12px"><h3>Compatibilidade de hoje</h3><div style="font-family:var(--display);font-size:15px">☕ + 🧸 → <b>Protocolo de Coexistência Pacífica</b>: sofá, série, mão na cabeça, zero perguntas por 40 min.</div><div class="note" style="margin-top:8px">✨ IA sugere o meio-termo a partir dos dois estados + Manual do Parceiro + Roleta.</div></div></div></div>
+ <div class="card" style="margin-top:14px"><h3>Últimas 2 semanas <span class="label">energia · sem julgamento</span></h3><div style="display:flex;gap:4px">${days.map(d=>`<div style="flex:1;height:26px;border-radius:4px;background:${cols[d]}" title="${d} pilhas"></div>`).join('')}</div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px"><span>há 14 dias</span><span>hoje</span></div><div class="note" style="margin-top:10px">Estatística oficial: tempo médio de resposta a pedidos de colo — <b>7 min</b> (nível SAMU). Quarta é o dia mais 🪫 do casal.</div></div>`}
+/* --- ROLETA: o que fazer hoje --- */
+const ROLES=[
+ {t:'Pizza da esquina + episódio novo',k:'casa',e:1,m:1,h:'preguiça',d:'o clássico. Não precisa de mais nada.'},
+ {t:'Japonês pedido, no chão da sala, com toalha de piquenique',k:'casa',e:1,m:2,h:'romântico',d:'piquenique indoor. Sem talher, só hashi.'},
+ {t:'Caminhada na Pampulha ao pôr do sol',k:'sair',e:2,m:1,h:'romântico',d:'leva a Nina. Termina com açaí.'},
+ {t:'Cinema de sessão tarde + pipoca dividida',k:'cultura',e:2,m:2,h:'preguiça',d:'o mais vazio possível. Pés no assento da frente.'},
+ {t:'Feira de domingo + pastel + caldo de cana',k:'sair',e:2,m:1,h:'festa',d:'domingo pastelício oficial. Registrar no Almanaque.'},
+ {t:'Noite de jogos de tabuleiro com a Matilha',k:'amigos',e:2,m:1,h:'festa',d:'chama o Rafa e a Ju. Regras do Cartório valem.'},
+ {t:'Cozinhar uma receita que nenhum dos dois sabe',k:'casa',e:3,m:2,h:'caótico',d:'sem olhar vídeo. Só o texto. Que vença o melhor.'},
+ {t:'Bate-volta para Ouro Preto',k:'sair',e:3,m:3,h:'romântico',d:'sai 7h, volta à noite. Ladeira, mas valeu (nota 9, histórico).'},
+ {t:'Karaokê em casa com playlist de 2010',k:'casa',e:3,m:1,h:'caótico',d:'vizinho avisado. Ninguém sai ileso.'},
+ {t:'Massagem cruzada com óleo e podcast',k:'casa',e:1,m:1,h:'romântico',d:'vale um Protocolo Épico se um só fizer.'},
+ {t:'Museu + café com pão de queijo',k:'cultura',e:2,m:2,h:'romântico',d:'Inhotim se tiver fôlego; o do centro se não.'},
+ {t:'Dia inteiro sem celular, só um livro cada',k:'casa',e:1,m:1,h:'preguiça',d:'modo monge. Registrar no Placar de Só Existir.'},
+ {t:'Bar novo que nenhum dos dois conhece',k:'sair',e:2,m:2,h:'festa',d:'IA escolhe pelo Manual: nada de barulho, tem que ter petisco.'},
+ {t:'Hambúrguer artesanal em dia útil (sem culpa)',k:'casa',e:1,m:2,h:'caótico',d:'usa o Protocolo "Pizza Sem Culpa" por analogia. Cartório aprova.'},
+];
+const DELIV=[['🍕','Pizza da esquina','42× · sexta à noite · "a de sempre, meio a meio"'],['🍣','Japonês do Bairro','19× · quando um dos dois "merece"'],['🍧','Açaí com granola','31× · domingo à tarde'],['🍔','Hambúrguer artesanal','12× · dia útil, sem culpa'],['🥟','Pastel da feira (retirada)','8× · só quando chove no domingo']];
+const TEMPL=[['🛋️','Noite de Sofá','preguiça · R$ · energia 1'],['🌇','Date barato ao ar livre','romântico · R$ · energia 2'],['🎉','Sábado com a Matilha','festa · R$$ · energia 2'],['🧭','Bate-volta surpresa','romântico · R$$$ · energia 3'],['🌀','Modo Caos','caótico · qualquer · energia 3']];
+function roleta(){const f=state.roleta;const chip=(grp,val,lbl)=>`<button class="chip ${f[grp]===val?'gold':''}" data-f="${grp}" data-v="${val}">${lbl}</button>`;
+ const list=ROLES.filter(r=>(!f.k||r.k===f.k)&&(!f.e||r.e===+f.e)&&(!f.m||r.m===+f.m)&&(!f.h||r.h===f.h));
+ const pick=f.pick!==undefined?ROLES[f.pick]:null;
+ return `<div class="grid" style="grid-template-columns:1.2fr 1fr">
+ <div><div class="card" style="background:linear-gradient(135deg,var(--accent-soft),var(--surface))"><h3>🎲 Sortear um rolê <span class="label">${list.length} combinam</span></h3>
+  <div class="label" style="margin-top:6px">Tipo</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 8px">${chip('k','casa','🏠 em casa')}${chip('k','sair','🚶 sair')}${chip('k','cultura','🎭 cultura')}${chip('k','amigos','🐾 com a Matilha')}</div>
+  <div class="label">Energia</div><div style="display:flex;gap:6px;margin:4px 0 8px">${chip('e','1','🔋 baixa')}${chip('e','2','🔋🔋 média')}${chip('e','3','🔋🔋🔋 alta')}</div>
+  <div class="label">Dinheiro</div><div style="display:flex;gap:6px;margin:4px 0 8px">${chip('m','1','R$')}${chip('m','2','R$$')}${chip('m','3','R$$$')}</div>
+  <div class="label">Humor / vibe</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 12px">${chip('h','preguiça','🥿 preguiça')}${chip('h','romântico','💗 romântico')}${chip('h','festa','🎉 festa')}${chip('h','caótico','🌀 caótico')}</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tb primary" data-sortear>🎲 Sortear</button><button class="tb" data-limpar>limpar filtros</button><button class="tb ai" data-ai-roleta>✨ Personalizar com IA</button></div>
+  ${pick?`<div class="card" style="margin-top:14px;border-color:var(--accent)" ${D({t:pick.t,sub:pick.d,by:ME,when:'sorteado hoje',kind:'Rolê'})}><div class="label">Saiu na roleta</div><h3 style="font-size:20px">${pick.t}</h3><div style="color:var(--ink2)">${pick.d}</div><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><span class="chip">${['','🔋','🔋🔋','🔋🔋🔋'][pick.e]}</span><span class="chip">${['','R$','R$$','R$$$'][pick.m]}</span><span class="chip rose">${pick.h}</span><span class="chip sky">${pick.k}</span></div><div style="display:flex;gap:8px;margin-top:10px"><button class="tb primary">📅 Marcar em Próximos</button><button class="tb">🔁 de novo</button></div></div>`:''}
+  </div>
+  <div class="card" style="margin-top:12px"><h3>📋 Templates prontos <span class="label">toque para aplicar</span></h3>${TEMPL.map(([i,t,s])=>`<div class="row" ${D({t,sub:s,by:ME,when:'template',kind:'Template de rolê'})}><span style="font-size:20px">${i}</span><div class="t">${t}<small>${s}</small></div><span class="chip">aplicar</span></div>`).join('')}<div class="note" style="margin-top:8px">✨ IA cria templates novos a partir do Manual do Parceiro (ela não gosta de barulho; ele ama japonês) e do que vocês mais repetem.</div></div></div>
+ <div><div class="card"><h3>🛵 Os deliverys de sempre <span class="label">ranking</span></h3>${DELIV.map(([i,t,s])=>`<div class="row" ${D({t,sub:s,by:YOU,when:'recorrente',kind:'Delivery'})}><span style="font-size:20px">${i}</span><div class="t">${t}<small>${s}</small></div><span class="chip sage">pedir de novo</span></div>`).join('')}<div class="note" style="margin-top:8px">"Pedir de novo" registra no Almanaque e soma no ranking. Empate técnico entre pizza e açaí é resolvido no Cartório.</div></div>
+ <div class="card" style="margin-top:12px"><h3>📚 Guia de ideias <span class="label">${ROLES.length} no catálogo</span></h3>${list.slice(0,6).map(r=>`<div class="row" ${D({t:r.t,sub:r.d,by:ME,when:'catálogo',kind:'Rolê'})}><span class="check">✓</span><div class="t">${r.t}<small>${r.d}</small></div><span class="chip">${['','R$','R$$','R$$$'][r.m]}</span></div>`).join('')}${list.length>6?`<div class="note" style="margin-top:6px">+ ${list.length-6} ideias. Filtre acima.</div>`:''}${list.length===0?'<div class="empty">Nenhuma ideia combina. Afrouxe um filtro (ou peça para a IA inventar).</div>':''}</div></div></div>`}
+function oficina(){return `<div class="card" style="max-width:720px"><h3>Como nos conhecemos, versão pirata <span class="label">vez de ${YOU.name}</span></h3><p style="color:var(--accent);font-family:var(--display);font-size:15px">O navio já afundava quando ${ME.name} percebeu que o mapa estava de cabeça para baixo.</p><p style="color:var(--rose);font-family:var(--display);font-size:15px">${YOU.name}, que era a capitã, já sabia. Deixou ele achar que descobriu sozinho, porque é assim que se comanda.</p><p style="color:var(--accent);font-family:var(--display);font-size:15px">— Tem um bote — ele disse. — Tem dois — ela corrigiu. — Mas só um tem café.</p><div class="note">Cor por autor · modo alternado ligado · ${YOU.name} tem 24h para continuar (timer de "sua vez").</div></div>`}
+function mapa(){const G=[['Mudar para uma casa com quintal','2027',35,'sage'],['Correr 10 km juntos','out 2026',70,'rose'],['Visitar 3 países novos','até 2028',33,'sky'],['Aprender forró (de verdade)','eterno',10,'']];return `<div class="grid g2">${G.map(([t,d,p,c])=>`<div class="card" ${D({t,sub:'meta · '+d,by:ME,when:'2025',kind:'Meta'})}><h3>${t}<span class="label">${d}</span></h3><div class="bar ${c}"><i style="width:${p}%"></i></div><div style="font-size:12px;color:var(--muted);margin-top:6px">${p}% · marcos aparecem na Linha do Tempo ao concluir</div></div>`).join('')}</div>`}
+
+/* --- MUSEU / SAGA / ALMANAQUE / AUTOS / CORREIO --- */
+function museu(){const P=[['1º encontro','2021-08-14','#E36A7C,#E8A33D'],['Chuva na Pampulha','2021-11-02','#5B8FB9,#7FA37A'],['Nina chega','2022-02-20','#E8A33D,#C9962B'],['Réveillon','2022-12-31','#2B2118,#E36A7C'],['Serra do Cipó','2023-06-10','#7FA37A,#5B8FB9'],['Pastel histórico','2023-11-19','#E8A33D,#E36A7C'],['Mudança','2024-03-01','#5B8FB9,#E8A33D'],['Ontem no sofá','2026-09-03','#E36A7C,#5B8FB9']];
+ return `<div style="display:flex;gap:8px;margin-bottom:12px"><button class="tb primary">Timeline</button><button class="tb">Por viagem</button><button class="tb">Por "era"</button><button class="tb">Favoritas</button></div><div class="photos">${P.map(([c,d,g],i)=>`<div class="ph" data-cap="${c} · ${ago(d)}" style="background:linear-gradient(135deg,${g});--rot:${(i%3-1)*2}deg" ${D({t:c,sub:'Foto · '+fmt(d),by:i%2?YOU:ME,when:fmt(d),kind:'Foto'})}></div>`).join('')}</div><div class="note" style="margin-top:12px">Legendas em tom de placa de museu, geradas por IA se quiser: "Peça nº 42 — Sofá, 2024. Técnica mista: cobertor e Nina."</div>`}
+function saga(){const E=[['2021-08-14','Capítulo 1: O Churrasco','Onde tudo começa, com um espeto emprestado.',1],['2021-09-01','Assinatura dos Termos & Condições','Versão 1, ainda sem a cláusula do cobertor.',0],['2022-02-20','Capítulo 3: Chega a Nina','A casa nunca mais foi silenciosa.',1],['2023-06-10','Serra do Cipó','Primeira viagem com barraca. Última também.',0],['2024-03-01','Capítulo 7: A Mudança','Caixas, 3 dias. Cansaço, 2 semanas.',1],['2024-07-02','A Guerra do Ar-Condicionado','Armistício assinado no Cartório.',0]];
+ return `<div class="card" style="max-width:640px"><div class="tl">${E.map(([d,t,s,b])=>`<div class="ev${b?' big':''}" ${D({t,sub:s,by:b?ME:YOU,when:fmt(d),kind:'Marco'})}><b>${t}</b><small>${fmt(d)} · ${ago(d)}</small><div style="font-size:13px;color:var(--ink2)">${s}</div></div>`).join('')}</div><div class="note">Zoom por ano · filtro por tipo (primeira vez, viagem, mudança) · títulos épicos automáticos.</div></div>`}
+function almanaque(){const days=['D','S','T','Q','Q','S','S'];let cells='';for(let i=0;i<35;i++){const n=i-3;const mark=n===5?'💗':n===12?'🎬':n===15?'👵':n===19?'🎂':n===29?'🧳':'';cells+=`<div style="aspect-ratio:1;border:1px solid var(--line);border-radius:6px;padding:4px;font-size:11px;${n<1||n>30?'opacity:.3':''}${n===4?'background:var(--accent-soft);font-weight:800':''}">${n>0&&n<31?n:''}<div style="font-size:14px">${mark}</div></div>`}
+ return `<div class="grid" style="grid-template-columns:1fr 300px"><div class="card"><h3>Setembro 2026 <span class="label">passado + futuro</span></h3><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">${days.map(d=>`<div class="label" style="text-align:center">${d}</div>`).join('')}${cells}</div></div><div><div class="card"><h3>Hoje há…</h3>${row('a1','3 anos: primeira vez que a Nina dormiu na cama','5 set 2023 · foto anexada',YOU,'')}${row('a2','1 ano: o pastel histórico completou 1 ano','memória com 2 comentários',ME,'')}</div><div class="card" style="margin-top:12px"><h3>Feriados inventados</h3><div class="chip rose">19 nov · Dia do Pastel</div> <div class="chip sage">20 fev · Ninadia</div></div></div></div>`}
+function autos(){return `<div class="grid" style="grid-template-columns:1fr 300px"><div><div style="display:flex;gap:8px;margin-bottom:10px"><button class="tb primary">Original (só leitura)</button><button class="tb">Camada de edição</button><span class="chip" style="align-self:center">importado em ${fmt('2026-08-30')} · 48.211 mensagens</span></div>
+ <div class="wa"><div class="day">14 de agosto de 2021</div><div class="b">oi, sou o cara do espeto emprestado<div class="tm">22:41</div></div><div class="b me hl"><span class="mk">⭐</span>o espeto era meu na verdade<div class="tm">22:43</div></div><div class="b">então eu devo um espeto e um jantar<div class="tm">22:43</div></div><div class="b me hl"><span class="mk">😂</span>só o jantar. o espeto eu já roubei de volta<div class="tm">22:44</div></div><div class="day">15 de agosto de 2021</div><div class="b hl"><span class="mk">💗</span>dormiu bem? (é uma pergunta só pra puxar assunto)<div class="tm">09:12</div></div></div></div>
+ <div class="card"><h3>Marcações <span class="label">estilo Google Docs</span></h3><div class="cmt"><span class="avatar av-b">M</span><div>⭐ marcou "o espeto era meu" como <b>melhor momento</b><small>${YOU.name} · há 3 dias</small></div></div><div class="cmt"><span class="avatar av-a">O</span><div>😂 marcou como <b>meme</b><small>${ME.name} · há 3 dias</small></div></div><div class="cmt"><span class="avatar av-b">M</span><div>💗 marcou "dormiu bem?" como <b>primeira vez</b> → virou marco na Saga<small>${YOU.name} · ontem</small></div></div><div class="note" style="margin-top:10px">O arquivo original nunca muda. As marcações moram numa camada separada, com autor e data. Ranking: ${YOU.name} mandou 61% dos áudios.</div></div></div>`}
+function correio(){return `<div class="grid g2"><div class="card"><h3>💌 Cartas</h3>${row('k1','Carta de aniversário 2025','digitalizada · 2 páginas · manuscrita',YOU,'')}${row('k2','"Para abrir quando estiver de mau humor"','lacrada 🔒 · abre quando o outro autorizar',ME,'')}${row('k3','Cápsula do tempo: 5 anos','lacrada 🔒 · abre em '+fmt('2026-08-14').replace('2026','2026'),YOU,'')}<button class="tb" style="margin-top:8px">✍️ Escrever carta no app (com lacre e selo)</button></div><div class="card"><h3>🎁 Presentes ganhos</h3>${row('g1','Livro de receitas com bilhete','natal 2024 · de '+YOU.name,YOU,'')}${row('g2','Caneca "Ministro do Café"','aniversário 2025 · de '+ME.name,ME,'')}${row('g3','Poltrona amarela','sem data, "porque sim"',YOU,'')}<div class="note" style="margin-top:8px">Com foto e "usado pela última vez" — para o presente não sumir no armário.</div></div></div>`}
+
+/* --- PAINEL --- */
+function viagens(){const n=daysSince('2026-10-03')*-1;return `<div class="grid" style="grid-template-columns:1.2fr 1fr"><div><div class="card" style="background:linear-gradient(135deg,var(--sky-soft),var(--surface))"><span class="label">Próxima viagem</span><h3 style="font-size:24px">Serra da Canastra <span class="chip sky">${n} dias</span></h3><div style="font-size:12.5px;color:var(--ink2)">3–6 out · carro · pousada reservada</div><div class="bar sky" style="margin:10px 0"><i style="width:45%"></i></div><div class="grid g2" style="margin-top:8px"><div>${row('v1','Reservar pousada','comprovante anexado 📎',ME,'')}${row('v2','Trocar óleo do carro','até 30 set',ME,'')}${row('v3','Comprar queijo pra levar de volta','na volta, ironicamente',YOU,'')}</div><div class="note">Anexos: passagem, reserva, seguro. Orçamento: R$ 1.800 (ver Cofre). Diário de bordo abre no dia 3 e vira capítulo na Saga.</div></div></div>
+ <div class="card" style="margin-top:12px"><h3>🗺️ Destinos prováveis</h3><span class="chip rose">Islândia · quero muito</span> <span class="chip gold">Chapada dos Veadeiros · talvez</span> <span class="chip">Buenos Aires · um dia</span> <span class="chip gold">Ilha Grande · talvez</span></div></div>
+ <div class="card"><h3>🛂 Passaporte <span class="label">carimbos</span></h3>${[['Serra do Cipó','jun 2023','nota 7 · "barraca nunca mais"'],['Ouro Preto','set 2023','nota 9 · "ladeira, mas valeu"'],['Rio (com a Matilha)','fev 2024','nota 10 · "Rafa perdeu o chinelo"'],['Paraty','nov 2025','nota 8 · "chuva e cachaça"']].map(([t,d,s])=>`<div class="row" ${D({t,sub:s,by:ME,when:d,kind:'Viagem'})}><span class="stamp" style="font-size:9px;padding:2px 6px">${d}</span><div class="t">${t}<small>${s}</small></div></div>`).join('')}</div></div>`}
+function cinema(){const F=[['The Bear','série',75,'8,5 / 9,0','sofá · em andamento'],['Duna: Parte 2','filme',100,'9,0 / 7,0','cinema · mar 2024 · discordância 🔥'],['Fleabag','série',100,'10 / 10','sofá · unanimidade'],['Severance','série',40,'— / —','sofá · temporada 2'],['Ainda Estou Aqui','filme',100,'9,5 / 9,5','cinema · nov 2024']];
+ return `<div class="grid g2">${F.map(([t,k,p,n,s])=>`<div class="card" ${D({t,sub:s+' · notas '+n,by:YOU,when:'2025',kind:k})}><h3>${t}<span class="chip ${k==='série'?'sky':'rose'}">${k}</span><span class="label">${p}%</span></h3><div class="bar ${k==='série'?'sky':'rose'}"><i style="width:${p}%"></i></div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin-top:8px"><span>${s}</span><b class="num">${ME.ini} ${n.split(' / ')[0]} · ${YOU.ini} ${n.split(' / ')[1]}</b></div></div>`).join('')}</div><div class="note" style="margin-top:12px">Busca por título (base tipo TMDB, opcional). Selo <b>discordância</b> quando as notas diferem em 2+ pontos. Estatística: 61% sofá, 39% cinema.</div>`}
+function placar(){const M=[3,5,4,6,2,7,5,4,6,8,5,4];const mx=Math.max(...M);const wk=[1,1,0,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1];
+ return `<div class="note" style="margin-bottom:12px">🔐 Seção com PIN. Estatísticas extremamente sérias sobre um assunto nada sério.</div><div class="grid g3"><div class="card"><div class="stat"><b class="num">4</b><span>esta semana</span></div></div><div class="card"><div class="stat"><b class="num">5,2</b><span>média mensal desde o início</span></div></div><div class="card"><div class="stat"><b class="num">🔥 6</b><span>streak atual (dias)</span></div></div><div class="card"><div class="stat"><b class="num">3</b><span>recorde num dia (réveillon 2022)</span></div></div><div class="card"><div class="stat"><b class="num">11</b><span>recorde num mês (fev 2022)</span></div></div><div class="card"><div class="stat"><b class="num">≈ 1.240</b><span>projeção até 2030, neste ritmo</span></div></div></div>
+ <div class="grid g2" style="margin-top:14px"><div class="card"><h3>Últimos 12 meses <span class="label">relatório oficial</span></h3><div class="bars">${M.map((v,i)=>`<div style="height:${v/mx*100}%"><small>${['o','n','d','j','f','m','a','m','j','j','a','s'][i]}</small></div>`).join('')}</div><div style="height:18px"></div></div><div class="card"><h3>Calendário de fogo <span class="label">4 semanas</span></h3><div class="streak">${wk.map(v=>`<i class="${v?'on':''}"></i>`).join('')}</div><div class="note" style="margin-top:10px">Botão "+1 hoje" registra; várias vezes no dia somam. Título automático do mês: "Setembro Diligente".</div></div></div>`}
+function controle(){return `<div class="grid g3"><div class="card"><div class="stat"><b class="num">${daysSince(START).toLocaleString('pt-BR')}</b><span>dias juntos</span></div></div><div class="card"><div class="stat"><b class="num">47</b><span>filmes e séries</span></div></div><div class="card"><div class="stat"><b class="num">14</b><span>palavras no dicionário</span></div></div><div class="card"><div class="stat"><b class="num">9</b><span>protocolos gastos</span></div></div><div class="card"><div class="stat"><b class="num">🥿 6</b><span>"Só Existir" este mês (temperatura do sofá)</span></div></div><div class="card"><div class="stat"><b class="num">4</b><span>viagens carimbadas</span></div></div></div><div class="card" style="margin-top:14px"><h3>🏆 Recordes do Casal</h3><div style="display:flex;flex-wrap:wrap;gap:8px"><span class="chip gold">Maior maratona: 9 episódios (Fleabag)</span><span class="chip sky">Mês mais viajado: fev 2024</span><span class="chip rose">Palavra mais usada: sofazar</span><span class="chip sage">Semana mais produtiva nos Deveres: ${YOU.name}, 12 itens</span></div></div>`}
+function cofre(){return `<div class="card" style="max-width:640px"><h3>🔒 Oculto para ${YOU.name} <span class="label">👑 admin</span></h3><p style="color:var(--ink2)">Esta seção não aparece na conta de ${YOU.name} até você liberar (botão direito na sidebar → "Mostrar"). Menos brincalhona, mas ainda leve.</p><div class="grid g2"><div><div class="label">Divisão do mês</div><div class="bar" style="margin:6px 0"><i style="width:54%"></i></div><small style="color:var(--muted)">54% ${ME.name} · 46% ${YOU.name}</small></div><div><div class="label">Quem paga o café</div><div class="bar rose" style="margin:6px 0"><i style="width:80%"></i></div><small style="color:var(--muted)">80% ${ME.name} (Contratante do Café, cláusula 0)</small></div></div>${row('f1','Conta de luz','R$ 212 · vence 6 set · ${ME.name}',ME,'')}${row('f2','Ração da Nina','R$ 180 · recorrente · alternado',YOU,'')}${row('f3','Responsabilidades da casa','tabela editável · lixo, plantas, banho da Nina',ME,'')}</div>`}
+function generic(s){return `<div class="card" style="max-width:640px"><h3>Seção nova · molde "${s.molde||'lista'}"</h3><p style="color:var(--ink2)">Toda seção é o mesmo "cartão" vestido de um jeito diferente: lista, galeria, calendário, dicionário, árvore ou placar. Renomeie (2 cliques no nome, em modo Personalizar), troque o ícone (botão direito) e arraste para a pasta que quiser.</p>${row(s.id+'1','Primeiro item','clique para abrir o painel de detalhe →',ME,'')}${row(s.id+'2','Segundo item','notas, fotos, comentários e autoria em tudo',YOU,'')}</div>`}
+const VIEWS={hoje,clima,agenda,deveres,louca,protocolos,contrato,manual,matilha,multiverso,dicionario,roleta,oficina,mapa,museu,saga,almanaque,autos,correio,viagens,cinema,placar,controle,cofre};
+
+/* ==================== DETAIL ==================== */
+function detail(o){const by=o.by||ME;$('#app').classList.add('sheet');$('#detail').innerHTML=`<button style="float:right;font-size:18px;color:var(--muted)" onclick="document.getElementById('app').classList.remove('sheet')" title="Fechar">✕</button>`+`<div class="label">${o.kind||'Item'}</div><h3>${o.t}</h3><div style="color:var(--ink2)">${o.sub||''}</div>
+ <div class="meta"><span class="chip"><span class="avatar ${by.cls}" style="width:16px;height:16px;font-size:8px">${by.ini}</span>${by.name}</span><span class="chip">${o.when||''}</span><span class="chip sage">👍 ${ME.ini}</span><span class="chip">👍 ${YOU.ini}?</span></div>
+ <div class="field"><div class="label">Notas</div><textarea rows="3" placeholder="Escreva algo bobo ou importante…"></textarea></div>
+ <div class="field"><div class="label">Fotos</div><div class="attach"><div></div><div style="opacity:.6"></div><button title="Anexar foto">＋</button></div></div>
+ <div class="field"><div class="label">Comentários</div><div class="cmt"><span class="avatar av-b">M</span><div>Isso merece virar marco na Saga.<small>${YOU.name} · há 2 dias</small></div></div><div class="cmt"><span class="avatar av-a">O</span><div>Aprovado pelo Cartório.<small>${ME.name} · ontem</small></div></div><input placeholder="Comentar…" style="margin-top:8px"></div>
+ <div class="hist">Criado por ${by.name} · ${o.when||''}<br>Editado por ${ME.name} · hoje<br>Voto duplo pendente → selo UNANIMIDADE</div>`}
+
+/* ==================== INIT ==================== */
+$('#btnEdit').onclick=toggleEdit;$('#btnNew').onclick=newSection;$('#sidebar [data-busca]').onclick=e=>buscaPop(e);$('#scrim').onclick=()=>$('#app').classList.remove('drawer');
+applySkin();renderSidebar();renderMain();
+</script>

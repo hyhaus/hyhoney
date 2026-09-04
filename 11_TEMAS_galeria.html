@@ -1,0 +1,72 @@
+<title>Temas do HyHoney</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;700;800&family=Playfair+Display:wght@700&family=DM+Sans:wght@400;700&family=Space+Grotesk:wght@500;700&family=Lora:wght@600&family=Poppins:wght@500;700&family=Cormorant+Garamond:wght@700&family=Manrope:wght@500;800&family=Caveat:wght@700&display=swap">
+<style>
+:root{--bg:#FBF6EC;--surface:#FFFDF7;--line:#E6DAC2;--ink:#2B2118;--muted:#9A8A73;--accent:#E8A33D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1913;--surface:#26211A;--line:#3D352A;--ink:#F2E9DA;--muted:#8F8270;--accent:#F0B24F}}
+:root[data-theme="dark"]{--bg:#1D1913;--surface:#26211A;--line:#3D352A;--ink:#F2E9DA;--muted:#8F8270;--accent:#F0B24F}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;padding:22px 18px 70px}
+h1{font-family:Fraunces,Georgia,serif;font-size:26px;margin:0}.sub{color:var(--muted);font-size:13px;margin:4px 0 14px;max-width:720px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:18px}
+.bar b{font-size:14px}.bar button{font:inherit;font-weight:800;padding:8px 14px;border-radius:999px;border:0;background:var(--accent);color:#2B2118;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.t{display:flex;flex-direction:column;gap:8px}
+.t h3{margin:0;font-size:16px;display:flex;align-items:center;gap:8px}
+.t h3 label{margin-left:auto;font-size:12px;font-weight:800;display:flex;align-items:center;gap:4px;cursor:pointer;color:var(--muted)}
+.t .who{font-size:12px;color:var(--muted);min-height:34px}
+.sw{display:flex;gap:4px}.sw i{flex:1;height:14px;border-radius:4px}
+/* mini iPhone */
+.ph{--w:250px;background:#111;border-radius:34px;padding:9px;box-shadow:0 14px 34px rgba(0,0,0,.25);margin:0 auto}
+.scr{border-radius:26px;overflow:hidden;background:var(--p-bg);color:var(--p-ink);font-family:var(--p-body);height:440px;display:flex;flex-direction:column;position:relative}
+.scr .hd{display:flex;align-items:center;gap:8px;padding:34px 14px 8px}
+.scr .hd b{font-family:var(--p-display);font-size:19px;font-weight:800}
+.scr .hd .av{margin-left:auto;display:flex}.scr .hd .av i{width:20px;height:20px;border-radius:50%;margin-left:-5px;border:2px solid var(--p-bg)}
+.scr .body{padding:0 12px;flex:1;display:flex;flex-direction:column;gap:9px}
+.scr .cd{background:var(--p-card);border:1px solid var(--p-line);border-radius:var(--p-r);padding:12px}
+.scr .cd small{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--p-muted);font-weight:800}
+.scr .cd b{display:block;font-family:var(--p-display);font-size:34px;line-height:1.05;font-weight:800;margin-top:2px}
+.scr .cd span{font-size:10px;color:var(--p-ink2)}
+.scr .mem{background:var(--p-rose-soft);border-radius:var(--p-r);padding:10px;font-family:var(--p-display);font-style:italic;font-size:12px;line-height:1.35}
+.scr .mem small{display:block;font-family:var(--p-body);font-style:normal;font-size:9px;color:var(--p-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.scr .li{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:6px 2px;border-bottom:1px solid var(--p-line)}
+.scr .li i{width:14px;height:14px;border-radius:50%;border:2px solid var(--p-line);flex:none}
+.scr .li i.on{background:var(--p-sage);border-color:var(--p-sage)}
+.scr .li em{font-style:normal;font-size:9px;padding:1px 6px;border-radius:999px;background:var(--p-accent-soft);color:var(--p-ink);margin-left:auto;font-weight:800}
+.scr .tab{display:flex;justify-content:space-around;padding:8px 6px 12px;background:var(--p-surface);border-top:1px solid var(--p-line);font-size:14px}
+.scr .tab span{position:relative}.scr .tab span.on::after{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:18px;height:3px;border-radius:2px;background:var(--p-accent)}
+.scr .cup{border:2px dashed var(--p-accent);border-radius:var(--p-r);padding:8px 10px;font-size:11px;background:var(--p-accent-soft)}
+.scr .cup b{font-family:var(--p-display);font-size:12.5px;display:block}
+.t.picked .ph{outline:3px solid var(--accent);outline-offset:4px;border-radius:38px}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.25s;pointer-events:none}#toast.show{opacity:1}
+</style>
+<h1>🍯 Temas do HyHoney · rodada 1</h1>
+<div class="sub">Oito direções, a mesma tela (a Capa) em cada uma. Marque até <b>4 favoritos</b>; na próxima rodada eu aplico os 4 no app de verdade e você fecha em 3 temas alternáveis (um claro, um escuro, um especial).</div>
+<div class="bar"><b id="cnt">0 / 4 escolhidos</b><button onclick="copyPick()">⬇ Copiar escolha para o chat</button><button style="background:var(--surface);color:var(--ink);border:1px solid var(--line)" onclick="localStorage.removeItem('hyhoney-temas');location.reload()">limpar</button></div>
+<div class="grid" id="grid"></div>
+<div id="toast"></div>
+<script>
+const T=[
+ {id:'mel',n:'Mel & Papel',who:'O atual. Caderno quente, amigável, sem gritar. Padrão claro seguro.',d:"'Fraunces',Georgia,serif",b:"'Nunito',sans-serif",bg:'#FBF6EC',surface:'#FFFDF7',card:'#FFFDF7',line:'#E6DAC2',ink:'#2B2118',ink2:'#6E5E4B',muted:'#9A8A73',accent:'#E8A33D',accentSoft:'#FBE7C2',roseSoft:'#FBDDE2',sage:'#6F9C6B',r:'14px'},
+ {id:'cartorio',n:'Cartório Noturno',who:'Escuro, dourado sobre grafite, ar de documento oficial. Casa com Contrato e Protocolos.',d:"'Playfair Display',serif",b:"'DM Sans',sans-serif",bg:'#1B1A1F',surface:'#24232A',card:'#24232A',line:'#3E3B46',ink:'#EFE6D2',ink2:'#C3B79C',muted:'#857B69',accent:'#D4AF5A',accentSoft:'#3A3120',roseSoft:'#3A2830',sage:'#8AA88A',r:'6px'},
+ {id:'polaroid',n:'Polaroid',who:'Branco puro, sombras de foto, títulos à mão. O Museu em primeiro plano.',d:"'Caveat',cursive",b:"'DM Sans',sans-serif",bg:'#FFFFFF',surface:'#FFFFFF',card:'#FFFFFF',line:'#E4E4E0',ink:'#1E1E1E',ink2:'#5A5A5A',muted:'#9A9A96',accent:'#E36A7C',accentSoft:'#FDE3E7',roseSoft:'#FFF1F3',sage:'#6F9C6B',r:'4px'},
+ {id:'arcade',n:'Neon Arcade',who:'Escuro com magenta e ciano, placar de fliperama. Para estatísticas e Protocolos.',d:"'Space Grotesk',sans-serif",b:"'Space Grotesk',sans-serif",bg:'#0F0B1A',surface:'#181229',card:'#181229',line:'#332A4F',ink:'#F4EEFF',ink2:'#BFB3DE',muted:'#7E7399',accent:'#FF3FA4',accentSoft:'#3D1531',roseSoft:'#2A1540',sage:'#3FE0C8',r:'2px'},
+ {id:'passaporte',n:'Passaporte',who:'Azul-marinho e verde-selo, linhas pontilhadas. Viagens e carimbos.',d:"'Lora',serif",b:"'Manrope',sans-serif",bg:'#EEF2F0',surface:'#FFFFFF',card:'#FFFFFF',line:'#CCD8D1',ink:'#14263A',ink2:'#3F5468',muted:'#7D8E9C',accent:'#1F6F5B',accentSoft:'#D6EBE3',roseSoft:'#F3D9D7',sage:'#1F6F5B',r:'10px'},
+ {id:'sorvete',n:'Sorvete de Domingo',who:'Pastéis lavanda + pêssego, arredondado, leve. O mais "fofo" sem ser infantil.',d:"'Poppins',sans-serif",b:"'Poppins',sans-serif",bg:'#F6F1FB',surface:'#FFFFFF',card:'#FFFFFF',line:'#E5DDF0',ink:'#2E2540',ink2:'#5F5476',muted:'#9B90B3',accent:'#F79C6B',accentSoft:'#FFE4D5',roseSoft:'#EFE3FA',sage:'#7BC49A',r:'20px'},
+ {id:'tinta',n:'Tinta & Linho',who:'Off-white de linho, tinta azul-escura, vermelho lacre. Elegante, editorial, adulto.',d:"'Cormorant Garamond',serif",b:"'Manrope',sans-serif",bg:'#F4F1EA',surface:'#FBF9F4',card:'#FBF9F4',line:'#DDD6C8',ink:'#1F2A44',ink2:'#4B5470',muted:'#8B8FA0',accent:'#B3372F',accentSoft:'#F3DCD8',roseSoft:'#EFE6DA',sage:'#5F8F6A',r:'8px'},
+ {id:'meianoite',n:'Meia-noite Mel',who:'A versão escura do Mel & Papel: grafite quente e mel aceso. Par natural do tema atual.',d:"'Fraunces',Georgia,serif",b:"'Nunito',sans-serif",bg:'#1D1913',surface:'#26211A',card:'#2A241D',line:'#3D352A',ink:'#F2E9DA',ink2:'#C9BBA4',muted:'#8F8270',accent:'#F0B24F',accentSoft:'#3D3320',roseSoft:'#3F2A2E',sage:'#8DBB88',r:'14px'},
+];
+let pick=[];try{pick=JSON.parse(localStorage.getItem('hyhoney-temas')||'[]')}catch(e){}
+function render(){grid.innerHTML=T.map(t=>`<div class="t${pick.includes(t.id)?' picked':''}" style="--p-bg:${t.bg};--p-surface:${t.surface};--p-card:${t.card};--p-line:${t.line};--p-ink:${t.ink};--p-ink2:${t.ink2};--p-muted:${t.muted};--p-accent:${t.accent};--p-accent-soft:${t.accentSoft};--p-rose-soft:${t.roseSoft};--p-sage:${t.sage};--p-r:${t.r};--p-display:${t.d};--p-body:${t.b}">
+ <h3>${t.n}<label><input type="checkbox" ${pick.includes(t.id)?'checked':''} onchange="tog('${t.id}',this)"> favorito</label></h3>
+ <div class="sw"><i style="background:${t.bg};border:1px solid ${t.line}"></i><i style="background:${t.ink}"></i><i style="background:${t.accent}"></i><i style="background:${t.roseSoft}"></i><i style="background:${t.sage}"></i></div>
+ <div class="ph"><div class="scr"><div class="hd">☰ <b>HyHoney</b><div class="av"><i style="background:${t.accent}"></i><i style="background:#E36A7C"></i></div></div>
+  <div class="body"><div class="cd"><small>Juntos há</small><b>1.847</b><span>dias, contando. Desde 14 de ago. de 2021.</span></div>
+  <div class="mem"><small>Memória surpresa · há 794 dias</small>"Primeira briga sobre ar-condicionado. Vencedor: o ventilador."</div>
+  <div class="cup"><b>🎟️ Passe Livre da Louça</b>Lendário · 1 uso restante</div>
+  <div><div class="li"><i class="on"></i>Jantar com a Matilha<em>sáb</em></div><div class="li"><i></i>Só Existir 🥿<em>dom</em></div></div></div>
+  <div class="tab"><span class="on">🏠</span><span>🗓️</span><span>✨</span><span>🎟️</span><span>⋯</span></div></div></div>
+ <div class="who">${t.who}</div></div>`).join('');cnt.textContent=`${pick.length} / 4 escolhidos`}
+function tog(id,el){if(el.checked){if(pick.length>=4){el.checked=false;toast('Máximo de 4 nesta rodada');return}pick.push(id)}else pick=pick.filter(x=>x!==id);try{localStorage.setItem('hyhoney-temas',JSON.stringify(pick))}catch(e){}render()}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function copyPick(){const s='Temas escolhidos (rodada 1): '+(pick.map(id=>T.find(t=>t.id===id).n).join(', ')||'nenhum');navigator.clipboard?.writeText(s).then(()=>toast('Copiado — cole no chat'),()=>toast(s))}
+render();
+</script>
