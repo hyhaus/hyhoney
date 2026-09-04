@@ -32,6 +32,10 @@
 
 **Criado.** `site/` (index.html com OG/manifest/ícone 65, `sw.js` offline, `CNAME`), workflow do GitHub Pages, guia 41. **Pendências do Odin.** gh auth login → 15 --criar → ligar Pages → CNAME no DNS. **Como voltar atrás.** apagar `site/` e o workflow.
 
+## 2026-09-04 · sessão 2 · rodada 8 — análise das 73, catálogo de bolso, simulações dos 7 ícones
+
+**Criado.** 42 análise das 73 (MD + PDF de 22 páginas, formato celular): ranking refeito, 8 novas na disputa (54, 44, 65, 51, 71, 62, 72, 55), veredito por pedido da rodada 3, a descoberta do teste em preto (listras precisam ser recorte vazado, não segunda cor), lista curta de 5 para decidir · 43 catálogo das 73 (81 páginas, uma logo por página, sumário visual por família) · 44 tela de início com os 7 ícones PWA escolhidos (65, 3, 5, 9, 66, 71, 72) com o contador em 97 · 45 simulação do link no WhatsApp com os mesmos 7. **Decisões.** nenhuma — a escolha entre as 5 continua com o Odin. **Pendências.** escolher 1 das 5 e rodar o kit final da marca. **Como voltar atrás.** apagar 42–45; a 33 continua válida para as 43 primeiras.
+
 ## 2026-09-04 · sessão 1 · rodada 7 — app v1.0, ícones reais, prompt para o Code, GitHub
 
 **Criado.** 38 prompt · mockup v1.0 · `icones/` reais (logo 65 + 6 alternativos + OG) · servidor entrega o manifest do ícone escolhido · 39 prompt [code] · 40 guia do GitHub. **Decisões.** D14–D17. **Pendências.** push para o GitHub (caminho A ou B), servidor no login, curadoria, P5/P12. **Como voltar atrás.** restaurar v0.6 do histórico; `icones/` antigos estão no commit 22bb030.

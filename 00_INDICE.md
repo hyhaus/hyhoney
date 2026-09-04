@@ -57,6 +57,10 @@ atualizado: 2026-09-04
 | 39 | [[39_PROMPT_code-v1]] | PROMPT_code-v1 | ⏳ [code] construir o app real |
 | 40 | [[40_GUIA_github-passo-a-passo]] | GUIA_github | os 2 caminhos para o push |
 | 41 | [[41_GUIA_colocar-no-ar]] | GUIA_no-ar | GitHub Pages + CNAME hyhoney.bitbeagle.com |
+| 42 | [[42_ANALISE_logos-73]] · PDF | ANALISE_logos-73 | atualiza a 33: critérios, ranking das 73, 8 novas fortes, teste em preto, lista curta de 5 |
+| 43 | [[43_CATALOGO_73-logos-celular.pdf]] | CATALOGO_73-logos | as 73 logos, uma por página, formato de celular (sumário visual por família) |
+| 44 | [[44_SIMULACAO_iphone-7-icones.png]] | SIMULACAO_iphone | os 7 ícones PWA escolhidos na tela de início; contador em 97 |
+| 45 | [[45_SIMULACAO_whatsapp-7-icones.png]] | SIMULACAO_whatsapp | os mesmos 7 na prévia do link enviado no WhatsApp |
 | — | `site/` + `.github/workflows/pages.yml` | — | versão publicável (index, sw.js, ícones, CNAME) e publicação automática |
 | — | `icones/` | — | logo 65 em 512/192/180/64, alternativos 3·5·9·66·71·72, manifests, OG 1200×630 |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
