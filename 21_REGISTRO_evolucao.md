@@ -23,9 +23,14 @@
 | v0.3 | 2026-09-04 | + A Roleta (o que fazer hoje, deliverys, templates, IA) | `2026-09-04_v0.3_roleta.html` | a6b79a7 |
 | v0.4 | 2026-09-04 | + Clima do Dia, busca geral ⌘K, merge de seções novas | `2026-09-04_v0.4_clima-busca.html` | a6b79a7 |
 | v0.5 | 2026-09-04 | + ponte com o Tour (23); correção da Saga no iPhone | `2026-09-04_v0.5_ponte-tour.html` | 3eb4c70 |
-| v0.6 | 2026-09-04 | + selo Cupom na seção Protocolos | `2026-09-04_v0.6_cupom-protocolos.html` | — |
+| v0.6 | 2026-09-04 | + selo Cupom na seção Protocolos | `2026-09-04_v0.6_cupom-protocolos.html` | 22bb030 |
+| **v1.0** | 2026-09-04 | temas finais + Passaporte em Viagens, logo 65 oficial, 71 na Capa, ícones PWA alternativos, logos por seção, Sobre Nós / Química / Cafeína, ＋ Adicionar funcional, notas, importar/exportar | `2026-09-04_v1.0_temas-logos-adicionar.html` | — |
 
 ---
+
+## 2026-09-04 · sessão 1 · rodada 7 — app v1.0, ícones reais, prompt para o Code, GitHub
+
+**Criado.** 38 prompt · mockup v1.0 · `icones/` reais (logo 65 + 6 alternativos + OG) · servidor entrega o manifest do ícone escolhido · 39 prompt [code] · 40 guia do GitHub. **Decisões.** D14–D17. **Pendências.** push para o GitHub (caminho A ou B), servidor no login, curadoria, P5/P12. **Como voltar atrás.** restaurar v0.6 do histórico; `icones/` antigos estão no commit 22bb030.
 
 ## 2026-09-04 · sessão 1 · rodada 6 — identidade rodada 3 dirigida (30 novas), cupom no app, nota PWA
 

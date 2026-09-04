@@ -24,7 +24,7 @@
 Veja `00_INDICE.md` (formato Obsidian, com guia das 24 seções). No painel HTML, aba "Índice de arquivos".
 
 ## Estado atual (em uma frase)
-Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, skills, PDF, servidor local, git iniciado. Próximo: P5 — fechar decisões e mockup v1.
+Mockup v1.0 lançado (temas finais, logo 65 oficial, ícones por seção, ＋ Adicionar funcional). Identidade com 73 conceitos em curadoria. Próximo: push para o GitHub (guia 40) e rodar o prompt 39 no Claude Code.
 
 ## Decisões tomadas
 | # | Decisão | Data | Por quê |
@@ -41,6 +41,10 @@ Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, sk
 | D10 | Design baseado em apps consagrados + neurociência (skill hyhoney-design); funil de temas 8 → 4 → 3 | 2026-09-04 | Odin/Claude |
 | D11 | Toda versão do mockup arquivada em historico-mockups/; projeto em Git (commit local por rodada; push pelo Mac com 15_GIT_sync.sh) | 2026-09-04 | Odin |
 | D13 | Selo Cupom (conceito 37) incorporado à seção Protocolos do mockup (v0.6) | 2026-09-04 | Odin |
+| D14 | Tema original Mel & Papel; escolhíveis: Mel & Papel, Polaroid, Cartório Noturno, Tinta & Linho, Meia-noite Mel; Passaporte fixo em Viagens; modo noturno = logo 28 | 2026-09-04 | Odin |
+| D15 | Logo 65 = ícone oficial (PWA + WhatsApp); logo 71 = dias juntos na Capa; alternativos 3, 5, 9, 65, 66, 71, 72 | 2026-09-04 | Odin |
+| D16 | Logos por seção: 16 privado · 24 Cartas · 31 Sobre Nós · 34 WhatsApp · 72 Protocolos · 42 Cafeína · 43 Matilha · 47 Lista Louca · 52 Metas · 55 Química · 64 Controle | 2026-09-04 | Odin |
+| D17 | Mockup v1.0 = primeira versão utilizável; próximo passo é o Claude Code (prompt 39) | 2026-09-04 | Odin |
 | D12 | Painel e app instaláveis como app (LaunchAgent 13 + Instalar no Chrome/Safari); iPhone via IP fixo | 2026-09-04 | Odin |
 
 ## Prompts (rastreamento)
@@ -56,6 +60,8 @@ Sessão 1 fechada: plano, mockup v0.4 (mobile, roleta, clima, busca), painel, sk
 | P8 | [cowork] Anexos, comentários, tags, filtros, busca geral | 17_PROMPT | ⏳ fila |
 | P9 | [cowork] Identidade rodada 3 dirigida pelo Odin (30 novas) | 35_PROMPT | ✅ feito |
 | P10 | [cowork] Identidade rodada 4 genérica (opcional) | 34_PROMPT | ⏳ fila |
+| P11 | [cowork] App v1.0: temas finais, logo oficial, ícones por seção, botões funcionais | 38_PROMPT | ✅ feito |
+| P12 | [code] Construir o HyHoney v1 | 39_PROMPT | ⏳ fila |
 
 ## Checklist das suas ideias (o que você pediu · onde está · o que eu sugiro)
 Marque `[x]` quando tiver revisado. Estado: 💡 ideia · 🎨 no mockup · ✅ decidida · 🔨 em construção · 🚀 no ar

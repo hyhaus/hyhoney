@@ -29,5 +29,8 @@ App para casais, feito primeiro para o casal do Odin (admin) e a parceira; futur
 9. **Explicações** ao Odin: primeiro em linguagem de leigo, termo técnico entre parênteses uma vez, analogias, cobertura ampla e rasa. Ele supervisiona código; não escreve.
 10. **Não confundir** com HyHaus (coliving), HyHobbit, Corveio ou Detoken — projetos separados do Odin; só reutilizar padrões (skills numeradas, painel, deploy) quando ele pedir.
 
+## Identidade e temas (decidido 2026-09-04)
+- Ícone oficial: logo 65 "oi com Abelha" (`icones/`); dias juntos na Capa: logo 71 (badge); alternativos 3, 5, 9, 65, 66, 71, 72; logos por seção conforme D16. Tema original Mel & Papel; escolhíveis: Mel & Papel, Polaroid, Cartório Noturno, Tinta & Linho, Meia-noite Mel; Passaporte fixo em Viagens. Numeração das logos = galeria 36 / curadoria 31.
+
 ## Estado resumido (atualize aqui a cada sessão)
 - 2026-09-04 (sessão 1): plano + mockup v0.4 (mobile, design neuro, roleta, clima do dia, busca) + painel + 4 skills + servidor local/LaunchAgent + galeria de temas + histórico de mockups + git iniciado. Próximo prompt: P5 (07). Na fila: P7 (16, Clima completo), P8 (17, anexos/tags/busca). Tecnologia do produto ainda não decidida.

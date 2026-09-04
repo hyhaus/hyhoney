@@ -11,3 +11,4 @@ Cada versão publicada do mockup é copiada aqui antes de ser substituída. Nome
 | v0.4 | `2026-09-04_v0.4_clima-busca.html` | + Clima do Dia (energia/humor/modo/pedidos), busca geral 🔍 (⌘K) |
 | v0.5 | `2026-09-04_v0.5_ponte-tour.html` | + ponte postMessage para o Tour (23) |
 | v0.6 | `2026-09-04_v0.6_cupom-protocolos.html` | + selo Cupom incorporado na seção Protocolos (cabeçalho e mini-selo em cada cupom) |
+| v1.0 | `2026-09-04_v1.0_temas-logos-adicionar.html` | temas finais (5) + Passaporte fixo em Viagens, logo 65 oficial, 71 na Capa, ícones PWA alternativos, logos por seção, seções Sobre Nós / Química / Cafeína, ＋ Adicionar funcional, notas persistentes, importar/exportar |

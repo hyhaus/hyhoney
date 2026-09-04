@@ -53,8 +53,12 @@ atualizado: 2026-09-04
 | 35 | [[35_PROMPT_identidade-rodada3-dirigida]] | PROMPT_identidade-3d | ✅ executado |
 | 36 | [[36_MARCA_galeria-v3.html]] | MARCA_rodada3 | 73 identidades (43 + 30 dirigidas) (artefato "Marca do HyHoney · rodada 3") |
 | 37 | [[37_NOTA_dias-juntos-icone-dinamico]] | NOTA_pwa-dinamico | o que muda todo dia num PWA: badge, OG, notificação |
+| 38 | [[38_PROMPT_app-v1-temas-e-logos]] | PROMPT_app-v1 | ✅ executado — mockup v1.0 |
+| 39 | [[39_PROMPT_code-v1]] | PROMPT_code-v1 | ⏳ [code] construir o app real |
+| 40 | [[40_GUIA_github-passo-a-passo]] | GUIA_github | os 2 caminhos para o push |
+| — | `icones/` | — | logo 65 em 512/192/180/64, alternativos 3·5·9·66·71·72, manifests, OG 1200×630 |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
-| — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.6 |
+| — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v1.0 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |
 
 ## Guia das seções do app (24)
