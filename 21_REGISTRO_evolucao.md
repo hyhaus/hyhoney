@@ -26,6 +26,10 @@
 
 ---
 
+## 2026-09-04 · sessão 1 · rodada 4 — curadoria da marca
+
+**Criado.** 30 prompt · 31 mesa de curadoria (favoritas sem limite ordenadas por arrasto, ocultos com gaveta, notas por conceito, zoom com tamanhos 180→40px e preto/branco, exportar/importar JSON) · cartão "Ranking da marca" no painel · rota `/curadoria`. **Decisões.** nenhuma. **Pendências.** Odin faz a curadoria e cola o ranking. **Como voltar atrás.** apagar 30–31.
+
 ## 2026-09-04 · sessão 1 · rodada 3 — identidade (8 → 43), links para o TickTick
 
 **Criado.** 25 prompt de identidade · 26 galeria de marca (8) · 27 links para o TickTick · 28 prompt rodada 2 · 29 galeria de marca com 43 identidades (filtros por família e tom, busca, 5 favoritas) · temas no painel · rota `/marca`. **Decisões.** nenhuma; pergunta aberta 7 (identidade) e 8 (temas). **Pendências.** servidor no login, GitHub, marcar 4 temas + 5 marcas, P5. **Como voltar atrás.** apagar 25–29; a rota `/marca` volta a apontar para a galeria mais nova que restar.

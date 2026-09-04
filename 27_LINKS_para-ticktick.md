@@ -8,7 +8,8 @@
 - 🧭 Tour do app inteiro (iPhone no computador) — https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673
 - 🖥️ iPhone · iPad · PC lado a lado — https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7
 - 🎨 Galeria de temas (marque 4) — https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365
-- 🐝 Marca · 43 identidades (marque 5) — https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760
+- ⭐ Curadoria da marca (favoritar, ocultar, ordenar, anotar, zoom) — https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef
+- 🐝 Marca · 43 identidades — https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760
 - 🐝 Marca · rodada 1 (8) — https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f
 - 🌐 Produção (futuro, com login) — https://hyhoney.bitbeagle.com
 
@@ -20,6 +21,7 @@
 - 🖥️ Dispositivos — http://<servidor>/dispositivos
 - 🎨 Temas — http://<servidor>/temas
 - 🐝 Marca — http://<servidor>/marca
+- ⭐ Curadoria — http://<servidor>/curadoria
 - 📓 Registro de evolução (changelog) — http://<servidor>/registro
 - 📁 Índice Obsidian — http://<servidor>/indice
 - 🟡 Próximo prompt (P5) — http://<servidor>/proximo
@@ -40,5 +42,6 @@
 - [ ] iPhone → Safari → http://<IP-do-Mac>:8787/app → Compartilhar → Adicionar à Tela de Início
 - [ ] Roteador → reserva de DHCP para o Mac (IP fixo)
 - [ ] `brew install gh && gh auth login` → `bash 15_GIT_sync.sh --criar` (GitHub privado)
-- [ ] Marcar 4 temas na galeria e 5 marcas na galeria de 43 → colar no chat
+- [ ] Curadoria da marca: favoritar, ocultar, ordenar, anotar → "Copiar ranking" → colar no chat e no painel
+- [ ] Marcar 4 temas na galeria → colar no chat
 - [ ] Responder as 8 perguntas abertas do painel (ou dizer "roda o P5")

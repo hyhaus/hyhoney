@@ -69,6 +69,7 @@ body[data-skin="tinta"] .tb,body[data-skin="tinta"] .add button{color:#fff}
   <tr><td><b>Tour</b> (app inteiro, iPhone no PC)</td><td colspan="2"><a href="https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673">claude.ai · Tour do HyHoney</a> · <a href="/tour">local: /tour</a></td><td class="sub">mapa de todas as seções + guia + feedback por seção</td></tr>
   <tr><td><b>Temas</b> (galeria, marque 4)</td><td colspan="2"><a href="https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365">claude.ai · Temas do HyHoney</a> · <a href="/11_TEMAS_galeria.html">local</a></td><td class="sub">rodada 1 do funil 8 → 4 → 3</td></tr>
   <tr><td><b>Marca</b> (logo, ícone, WhatsApp)</td><td colspan="2"><a href="https://claude.ai/code/artifact/2e5d4397-2a9f-455a-808a-f5c3b4c3d760">claude.ai · Marca do HyHoney · 43</a> · <a href="/marca">local: /marca</a> · <a href="https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f">rodada 1 (8)</a></td><td class="sub">43 identidades com filtros; marque 5</td></tr>
+  <tr><td><b>Curadoria da marca</b></td><td colspan="2"><a href="https://claude.ai/code/artifact/1e434d6a-4791-43cc-a676-f4480ed33aef">claude.ai · Curadoria da Marca</a> · <a href="/curadoria">local: /curadoria</a></td><td class="sub">favoritar sem limite, ocultar, ordenar por arrasto, anotar, zoom — cole o ranking abaixo</td></tr>
   <tr><td><b>Histórico de mockups</b></td><td colspan="2"><a href="/historico-mockups/">local: /historico-mockups/</a></td><td class="sub">toda versão arquivada</td></tr>
   <tr><td><b>Produção</b> (futuro)</td><td colspan="2"><a href="https://hyhoney.bitbeagle.com">hyhoney.bitbeagle.com</a></td><td class="sub">ainda não existe; login por casal</td></tr>
  </tbody></table></div></div>
@@ -77,6 +78,8 @@ body[data-skin="tinta"] .tb,body[data-skin="tinta"] .add button{color:#fff}
  <div class="card wide"><h2>☑️ Checklist das suas ideias <span class="label" style="margin-left:auto">o que você pediu · onde está · o que eu sugiro</span></h2><div class="tw"><table><thead><tr><th></th><th>Sua ideia</th><th>Estado</th><th>Virou / sugestão do Claude</th><th></th></tr></thead><tbody id="suas"></tbody></table></div><div class="add"><input id="nuIde" placeholder="Nova ideia sua para o app"><button onclick="addSua()">＋</button></div></div>
  <div class="card wide"><h2>🗂️ Seções do app</h2><div class="tw"><table><thead><tr><th>Pasta</th><th>Seção</th><th>Apelido</th><th>Status</th><th>Obs.</th><th></th></tr></thead><tbody id="secoes"></tbody></table></div><div class="add"><input id="nsPasta" placeholder="Pasta" style="flex:0 0 120px"><input id="nsNome" placeholder="Nova seção"><input id="nsObs" placeholder="observação"><button onclick="addSec()">＋</button></div></div>
  <div class="card"><h2>📌 Decisões</h2><div class="tw"><table><thead><tr><th>#</th><th>Decisão</th><th>Data</th></tr></thead><tbody id="decisoes"></tbody></table></div><div class="add"><input id="ndDec" placeholder="Nova decisão"><button onclick="addDec()">＋</button></div></div>
+ <div class="card"><h2>⭐ Ranking da marca <span class="label" style="margin-left:auto">cole aqui o "Copiar ranking" da curadoria</span></h2><textarea id="rank" rows="6" style="width:100%;font:inherit;font-size:12px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink)" placeholder="1º 12 Colmeia — casa, aconchego
+2º …"></textarea></div>
  <div class="card"><h2>💡 Backlog de ideias</h2><div id="ideias"></div><div class="add"><input id="niIde" placeholder="Nova ideia (a sua ou minha)"><button onclick="addIdea()">＋</button></div></div>
  <div class="card wide"><h2>📁 Arquivos do projeto <span class="label" style="margin-left:auto">clique para abrir · troque de categoria</span></h2>
  <div class="tools" id="cats" style="margin:0 0 10px"></div><div id="arquivos"></div>
@@ -146,13 +149,14 @@ function render(){
  kSec.textContent=S.secoes.length;kDec.textContent=S.decisoes.length;kIde.textContent=S.ideias.filter(i=>!i[1]).length;kSes.textContent=S.sessoes.length;
 }
 document.getElementById('estado').addEventListener('change',e=>{S.estado=e.target.value;save()});
+const rk=document.getElementById('rank');rk.value=S.rank||'';rk.addEventListener('change',()=>{S.rank=rk.value;save()});
 function addPrompt(){const v=npPrompt.value.trim();if(!v)return;S.prompts.push(['P'+(S.prompts.length+1),v,'fila']);npPrompt.value='';save()}
 function addSec(){const v=nsNome.value.trim();if(!v)return;S.secoes.push([nsPasta.value||'—',v,'','ideia',nsObs.value]);nsNome.value=nsObs.value='';save()}
 function addDec(){const v=ndDec.value.trim();if(!v)return;S.decisoes.push(['D'+(S.decisoes.length+1),v,new Date().toISOString().slice(0,10)]);ndDec.value='';save()}
 function addSua(){const v=nuIde.value.trim();if(!v)return;(S.suas=S.suas||[]).push([v,'ideia','',false]);nuIde.value='';save()}
 function addIdea(){const v=niIde.value.trim();if(!v)return;S.ideias.push([v,false]);niIde.value='';save()}
 function reset(){S=JSON.parse(JSON.stringify(INIT));save();toast('Painel restaurado')}
-function exportMd(){const md=`# 04 · PAINEL — Estado do projeto HyHoney\n> Exportado em ${new Date().toISOString().slice(0,10)}\n\n## Estado atual\n${S.estado}\n\n## Decisões\n${S.decisoes.map(d=>`- ${d[0]} · ${d[1]} (${d[2]})`).join('\n')}\n\n## Prompts\n${S.prompts.map(p=>`- ${p[0]} · ${p[1]} · ${P_LB[p[2]]}`).join('\n')}\n\n## Checklist das suas ideias\n${(S.suas||[]).map(s=>`- [${s[3]?'x':' '}] ${s[0]} · ${SEC_LB[s[1]]} · ${s[2]}`).join('\n')}\n\n## Seções\n| Pasta | Seção | Apelido | Status | Obs |\n|---|---|---|---|---|\n${S.secoes.map(s=>`| ${s[0]} | ${s[1]} | ${s[2]} | ${SEC_LB[s[3]]} | ${s[4]} |`).join('\n')}\n\n## Perguntas abertas\n${S.perguntas.map((q,i)=>`${i+1}. ${q[0]}${q[1]?` → **${q[1]}**`:''}`).join('\n')}\n\n## Backlog de ideias\n${S.ideias.map(i=>`- [${i[1]?'x':' '}] ${i[0]}`).join('\n')}\n\n## Histórico de sessões\n${S.sessoes.map(s=>`- ${s}`).join('\n')}\n`;
+function exportMd(){const md=`# 04 · PAINEL — Estado do projeto HyHoney\n> Exportado em ${new Date().toISOString().slice(0,10)}\n\n## Estado atual\n${S.estado}\n\n## Decisões\n${S.decisoes.map(d=>`- ${d[0]} · ${d[1]} (${d[2]})`).join('\n')}\n\n## Prompts\n${S.prompts.map(p=>`- ${p[0]} · ${p[1]} · ${P_LB[p[2]]}`).join('\n')}\n\n## Ranking da marca\n${S.rank||'(vazio)'}\n\n## Checklist das suas ideias\n${(S.suas||[]).map(s=>`- [${s[3]?'x':' '}] ${s[0]} · ${SEC_LB[s[1]]} · ${s[2]}`).join('\n')}\n\n## Seções\n| Pasta | Seção | Apelido | Status | Obs |\n|---|---|---|---|---|\n${S.secoes.map(s=>`| ${s[0]} | ${s[1]} | ${s[2]} | ${SEC_LB[s[3]]} | ${s[4]} |`).join('\n')}\n\n## Perguntas abertas\n${S.perguntas.map((q,i)=>`${i+1}. ${q[0]}${q[1]?` → **${q[1]}**`:''}`).join('\n')}\n\n## Backlog de ideias\n${S.ideias.map(i=>`- [${i[1]?'x':' '}] ${i[0]}`).join('\n')}\n\n## Histórico de sessões\n${S.sessoes.map(s=>`- ${s}`).join('\n')}\n`;
  navigator.clipboard?.writeText(md).then(()=>toast('Markdown copiado'),()=>{console.log(md);toast('Veja o console')})}
 const CATS=[['tudo','📚 Tudo'],['painel','🧭 Painel & índice'],['prompt','🟡 Prompts'],['analise','🔬 Análises & plano'],['mockup','📱 Mockups & temas'],['guia','🛠️ Guias & ferramentas'],['skill','🧩 Skills'],['historico','🕰️ Histórico']];
 const ARQ2=[
@@ -174,6 +178,8 @@ const ARQ2=[
  ['mockup','03_MOCKUP_hyhoney-app.html','App navegável v0.4','/app'],
  ['mockup','10_PREVIEW_dispositivos.html','iPhone · iPad · PC lado a lado','/dispositivos'],
  ['mockup','11_TEMAS_galeria.html','Galeria de 8 temas — marque 4','/temas'],
+ ['mockup','31_MARCA_curadoria.html','Curadoria: favoritas ordenadas por arrasto, ocultos, notas, zoom','/curadoria'],
+ ['prompt','30_PROMPT_curadoria-de-marca.md','✅ prompt da curadoria','/30_PROMPT_curadoria-de-marca.md'],
  ['mockup','29_MARCA_galeria-v2.html','Marca · 43 identidades com filtros (rodada 2) — marque 5','/marca'],
  ['prompt','28_PROMPT_identidade-rodada2.md','✅ prompt da rodada 2 de identidade','/28_PROMPT_identidade-rodada2.md'],
  ['mockup','26_MARCA_galeria.html','Logo e identidade: 8 conceitos, ícone no iPhone, prévia no WhatsApp','/marca'],

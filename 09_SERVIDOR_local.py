@@ -52,6 +52,8 @@ class H(http.server.SimpleHTTPRequestHandler):
             f = latest("PREVIEW"); return self.serve_wrapped(f) if f else self.send_error(404)
         if path == "/tour":
             f = latest("TOUR"); return self.serve_wrapped(f) if f else self.send_error(404)
+        if path == "/curadoria":
+            f = latest("MARCA_curadoria") or "31_MARCA_curadoria.html"; return self.serve_wrapped(f)
         if path == "/marca":
             f = latest("MARCA"); return self.serve_wrapped(f) if f else self.send_error(404)
         if path == "/temas":
@@ -122,7 +124,8 @@ ul{{padding-left:18px;font-size:13px}} a{{color:#2B2118}}
 <a class="big" href="/dispositivos">🖥️ iPhone · iPad · computador lado a lado<small>{latest("PREVIEW") or '—'}</small></a>
 <a class="big" href="/tour">🧭 Tour do app inteiro (iPhone no computador)<small>{latest("TOUR") or "—"}</small></a>
 <a class="big" href="/temas">🎨 Galeria de temas<small>marque 4</small></a>
-<a class="big" href="/marca">🐝 Logo e identidade<small>marque 3</small></a>
+<a class="big" href="/marca">🐝 Logo e identidade<small>43 conceitos</small></a>
+<a class="big" href="/curadoria">⭐ Curadoria da marca<small>favoritar, ocultar, ordenar, anotar, zoom</small></a>
 <a class="big" href="/registro">📓 Registro de evolução<small>diário de bordo, mais recente no topo</small></a>
 <a class="big" href="/proximo">🟡 Próximo prompt<small>o mais novo da pasta</small></a>
 <p style="margin-top:22px">Todos os arquivos:</p><ul>{li}</ul>""" + SKELETON_TAIL
@@ -144,7 +147,7 @@ if __name__ == "__main__":
             print(f"  iPhone     : http://{ip}:{PORT}   (mesmo Wi-Fi; fixe o IP do Mac no roteador para não mudar)")
         else:
             print("  iPhone     : desligado (--so-local)")
-        print(f"  Rotas      : /app /painel /tour /dispositivos /temas /marca /registro /indice /plano /analise /proximo /guia /historico-mockups/")
+        print(f"  Rotas      : /app /painel /tour /dispositivos /temas /marca /curadoria /registro /indice /plano /analise /proximo /guia /historico-mockups/")
         print(f"  Dica       : no iPhone, http://{socket.gethostname().split('.')[0]}.local:{PORT} costuma funcionar sem decorar IP")
         print("\n  Ctrl+C para parar.\n")
         try:
