@@ -1,0 +1,107 @@
+<title>Marca do HyHoney</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600;9..144,800,100&family=Nunito:wght@400;700;800;900&family=Caveat:wght@700&family=Playfair+Display:wght@700;900&family=Poppins:wght@600;800&family=Cormorant+Garamond:wght@700&display=swap">
+<style>
+:root{--bg:#FBF6EC;--surface:#FFFDF7;--surface2:#F3EBDA;--line:#E6DAC2;--ink:#2B2118;--ink2:#6E5E4B;--muted:#9A8A73;--accent:#E8A33D;--accent-soft:#FBE7C2;--rose:#E36A7C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596}}
+:root[data-theme="dark"]{--bg:#1D1913;--surface:#26211A;--surface2:#2F2921;--line:#3D352A;--ink:#F2E9DA;--ink2:#C9BBA4;--muted:#8F8270;--accent:#F0B24F;--accent-soft:#3D3320;--rose:#F08596}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;padding:22px 18px 80px;font-size:14px}
+h1{font-family:Fraunces,Georgia,serif;font-size:26px;margin:0}.sub{color:var(--muted);margin:4px 0 14px;max-width:760px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:18px}
+.bar button{font:inherit;font-weight:800;padding:8px 14px;border-radius:999px;border:0;background:var(--accent);color:#2B2118;cursor:pointer}
+.c{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:22px;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:18px}
+.c.picked{outline:3px solid var(--accent)}
+@media (max-width:980px){.c{grid-template-columns:1fr}}
+.c h3{font-family:Fraunces,Georgia,serif;font-size:19px;margin:0;display:flex;align-items:center;gap:8px}
+.c h3 label{margin-left:auto;font-size:12px;color:var(--muted);display:flex;gap:4px;align-items:center;cursor:pointer;font-family:Nunito}
+.lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;margin:10px 0 6px}
+.who{color:var(--ink2);font-size:13px}
+.brand{display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;margin-top:8px}
+.brand svg{width:64px;height:64px;flex:none}
+.brand .wm{font-size:30px;font-weight:800;line-height:1}.brand .tg{font-size:12px;opacity:.75}
+.sw{display:flex;gap:4px;margin-top:8px}.sw i{flex:1;height:12px;border-radius:3px}
+.mono{display:flex;gap:8px;align-items:center;margin-top:8px}.mono svg{width:28px;height:28px}.mono span{font-size:11px;color:var(--muted)}
+/* iPhone home */
+.home{background:linear-gradient(160deg,#6B8CC9,#B77FB0);border-radius:22px;padding:22px 14px 14px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.home .st{font-size:11px;opacity:.9;margin-bottom:12px;display:flex;justify-content:space-between}
+.home .apps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.home .ap{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.home .ic{width:54px;height:54px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.home .ic svg{width:44px;height:44px}
+.home .ic.n{background:linear-gradient(135deg,#eee,#ccc)}
+.home .big{margin:0 auto 6px;width:96px;height:96px;border-radius:24px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.home .big svg{width:78px;height:78px}
+/* WhatsApp */
+.wa{background:#0B141A;border-radius:18px;padding:12px;color:#E9EDEF}
+.wa .msg{background:#005C4B;border-radius:10px;padding:6px;max-width:100%;margin-left:auto}
+.wa .card{background:#025144;border-radius:8px;overflow:hidden}
+.wa .og{height:96px;display:grid;place-items:center;position:relative;overflow:hidden}
+.wa .og svg{width:60px;height:60px}
+.wa .og .t{position:absolute;left:12px;bottom:8px;font-weight:800;font-size:15px;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.wa .tx{padding:8px 10px}.wa .tx b{display:block;font-size:13.5px}.wa .tx p{margin:2px 0 0;font-size:12px;color:#B7C2C6;line-height:1.35}.wa .tx small{display:block;color:#8696A0;font-size:11px;margin-top:4px}
+.wa .link{color:#53BDEB;font-size:12.5px;padding:6px 4px 2px;word-break:break-all}
+.wa .tm{text-align:right;font-size:10px;color:#8696A0;padding:0 4px}
+pre{background:var(--surface2);padding:12px;border-radius:10px;font-size:12px;overflow:auto}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:.25s;pointer-events:none}#toast.show{opacity:1}
+</style>
+<h1>🍯 Marca do HyHoney · rodada 1</h1>
+<div class="sub">Oito identidades. Para cada uma: como fica o <b>ícone no iPhone</b> (Adicionar à Tela de Início), como fica o <b>link no WhatsApp</b> (título, subtítulo e imagem vêm das metatags Open Graph do site), e a <b>marca</b> com paleta e tipografia. Marque até <b>3 favoritas</b>.</div>
+<div class="bar"><b id="cnt">0 / 3 favoritas</b><button onclick="copyPick()">⬇ Copiar escolha para o chat</button><button style="background:var(--surface);color:var(--ink);border:1px solid var(--line)" onclick="localStorage.removeItem('hyhoney-marca');location.reload()">limpar</button></div>
+<div id="g"></div>
+<div class="c" style="display:block"><h3>Como isso vira realidade</h3><div class="lbl">Metatags para o &lt;head&gt; do site (o WhatsApp lê isto)</div><pre>&lt;title&gt;HyHoney — o app do casal&lt;/title&gt;
+&lt;meta property="og:title" content="HyHoney"&gt;
+&lt;meta property="og:description" content="O app do casal: memórias, cupons raros e um cartório carinhoso."&gt;
+&lt;meta property="og:image" content="https://hyhoney.bitbeagle.com/og.png"&gt;   &lt;!-- 1200×630 --&gt;
+&lt;meta property="og:url" content="https://hyhoney.bitbeagle.com"&gt;
+&lt;meta name="theme-color" content="#E8A33D"&gt;
+&lt;link rel="apple-touch-icon" href="/icones/apple-touch-icon.png"&gt;      &lt;!-- 180×180 --&gt;
+&lt;link rel="manifest" href="/manifest.webmanifest"&gt;                      &lt;!-- ícones 192 e 512 --&gt;</pre><div class="who">Arquivos de ícone necessários: 180 (iPhone), 192 e 512 (manifest/Android/Chrome), 32 (favicon) e a capa OG 1200×630. Escolhida a identidade, eu gero todos a partir do SVG.</div></div>
+<div id="toast"></div>
+<script>
+// símbolos em SVG (originais, sem personagem existente)
+const bee=(c1,c2,x=0,y=0,s=1,rot=0)=>`<g transform="translate(${x} ${y}) scale(${s}) rotate(${rot})"><ellipse cx="0" cy="0" rx="14" ry="10" fill="${c1}"/><path d="M-6 -9 v18 M0 -10 v20 M6 -9 v18" stroke="${c2}" stroke-width="3" stroke-linecap="round"/><circle cx="-13" cy="-2" r="6" fill="${c2}"/><circle cx="-15" cy="-3" r="1.6" fill="#fff"/><ellipse cx="4" cy="-13" rx="8" ry="5" fill="#fff" opacity=".85" transform="rotate(-20 4 -13)"/><ellipse cx="-4" cy="-13" rx="7" ry="4.5" fill="#fff" opacity=".7" transform="rotate(-35 -4 -13)"/></g>`;
+const heart=(c,x=0,y=0,s=1)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 8 C-12 -2 -10 -14 -1 -12 C0 -12 0 -10 0 -10 C0 -10 0 -12 1 -12 C10 -14 12 -2 0 8Z" fill="${c}"/>`;
+const drop=(c,x=0,y=0,s=1)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 -22 C10 -8 16 -2 16 6 A16 16 0 0 1 -16 6 C-16 -2 -10 -8 0 -22Z" fill="${c}"/>`;
+const hex=(c,x=0,y=0,s=1)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 -20 L17 -10 L17 10 L0 20 L-17 10 L-17 -10Z" fill="${c}"/>`;
+const svg=(inner,bg)=>`<svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">${bg?`<rect x="-50" y="-50" width="100" height="100" rx="24" fill="${bg}"/>`:''}${inner}</svg>`;
+const C=[
+ {id:'abelhas-coracao',n:'Abelhas de Coração',fam:'abelhas apaixonadas',who:'Duas abelhas que, juntas, desenham um coração. Romântico e imediato: qualquer pessoa entende em 1 segundo.',pal:['#E8A33D','#2B2118','#E36A7C','#FBF6EC','#6F9C6B'],font:"'Fraunces',serif",bg:'#FBF6EC',ink:'#2B2118',
+  sym:(bg)=>svg(heart('#E36A7C',0,4,2.6)+bee('#E8A33D','#2B2118',-14,-6,.7,-25)+bee('#E8A33D','#2B2118',14,-6,.7,25),bg),
+  og:['HyHoney','O app de um casal só. Memórias, cupons raros e um cartório carinhoso.','romântico']},
+ {id:'gota',n:'Gota de Mel',fam:'gota + coração',who:'Uma gota de mel com um coração dentro. Minimalista, funciona em 20px, parece app de banco — no bom sentido.',pal:['#E8A33D','#C9962B','#FFFFFF','#2B2118','#FBE7C2'],font:"'Poppins',sans-serif",bg:'#E8A33D',ink:'#2B2118',
+  sym:(bg)=>svg(drop('#FFFDF7',0,2,1.5)+heart('#E8A33D',0,10,1.4),bg),
+  og:['HyHoney · nós dois','Um lugar só nosso: o que vivemos, o que combinamos, o que ainda vamos inventar.','romântico']},
+ {id:'favo',n:'Favo',fam:'favo/hexágono',who:'Hexágono de favo com um coração no centro. Inteligente, geométrico, cara de produto sério que esconde piada.',pal:['#2B2118','#E8A33D','#FBF6EC','#E36A7C','#8A7A66'],font:"'Poppins',sans-serif",bg:'#2B2118',ink:'#F2E9DA',
+  sym:(bg)=>svg(hex('#E8A33D',0,0,1.6)+hex('#2B2118',0,0,1.2)+heart('#E8A33D',0,6,1.5),bg),
+  og:['HyHoney','Sistema oficial de gestão de um relacionamento. Com cupons.','inteligente']},
+ {id:'asas',n:'Abelha de Asas de Coração',fam:'abelhas apaixonadas',who:'Uma abelha só, gordinha, com as asas em formato de coração. Fofa sem ser infantil; ótima como mascote do onboarding.',pal:['#F0B24F','#2B2118','#F5C5CD','#FFFDF7','#5B8FB9'],font:"'Nunito',sans-serif",bg:'#FFFDF7',ink:'#2B2118',
+  sym:(bg)=>svg(heart('#F5C5CD',-9,-16,1.6)+heart('#F5C5CD',9,-16,1.6)+bee('#F0B24F','#2B2118',0,4,1.2,0),bg),
+  og:['HyHoney 🐝','Ela marcou "modo silencioso". Você recebeu um cupom. A vida a dois, organizada.','engraçado']},
+ {id:'pote',n:'Pote de Mel',fam:'pote com etiqueta',who:'Um pote de mel com etiqueta escrita à mão. Artesanal, caseiro, combina com o Museu e com o tema Polaroid.',pal:['#E8A33D','#8B5A2B','#FBF6EC','#E36A7C','#2B2118'],font:"'Caveat',cursive",bg:'#FBF6EC',ink:'#2B2118',
+  sym:(bg)=>svg(`<rect x="-20" y="-14" width="40" height="40" rx="10" fill="#E8A33D"/><rect x="-16" y="-26" width="32" height="12" rx="4" fill="#8B5A2B"/><rect x="-14" y="0" width="28" height="14" rx="3" fill="#FBF6EC"/>`+heart('#E36A7C',0,9,.9),bg),
+  og:['HyHoney — nosso pote','Guardamos aqui tudo que é doce (e algumas coisas grudentas).','romântico']},
+ {id:'monograma',n:'Monograma HH',fam:'tipográfico',who:'Dois H entrelaçados, um em mel e outro em rosa, formando um coração no vão. Elegante, editorial, adulto. Casa com Tinta & Linho.',pal:['#1F2A44','#E8A33D','#E36A7C','#F4F1EA','#B3372F'],font:"'Playfair Display',serif",bg:'#F4F1EA',ink:'#1F2A44',
+  sym:(bg)=>svg(`<text x="-22" y="16" font-family="Playfair Display,serif" font-weight="900" font-size="52" fill="#E8A33D">H</text><text x="-2" y="16" font-family="Playfair Display,serif" font-weight="900" font-size="52" fill="#E36A7C" opacity=".9">H</text>`+heart('#1F2A44',-2,-14,.7),bg),
+  og:['HyHoney','Hoffmann & Honey. Um contrato assinado em duas vias, sem direito a devolução.','inteligente']},
+ {id:'carimbo',n:'Carimbo do Cartório',fam:'carimbo',who:'Selo redondo "HyHoney · Registrado" com uma abelhinha no centro. É o humor burocrático virando marca. Casa com Cartório Noturno.',pal:['#B3372F','#2B2118','#FBF6EC','#E8A33D','#C9962B'],font:"'Cormorant Garamond',serif",bg:'#FBF6EC',ink:'#B3372F',
+  sym:(bg)=>svg(`<circle r="40" fill="none" stroke="#B3372F" stroke-width="4"/><circle r="30" fill="none" stroke="#B3372F" stroke-width="1.5"/><path id="p" d="M-28 0 A28 28 0 1 1 28 0" fill="none"/><text font-family="Nunito" font-weight="900" font-size="9" fill="#B3372F" letter-spacing="2"><textPath href="#p" startOffset="50%" text-anchor="middle">HYHONEY · REGISTRADO</textPath></text>`+bee('#B3372F','#FBF6EC',0,6,.75,-15),bg),
+  og:['HyHoney · Cartório do Coração','Termos e Condições assinados. Protocolos em vigor. Multas afetivas opcionais.','engraçado']},
+ {id:'danca',n:'Abelhas Dançando',fam:'abelhas dançando',who:'Duas abelhas em traço único, girando uma em volta da outra, como a dança que abelhas fazem de verdade para se comunicar. Divertido e cheio de movimento.',pal:['#FF3FA4','#3FD2FF','#0F0B1A','#F4EEFF','#F0B24F'],font:"'Poppins',sans-serif",bg:'#0F0B1A',ink:'#F4EEFF',
+  sym:(bg)=>svg(`<path d="M-30 10 C-30 -30 30 -30 30 10 C30 40 -30 40 -30 10" fill="none" stroke="#3FD2FF" stroke-width="3" stroke-dasharray="6 5" opacity=".8"/>`+bee('#F0B24F','#0F0B1A',-16,-8,.75,-40)+bee('#FF3FA4','#0F0B1A',16,12,.75,140),bg),
+  og:['HyHoney','Dois insetos, uma dança. O app que registra tudo — inclusive o placar.','engraçado']},
+];
+let pick=[];try{pick=JSON.parse(localStorage.getItem('hyhoney-marca')||'[]')}catch(e){}
+function render(){g.innerHTML=C.map(c=>`<div class="c${pick.includes(c.id)?' picked':''}">
+ <div><h3>${c.n} <span style="font-size:11px;color:var(--muted);font-family:Nunito">· ${c.fam}</span><label><input type="checkbox" ${pick.includes(c.id)?'checked':''} onchange="tog('${c.id}',this)"> favorita</label></h3>
+  <div class="who">${c.who}</div>
+  <div class="brand" style="background:${c.bg};color:${c.ink}">${c.sym('')}<div><div class="wm" style="font-family:${c.font}">HyHoney</div><div class="tg">o app do casal</div></div></div>
+  <div class="sw">${c.pal.map(p=>`<i style="background:${p};border:1px solid var(--line)"></i>`).join('')}</div>
+  <div class="mono"><svg viewBox="-50 -50 100 100"><g filter="grayscale(1)">${c.sym('').replace(/<svg[^>]*>|<\/svg>/g,'').replace(/fill="#[0-9A-Fa-f]{6}"/g,'fill="#111"').replace(/stroke="#[0-9A-Fa-f]{6}"/g,'stroke="#111"')}</g></svg><span>teste monocromático · tipografia: ${c.font.split(',')[0].replace(/'/g,'')}</span></div>
+  <div class="lbl">Tom do WhatsApp: ${c.og[2]}</div></div>
+ <div><div class="lbl">Ícone no iPhone (tela de início)</div><div class="home"><div class="st"><span>9:41</span><span>●●●</span></div><div class="big" style="background:${c.bg}">${c.sym('')}</div><div style="font-size:11px;margin-bottom:14px">HyHoney</div><div class="apps"><div class="ap"><div class="ic n"></div>Fotos</div><div class="ap"><div class="ic n"></div>Mapas</div><div class="ap"><div class="ic" style="background:${c.bg}">${c.sym('')}</div>HyHoney</div><div class="ap"><div class="ic n"></div>Notas</div></div></div></div>
+ <div><div class="lbl">Link enviado no WhatsApp</div><div class="wa"><div class="msg"><div class="card"><div class="og" style="background:${c.bg};color:${c.ink}">${c.sym('')}<span class="t" style="font-family:${c.font}">HyHoney</span></div><div class="tx"><b>${c.og[0]}</b><p>${c.og[1]}</p><small>hyhoney.bitbeagle.com</small></div></div><div class="link">https://hyhoney.bitbeagle.com</div><div class="tm">21:07 ✓✓</div></div></div></div>
+</div>`).join('');cnt.textContent=`${pick.length} / 3 favoritas`}
+function tog(id,el){if(el.checked){if(pick.length>=3){el.checked=false;toast('Máximo de 3');return}pick.push(id)}else pick=pick.filter(x=>x!==id);try{localStorage.setItem('hyhoney-marca',JSON.stringify(pick))}catch(e){}render()}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function copyPick(){const s='Marca do HyHoney (rodada 1) — favoritas: '+(pick.map(id=>C.find(c=>c.id===id).n).join(', ')||'nenhuma');navigator.clipboard?.writeText(s).then(()=>toast('Copiado — cole no chat'),()=>toast(s))}
+render();
+</script>

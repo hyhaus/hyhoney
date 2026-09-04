@@ -40,6 +40,8 @@ atualizado: 2026-09-04
 | 22 | [[22_PROMPT_tour-iphone-no-computador]] | PROMPT_tour | ✅ executado |
 | 23 | [[23_TOUR_iphone-no-computador.html]] | TOUR | app inteiro numa tela de iPhone, mapa + guia (artefato "Tour do HyHoney") |
 | 24 | [[24_PROMPT_escolha-de-design]] | PROMPT_design-escolha | funil de temas 8 → 4 → 3 |
+| 25 | [[25_PROMPT_identidade-e-logo]] | PROMPT_identidade | ✅ executado |
+| 26 | [[26_MARCA_galeria.html]] | MARCA_rodada1 | 8 logos: ícone iPhone, WhatsApp, marca (artefato "Marca do HyHoney") |
 | — | `CLAUDE.md` | — | já na raiz (gerado do 05) |
 | — | [[historico-mockups/README\|historico-mockups/]] | — | v0.1 → v0.5 |
 | — | `icones/` · `logs/` · `.gitignore` | — | ícones/manifests · logs do Code · git |

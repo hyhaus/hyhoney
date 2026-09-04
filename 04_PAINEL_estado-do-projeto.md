@@ -11,6 +11,7 @@
 | iPhone (mesmo Wi-Fi) | <servidor>/app | <servidor>/painel | o script imprime o IP certo |
 | Dispositivos (iPhone · iPad · PC) | https://claude.ai/code/artifact/8d7d95a9-3488-4048-aa5b-1d2be92d1ee7 | <servidor>/dispositivos | três telas lado a lado |
 | Tour (app inteiro, iPhone no PC) | https://claude.ai/code/artifact/df8e118c-c26f-4e24-95a7-e43ebda54673 | <servidor>/tour | mapa + guia + feedback por seção |
+| Marca (logo, ícone, WhatsApp) | https://claude.ai/code/artifact/fca968cc-f5eb-48e6-b992-53061175999f | <servidor>/marca | 8 identidades; marque 3 |
 | Temas (galeria) | https://claude.ai/code/artifact/454ed76c-188c-4bc2-ab33-2ba58b543365 | <servidor>/11_TEMAS_galeria.html | marque 4 |
 | Histórico de mockups | — | <servidor>/historico-mockups/ | toda versão |
 | Produção (futuro) | https://hyhoney.bitbeagle.com | — | login por casal |
@@ -131,6 +132,8 @@ Legenda: 💡 ideia · 🎨 no mockup · ✅ decidida · 🔨 em construção ·
 4. Tecnologia: web app (PWA) em hyhoney.bitbeagle.com — mesma pilha do Corveio/HyHobbit ou outra?
 5. O backup do WhatsApp entra em que versão? (proposta: última)
 6. Multas afetivas: entram ou ficam fora?
+7. Identidade: quais 3 favoritas na galeria de marca (26)?
+8. Temas: quais 4 favoritos na galeria (11)?
 
 ## Backlog de ideias (adicione aqui à vontade)
 - Memória Surpresa diária na capa
